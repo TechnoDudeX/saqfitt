@@ -694,6 +694,20 @@
 </head>
 <body>
 
+<!-- Hidden form for Netlify build-time detection (not visible to users) -->
+<form name="training-signup" netlify netlify-honeypot="bot-field" hidden>
+  <input name="form-name" type="hidden" value="training-signup">
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="instagram">
+  <input name="goal">
+  <input name="experience">
+  <input name="days">
+  <input name="style">
+  <textarea name="notes"></textarea>
+</form>
+
 <!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -873,8 +887,9 @@
           <div class="form-step-dot" data-step="3"></div>
         </div>
 
-        <form name="training-signup" method="POST" data-netlify="true" id="signupForm">
+        <form name="training-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signupForm">
           <input type="hidden" name="form-name" value="training-signup">
+          <p style="display:none"><input name="bot-field"></p>
 
           <!-- Panel 1: About You -->
           <div class="form-panel active" data-panel="1">
