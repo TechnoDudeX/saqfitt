@@ -4,24 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAQFITT — Fitness & Fashion</title>
+<meta name="description" content="SAQFITT — Fitness coaching, fashion, and lifestyle. Train with Saq.">
+<meta property="og:title" content="SAQFITT — Fitness & Fashion">
+<meta property="og:description" content="Fitness coaching, fashion, and lifestyle. Train with Saq.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#D4AF37">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#050505;
-    --surface:#0d0d0d;
-    --surface-2:#141414;
-    --surface-3:#1a1a1a;
-    --text:#f0efe9;
-    --text-dim:#6a6a60;
-    --accent:#d4ff2b;
-    --accent-dim:#a8cc22;
-    --accent-glow:rgba(212,255,43,.15);
-    --pink:#ff2d6b;
-    --blue:#4d9fff;
-    --border:#1a1a1a;
-    --radius:16px;
+    --bg:#111111;
+    --surface:#1A1A1A;
+    --surface-2:#222;
+    --text:#E0E0E0;
+    --text-dim:#888888;
+    --accent:#D4AF37;
+    --accent-glow:rgba(212,175,55,.15);
+    --crimson:#C62828;
+    --cobalt:#1976D2;
+    --gunmetal:#3F454F;
+    --border:#2a2a2a;
+    --radius:14px;
   }
   html{font-size:16px;scroll-behavior:smooth}
   body{
@@ -38,7 +43,7 @@
     border:1.5px solid var(--accent);
     border-radius:50%;
     pointer-events:none;z-index:10000;
-    transition:transform .15s ease, opacity .15s ease, width .2s, height .2s, border-color .2s;
+    transition:transform .15s ease, opacity .15s ease, width .2s, height .2s;
     transform:translate(-50%,-50%);
     mix-blend-mode:difference;
   }
@@ -50,17 +55,13 @@
     transform:translate(-50%,-50%);
     transition:transform .08s ease;
   }
-  .cursor.hover{
-    width:50px;height:50px;
-    border-color:var(--accent);
-    background:rgba(212,255,43,.06);
-  }
+  .cursor.hover{width:50px;height:50px;background:rgba(212,175,55,.06)}
   @media(max-width:768px){
     .cursor,.cursor-dot{display:none}
     body{cursor:auto}
   }
 
-  /* grain overlay */
+  /* grain */
   body::before{
     content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;
     opacity:.03;
@@ -68,18 +69,14 @@
     background-size:128px 128px;
   }
 
-  /* ========== HERO ========== */
+  /* ========== HERO / TOP ========== */
   .hero{
-    min-height:100vh;
-    display:flex;flex-direction:column;
-    align-items:center;justify-content:center;
+    padding:50px 20px 40px;
+    text-align:center;
     position:relative;
-    padding:40px 20px;
     overflow:hidden;
   }
-  .hero-bg{
-    position:absolute;inset:0;z-index:0;
-  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
   .hero-bg .orb{
     position:absolute;border-radius:50%;
     filter:blur(80px);
@@ -87,670 +84,613 @@
   }
   .hero-bg .orb-1{
     width:500px;height:500px;
-    background:radial-gradient(circle,rgba(212,255,43,.1),transparent 70%);
-    top:-10%;left:50%;transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(212,175,55,.08),transparent 70%);
+    top:-20%;left:50%;transform:translateX(-50%);
   }
   .hero-bg .orb-2{
-    width:300px;height:300px;
-    background:radial-gradient(circle,rgba(255,45,107,.06),transparent 70%);
-    bottom:10%;left:10%;
-    animation-delay:-3s;
-  }
-  .hero-bg .orb-3{
     width:250px;height:250px;
-    background:radial-gradient(circle,rgba(77,159,255,.06),transparent 70%);
-    bottom:20%;right:5%;
-    animation-delay:-5s;
+    background:radial-gradient(circle,rgba(198,40,40,.05),transparent 70%);
+    bottom:0;left:5%;animation-delay:-3s;
   }
   @keyframes orbFloat{
     0%,100%{transform:translateY(0) scale(1)}
-    50%{transform:translateY(-30px) scale(1.05)}
+    50%{transform:translateY(-20px) scale(1.04)}
   }
 
-  /* grid lines */
-  .hero-grid{
-    position:absolute;inset:0;z-index:0;
-    background-image:
-      linear-gradient(rgba(212,255,43,.03) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(212,255,43,.03) 1px,transparent 1px);
-    background-size:60px 60px;
-    mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,black 20%,transparent 100%);
-    -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 50%,black 20%,transparent 100%);
-  }
+  .hero-content{position:relative;z-index:1;max-width:500px;margin:0 auto}
 
-  .hero-content{
-    position:relative;z-index:1;
-    text-align:center;
-    max-width:800px;
-  }
-
-  /* animated logo mark */
-  .logo-mark{
-    width:100px;height:100px;
-    margin:0 auto 30px;
+  .avatar{
+    width:120px;height:120px;border-radius:50%;
+    margin:0 auto 20px;
     position:relative;
+    animation:float 4s ease-in-out infinite;
   }
-  .logo-mark .ring{
-    position:absolute;inset:0;
-    border:2px solid rgba(212,255,43,.2);
-    border-radius:50%;
+  .avatar-ring{
+    position:absolute;inset:-4px;border-radius:50%;
+    border:2px solid var(--accent);
+    opacity:.6;
     animation:ringPulse 3s ease-in-out infinite;
   }
-  .logo-mark .ring:nth-child(2){
-    inset:8px;border-color:rgba(212,255,43,.3);
-    animation-delay:.5s;
+  .avatar-ring:nth-child(2){inset:-10px;border-color:rgba(212,175,55,.25);animation-delay:.5s}
+  .avatar img{
+    width:100%;height:100%;border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--bg);
   }
-  .logo-mark .ring:nth-child(3){
-    inset:16px;border-color:rgba(212,255,43,.5);
-    animation-delay:1s;
-  }
-  .logo-mark .initials{
-    position:absolute;inset:24px;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--accent);
-    border-radius:50%;
-    font-family:'Bebas Neue',sans-serif;
-    font-size:28px;letter-spacing:2px;
-    color:var(--bg);
-  }
-  @keyframes ringPulse{
-    0%,100%{transform:scale(1);opacity:1}
-    50%{transform:scale(1.08);opacity:.5}
-  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.06);opacity:.3}}
 
   .hero h1{
     font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(4rem,14vw,9rem);
-    letter-spacing:8px;
-    line-height:.85;
-    margin-bottom:20px;
-    position:relative;
+    font-size:clamp(2.2rem,8vw,3rem);
+    letter-spacing:4px;line-height:1;
+    margin-bottom:6px;
+    opacity:0;animation:revealUp .6s cubic-bezier(.22,1,.36,1) .1s forwards;
   }
-  .hero h1 .line{display:block;overflow:hidden}
-  .hero h1 .line span{
-    display:inline-block;
-    transform:translateY(110%);
-    animation:revealUp .8s cubic-bezier(.22,1,.36,1) forwards;
-  }
-  .hero h1 .line:nth-child(2) span{animation-delay:.15s}
   .hero h1 .accent{color:var(--accent)}
-  @keyframes revealUp{to{transform:translateY(0)}}
+  .hero .handle{
+    font-size:.82rem;font-weight:300;
+    color:var(--text-dim);letter-spacing:1px;
+    opacity:0;animation:revealUp .6s cubic-bezier(.22,1,.36,1) .2s forwards;
+  }
+  @keyframes revealUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-  .hero-tagline{
-    font-size:clamp(.85rem,2.5vw,1.05rem);
-    font-weight:300;
+  /* ========== LINKS ========== */
+  .links-section{
+    max-width:480px;margin:0 auto;
+    padding:10px 20px 50px;
+    position:relative;z-index:1;
+  }
+  .section-label{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:.72rem;letter-spacing:3px;
     color:var(--text-dim);
-    letter-spacing:3px;
     text-transform:uppercase;
-    margin-bottom:40px;
-    opacity:0;
-    animation:fadeIn .8s ease .6s forwards;
+    margin-bottom:12px;padding-left:4px;
+    display:flex;align-items:center;gap:10px;
+    opacity:0;animation:revealUp .5s cubic-bezier(.22,1,.36,1) .3s forwards;
   }
-  @keyframes fadeIn{to{opacity:1}}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
-  .hero-cta{
-    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-    opacity:0;animation:fadeIn .8s ease .8s forwards;
-  }
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:16px 32px;
-    border-radius:60px;
-    font-family:'Outfit',sans-serif;
-    font-size:.88rem;font-weight:500;
-    letter-spacing:1px;
-    text-decoration:none;
-    transition:all .3s cubic-bezier(.22,1,.36,1);
-    position:relative;overflow:hidden;
-    cursor:none;
-  }
-  .btn-primary{
-    background:var(--accent);color:var(--bg);
-    border:none;
-  }
-  .btn-primary:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 40px rgba(212,255,43,.3);
-  }
-  .btn-outline{
-    background:transparent;color:var(--text);
-    border:1px solid var(--border);
-  }
-  .btn-outline:hover{
-    border-color:var(--accent);color:var(--accent);
-    transform:translateY(-2px);
-  }
-
-  /* scroll indicator */
-  .scroll-indicator{
-    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
-    display:flex;flex-direction:column;align-items:center;gap:8px;
-    opacity:0;animation:fadeIn 1s ease 1.5s forwards;
-  }
-  .scroll-indicator span{
-    font-size:.65rem;letter-spacing:3px;text-transform:uppercase;
-    color:var(--text-dim);
-  }
-  .scroll-line{
-    width:1px;height:40px;
-    background:linear-gradient(to bottom,var(--accent),transparent);
-    animation:scrollBounce 2s ease-in-out infinite;
-  }
-  @keyframes scrollBounce{
-    0%,100%{transform:scaleY(1);transform-origin:top}
-    50%{transform:scaleY(.4);transform-origin:top}
-  }
-
-  /* ========== SECTIONS ========== */
-  section{padding:100px 20px;position:relative}
-  .section-inner{max-width:1000px;margin:0 auto}
-
-  .reveal{
-    opacity:0;transform:translateY(40px);
-    transition:all .8s cubic-bezier(.22,1,.36,1);
-  }
-  .reveal.visible{opacity:1;transform:translateY(0)}
-
-  /* section headers */
-  .sh{margin-bottom:60px}
-  .sh-label{
-    font-family:'Outfit',sans-serif;
-    font-size:.7rem;font-weight:600;
-    letter-spacing:4px;text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:12px;
-    display:flex;align-items:center;gap:12px;
-  }
-  .sh-label::before{
-    content:'';width:30px;height:1px;background:var(--accent);
-  }
-  .sh-title{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2.2rem,6vw,3.8rem);
-    letter-spacing:3px;line-height:1;
-  }
-
-  /* ========== DUAL CARDS (Fitness & Lifestyle) ========== */
-  .dual-section{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-top:60px;
-  }
-  @media(max-width:700px){
-    .dual-section{grid-template-columns:1fr}
-  }
-
-  .world-card{
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:40px 30px;
-    position:relative;
-    overflow:hidden;
-    transition:all .4s cubic-bezier(.22,1,.36,1);
-    background:var(--surface);
-  }
-  .world-card::before{
-    content:'';position:absolute;inset:0;
-    opacity:0;transition:opacity .4s;
-    z-index:0;
-  }
-  .world-card.fitness::before{
-    background:linear-gradient(135deg,rgba(212,255,43,.06),transparent 60%);
-  }
-  .world-card.lifestyle::before{
-    background:linear-gradient(135deg,rgba(255,45,107,.06),transparent 60%);
-  }
-  .world-card:hover::before{opacity:1}
-  .world-card:hover{
-    border-color:rgba(255,255,255,.1);
-    transform:translateY(-4px);
-  }
-
-  .wc-header{
+  .links{display:flex;flex-direction:column;gap:10px;margin-bottom:30px}
+  .link-card{
     display:flex;align-items:center;gap:14px;
-    margin-bottom:24px;position:relative;z-index:1;
-  }
-  .wc-icon{
-    width:52px;height:52px;
-    border-radius:14px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;
-  }
-  .fitness .wc-icon{background:rgba(212,255,43,.1)}
-  .lifestyle .wc-icon{background:rgba(255,45,107,.1)}
-  .wc-header h3{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:1.6rem;letter-spacing:2px;
-  }
-  .fitness .wc-header h3{color:var(--accent)}
-  .lifestyle .wc-header h3{color:var(--pink)}
-
-  .wc-desc{
-    font-size:.85rem;font-weight:300;color:var(--text-dim);
-    line-height:1.6;margin-bottom:28px;
-    position:relative;z-index:1;
-  }
-
-  .wc-links{
-    display:flex;flex-direction:column;gap:10px;
-    position:relative;z-index:1;
-  }
-  .wc-link{
-    display:flex;align-items:center;gap:12px;
-    padding:14px 16px;
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:12px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 18px;
     text-decoration:none;color:var(--text);
     transition:all .25s cubic-bezier(.22,1,.36,1);
+    position:relative;overflow:hidden;
     cursor:none;
+    opacity:0;animation:slideUp .5s cubic-bezier(.22,1,.36,1) forwards;
   }
-  .wc-link:hover{
-    background:rgba(255,255,255,.06);
-    border-color:rgba(255,255,255,.1);
-    transform:translateX(4px);
+  .link-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(212,175,55,.04),transparent 50%);
+    opacity:0;transition:opacity .3s;
   }
-  .wc-link-icon{
-    width:36px;height:36px;flex-shrink:0;
+  .link-card:hover{
+    border-color:rgba(212,175,55,.3);
+    transform:translateY(-2px);
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+  }
+  .link-card:hover::before{opacity:1}
+
+  .link-card:nth-child(1){animation-delay:.35s}
+  .link-card:nth-child(2){animation-delay:.42s}
+  .link-card:nth-child(3){animation-delay:.49s}
+  .link-card:nth-child(4){animation-delay:.56s}
+  .link-card:nth-child(5){animation-delay:.63s}
+  .link-card:nth-child(6){animation-delay:.70s}
+
+  @keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .link-icon{
+    width:42px;height:42px;flex-shrink:0;
     border-radius:10px;
     display:flex;align-items:center;justify-content:center;
-    font-size:16px;
+    font-size:20px;
+    transition:background .25s;
   }
-  .fitness .wc-link-icon{background:rgba(212,255,43,.08)}
-  .lifestyle .wc-link-icon{background:rgba(255,45,107,.08)}
+  .link-icon.ig{background:rgba(212,175,55,.1)}
+  .link-card:hover .link-icon.ig{background:rgba(212,175,55,.18)}
+  .link-icon.tt{background:rgba(198,40,40,.1)}
+  .link-card:hover .link-icon.tt{background:rgba(198,40,40,.18)}
+  .link-icon.hevy{background:rgba(25,118,210,.1)}
+  .link-card:hover .link-icon.hevy{background:rgba(25,118,210,.18)}
+  .link-icon.train{background:rgba(212,175,55,.12)}
+  .link-card:hover .link-icon.train{background:rgba(212,175,55,.2)}
 
-  .wc-link-text .title{font-size:.88rem;font-weight:500}
-  .wc-link-text .sub{font-size:.72rem;color:var(--text-dim);font-weight:300;margin-top:1px}
-  .wc-link .arrow{
-    margin-left:auto;color:var(--text-dim);font-size:.75rem;
-    transition:all .25s;
+  .link-text{flex:1}
+  .link-text .title{font-weight:500;font-size:.9rem;margin-bottom:1px}
+  .link-text .sub{font-size:.73rem;color:var(--text-dim);font-weight:300}
+
+  .link-arrow{color:var(--text-dim);font-size:.8rem;transition:all .25s}
+  .link-card:hover .link-arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* Train CTA card special */
+  .link-card.train-cta{
+    background:linear-gradient(135deg,rgba(212,175,55,.08),var(--surface));
+    border-color:rgba(212,175,55,.2);
   }
-  .wc-link:hover .arrow{
-    transform:translateX(3px);
+  .link-card.train-cta:hover{
+    border-color:var(--accent);
+    box-shadow:0 8px 30px rgba(212,175,55,.12);
   }
-  .fitness .wc-link:hover .arrow{color:var(--accent)}
-  .lifestyle .wc-link:hover .arrow{color:var(--pink)}
+  .link-card.train-cta .link-text .title{color:var(--accent);font-weight:600}
 
-  /* hevy special */
-  .hevy .wc-link-icon{background:rgba(77,159,255,.08)}
-
-  /* ========== STATS MARQUEE ========== */
-  .marquee-section{
-    padding:50px 0;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-    overflow:hidden;
+  /* ========== FORM SECTION ========== */
+  .form-wrapper{
+    padding:60px 20px 80px;
     position:relative;
   }
+  .form-section{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:44px 36px;
+    position:relative;overflow:hidden;
+    max-width:520px;margin:0 auto;
+  }
+  .form-section::before{
+    content:'';position:absolute;
+    top:-80px;right:-80px;
+    width:250px;height:250px;
+    background:radial-gradient(circle,rgba(212,175,55,.06),transparent 70%);
+    pointer-events:none;
+  }
+  @media(max-width:500px){.form-section{padding:32px 22px}}
+
+  .form-header{margin-bottom:28px;position:relative;z-index:1}
+  .form-header h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.8rem,6vw,2.4rem);
+    letter-spacing:3px;line-height:1;margin-bottom:8px;
+  }
+  .form-header h2 .accent{color:var(--accent)}
+  .form-header p{font-size:.85rem;font-weight:300;color:var(--text-dim);line-height:1.6}
+
+  .form-steps{display:flex;gap:8px;margin-bottom:28px;position:relative;z-index:1}
+  .form-step-dot{flex:1;height:3px;border-radius:3px;background:var(--border);transition:background .4s}
+  .form-step-dot.active{background:var(--accent)}
+  .form-step-dot.done{background:rgba(212,175,55,.3)}
+
+  .form-panel{display:none;position:relative;z-index:1}
+  .form-panel.active{display:block;animation:panelIn .4s cubic-bezier(.22,1,.36,1)}
+  @keyframes panelIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+  .form-row{margin-bottom:16px}
+  .form-row label{
+    display:block;font-size:.7rem;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:7px;
+  }
+  .form-row input,.form-row select,.form-row textarea{
+    width:100%;padding:13px 15px;
+    background:var(--bg);border:1px solid var(--border);
+    border-radius:10px;color:var(--text);
+    font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:300;
+    transition:border-color .3s,box-shadow .3s;outline:none;cursor:none;
+  }
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{
+    border-color:rgba(212,175,55,.4);
+    box-shadow:0 0 16px rgba(212,175,55,.05);
+  }
+  .form-row input::placeholder,.form-row textarea::placeholder{color:var(--text-dim);opacity:.5}
+  .form-row textarea{resize:vertical;min-height:75px}
+  .form-row select{
+    cursor:none;-webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+  }
+  .form-row select option{background:var(--bg);color:var(--text)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:400px){.form-grid{grid-template-columns:1fr}}
+
+  .goal-pills{display:flex;flex-wrap:wrap;gap:8px}
+  .goal-pill{
+    padding:10px 16px;border-radius:60px;
+    border:1px solid var(--border);background:transparent;
+    color:var(--text);font-family:'Outfit',sans-serif;
+    font-size:.8rem;font-weight:400;cursor:none;
+    transition:all .25s;outline:none;
+  }
+  .goal-pill:hover{border-color:rgba(212,175,55,.3)}
+  .goal-pill.selected{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500}
+
+  .exp-cards{display:flex;gap:10px}
+  .exp-card{
+    flex:1;padding:16px 12px;
+    border:1px solid var(--border);border-radius:12px;
+    background:transparent;color:var(--text);
+    font-family:'Outfit',sans-serif;text-align:center;
+    cursor:none;transition:all .25s;outline:none;
+  }
+  .exp-card:hover{border-color:rgba(212,175,55,.3)}
+  .exp-card.selected{border-color:var(--accent);background:rgba(212,175,55,.06)}
+  .exp-card .exp-emoji{font-size:22px;display:block;margin-bottom:5px}
+  .exp-card .exp-label{font-size:.76rem;font-weight:500;letter-spacing:.5px}
+  .exp-card .exp-sub{font-size:.62rem;color:var(--text-dim);margin-top:2px;font-weight:300}
+  .exp-card.selected .exp-label{color:var(--accent)}
+
+  .form-nav{display:flex;gap:12px;margin-top:22px}
+  .btn-back{
+    padding:13px 22px;background:transparent;
+    border:1px solid var(--border);border-radius:60px;
+    color:var(--text-dim);font-family:'Outfit',sans-serif;
+    font-size:.84rem;cursor:none;transition:all .25s;
+  }
+  .btn-back:hover{border-color:var(--text-dim);color:var(--text)}
+  .btn-next{
+    flex:1;padding:13px 22px;
+    background:var(--accent);color:var(--bg);
+    border:none;border-radius:60px;
+    font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:600;
+    letter-spacing:1px;cursor:none;
+    transition:all .3s cubic-bezier(.22,1,.36,1);
+  }
+  .btn-next:hover{transform:translateY(-1px);box-shadow:0 6px 25px rgba(212,175,55,.2)}
+  .btn-next:disabled{opacity:.4;pointer-events:none}
+
+  .form-success{display:none;text-align:center;padding:40px 20px;position:relative;z-index:1}
+  .form-success.show{display:block}
+  .success-check{
+    width:70px;height:70px;margin:0 auto 20px;
+    border-radius:50%;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    animation:popIn .5s cubic-bezier(.22,1,.36,1);
+  }
+  .success-check svg{width:32px;height:32px;color:var(--bg)}
+  @keyframes popIn{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+  .form-success h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:8px}
+  .form-success h3 .accent{color:var(--accent)}
+  .form-success p{font-size:.85rem;font-weight:300;color:var(--text-dim);line-height:1.6}
+
+  @media(max-width:600px){
+    .exp-cards{flex-direction:column}
+    .form-nav{flex-direction:column-reverse}
+    .btn-back{text-align:center}
+  }
+
+  /* ========== BOTTOM BRANDING ========== */
+  .bottom-brand{
+    padding:60px 20px 30px;text-align:center;
+    position:relative;z-index:1;
+  }
+  .bottom-brand h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3rem,12vw,5.5rem);
+    letter-spacing:6px;line-height:.85;
+    margin-bottom:10px;
+  }
+  .bottom-brand h2 .accent{color:var(--accent)}
+  .bottom-brand p{
+    font-size:.9rem;font-weight:300;
+    color:var(--text-dim);letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:30px;
+  }
+  .footer-socials{
+    display:flex;justify-content:center;gap:14px;margin-bottom:24px;
+  }
+  .footer-social{
+    width:38px;height:38px;
+    border:1px solid var(--border);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-dim);text-decoration:none;
+    transition:all .25s;cursor:none;
+  }
+  .footer-social:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  /* ========== MARQUEE (bottom) ========== */
+  .marquee-section{
+    padding:28px 0;
+    border-top:1px solid var(--border);
+    overflow:hidden;position:relative;
+  }
   .marquee-track{
-    display:flex;gap:60px;
-    animation:marquee 20s linear infinite;
+    display:flex;gap:50px;
+    animation:marquee 18s linear infinite;
     width:max-content;
   }
   .marquee-item{
-    display:flex;align-items:center;gap:16px;
+    display:flex;align-items:center;gap:14px;
     white-space:nowrap;flex-shrink:0;
   }
   .marquee-item .num{
     font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2rem,5vw,3rem);
-    color:var(--accent);
-    letter-spacing:2px;
+    font-size:clamp(1.4rem,4vw,2rem);
+    color:var(--accent);letter-spacing:2px;
   }
   .marquee-item .label{
-    font-size:.75rem;font-weight:300;
-    color:var(--text-dim);
-    text-transform:uppercase;
-    letter-spacing:2px;
-    line-height:1.4;
+    font-size:.68rem;font-weight:300;
+    color:var(--text-dim);text-transform:uppercase;
+    letter-spacing:2px;line-height:1.4;
   }
   .marquee-sep{
     width:4px;height:4px;border-radius:50%;
-    background:var(--text-dim);flex-shrink:0;
-    opacity:.3;
+    background:var(--text-dim);flex-shrink:0;opacity:.25;
   }
-  @keyframes marquee{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(-50%)}
-  }
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  /* ========== TRAINING FORM ========== */
-  .form-section{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:24px;
-    padding:50px 40px;
-    position:relative;
-    overflow:hidden;
-    max-width:600px;
-    margin:0 auto;
-  }
-  .form-section::before{
-    content:'';position:absolute;
-    top:-100px;right:-100px;
-    width:300px;height:300px;
-    background:radial-gradient(circle,rgba(212,255,43,.06),transparent 70%);
-    pointer-events:none;
-  }
-  @media(max-width:600px){
-    .form-section{padding:36px 24px}
-  }
-
-  .form-header{margin-bottom:32px;position:relative;z-index:1}
-  .form-header h2{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2rem,6vw,2.8rem);
-    letter-spacing:3px;line-height:1;
-    margin-bottom:10px;
-  }
-  .form-header h2 .accent{color:var(--accent)}
-  .form-header p{
-    font-size:.88rem;font-weight:300;
-    color:var(--text-dim);line-height:1.6;
-  }
-
-  /* steps indicator */
-  .form-steps{
-    display:flex;gap:8px;margin-bottom:32px;
-    position:relative;z-index:1;
-  }
-  .form-step-dot{
-    flex:1;height:3px;border-radius:3px;
-    background:var(--border);
-    transition:background .4s;
-  }
-  .form-step-dot.active{background:var(--accent)}
-  .form-step-dot.done{background:rgba(212,255,43,.3)}
-
-  /* form panels */
-  .form-panel{
-    display:none;
-    position:relative;z-index:1;
-  }
-  .form-panel.active{
-    display:block;
-    animation:panelIn .4s cubic-bezier(.22,1,.36,1);
-  }
-  @keyframes panelIn{
-    from{opacity:0;transform:translateX(20px)}
-    to{opacity:1;transform:translateX(0)}
-  }
-
-  .form-row{margin-bottom:18px}
-  .form-row label{
-    display:block;font-size:.72rem;font-weight:600;
-    letter-spacing:2px;text-transform:uppercase;
-    color:var(--text-dim);margin-bottom:8px;
-  }
-  .form-row input,.form-row select,.form-row textarea{
-    width:100%;padding:14px 16px;
-    background:var(--bg);
-    border:1px solid var(--border);
-    border-radius:12px;
-    color:var(--text);
-    font-family:'Outfit',sans-serif;
-    font-size:.9rem;font-weight:300;
-    transition:border-color .3s, box-shadow .3s;
-    outline:none;
-    cursor:none;
-  }
-  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{
-    border-color:rgba(212,255,43,.4);
-    box-shadow:0 0 20px rgba(212,255,43,.05);
-  }
-  .form-row input::placeholder,.form-row textarea::placeholder{color:var(--text-dim);opacity:.5}
-  .form-row textarea{resize:vertical;min-height:80px}
-  .form-row select{
-    cursor:none;-webkit-appearance:none;appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a60' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 16px center;
-    padding-right:40px;
-  }
-  .form-row select option{background:var(--bg);color:var(--text)}
-  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:400px){.form-grid{grid-template-columns:1fr}}
-
-  /* goal pills */
-  .goal-pills{
-    display:flex;flex-wrap:wrap;gap:8px;
-  }
-  .goal-pill{
-    padding:10px 18px;
-    border-radius:60px;
-    border:1px solid var(--border);
-    background:transparent;
-    color:var(--text);
-    font-family:'Outfit',sans-serif;
-    font-size:.82rem;font-weight:400;
-    cursor:none;
-    transition:all .25s;
-    outline:none;
-  }
-  .goal-pill:hover{border-color:rgba(212,255,43,.3)}
-  .goal-pill.selected{
-    background:var(--accent);
-    color:var(--bg);
-    border-color:var(--accent);
-    font-weight:500;
-  }
-
-  /* exp cards */
-  .exp-cards{display:flex;gap:10px}
-  .exp-card{
-    flex:1;
-    padding:18px 14px;
-    border:1px solid var(--border);
-    border-radius:14px;
-    background:transparent;
-    color:var(--text);
-    font-family:'Outfit',sans-serif;
-    text-align:center;
-    cursor:none;
-    transition:all .25s;
-    outline:none;
-  }
-  .exp-card:hover{border-color:rgba(212,255,43,.3)}
-  .exp-card.selected{
-    border-color:var(--accent);
-    background:rgba(212,255,43,.06);
-  }
-  .exp-card .exp-emoji{font-size:24px;display:block;margin-bottom:6px}
-  .exp-card .exp-label{font-size:.78rem;font-weight:500;letter-spacing:.5px}
-  .exp-card .exp-sub{font-size:.65rem;color:var(--text-dim);margin-top:2px;font-weight:300}
-  .exp-card.selected .exp-label{color:var(--accent)}
-
-  .form-nav{
-    display:flex;gap:12px;margin-top:24px;
-  }
-  .btn-back{
-    padding:14px 24px;
-    background:transparent;
-    border:1px solid var(--border);
-    border-radius:60px;
-    color:var(--text-dim);
-    font-family:'Outfit',sans-serif;
-    font-size:.85rem;font-weight:400;
-    cursor:none;
-    transition:all .25s;
-  }
-  .btn-back:hover{border-color:var(--text-dim);color:var(--text)}
-  .btn-next{
-    flex:1;padding:14px 24px;
-    background:var(--accent);color:var(--bg);
-    border:none;border-radius:60px;
-    font-family:'Outfit',sans-serif;
-    font-size:.88rem;font-weight:600;
-    letter-spacing:1px;
-    cursor:none;
-    transition:all .3s cubic-bezier(.22,1,.36,1);
-    position:relative;overflow:hidden;
-  }
-  .btn-next:hover{
-    transform:translateY(-1px);
-    box-shadow:0 6px 30px rgba(212,255,43,.25);
-  }
-  .btn-next:disabled{
-    opacity:.4;pointer-events:none;
-  }
-
-  /* success state */
-  .form-success{
-    display:none;text-align:center;padding:50px 20px;
-    position:relative;z-index:1;
-  }
-  .form-success.show{display:block}
-  .success-check{
-    width:80px;height:80px;
-    margin:0 auto 24px;
-    border-radius:50%;
-    background:var(--accent);
-    display:flex;align-items:center;justify-content:center;
-    animation:popIn .5s cubic-bezier(.22,1,.36,1);
-  }
-  .success-check svg{width:36px;height:36px;color:var(--bg)}
-  @keyframes popIn{
-    0%{transform:scale(0);opacity:0}
-    60%{transform:scale(1.15)}
-    100%{transform:scale(1);opacity:1}
-  }
-  .form-success h3{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:2rem;letter-spacing:3px;
-    margin-bottom:10px;
-  }
-  .form-success h3 .accent{color:var(--accent)}
-  .form-success p{
-    font-size:.9rem;font-weight:300;
-    color:var(--text-dim);line-height:1.6;
-    max-width:300px;margin:0 auto;
-  }
-
-  /* ========== FOOTER ========== */
-  footer{
-    padding:40px 20px 50px;
-    text-align:center;
-    border-top:1px solid var(--border);
-  }
-  .footer-logo{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:1.4rem;letter-spacing:4px;
-    margin-bottom:12px;
-  }
-  .footer-logo .accent{color:var(--accent)}
-  .footer-socials{
-    display:flex;justify-content:center;gap:16px;
-    margin-bottom:20px;
-  }
-  .footer-social{
-    width:40px;height:40px;
-    border:1px solid var(--border);
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--text-dim);text-decoration:none;
-    transition:all .25s;
-    cursor:none;
-  }
-  .footer-social:hover{
-    border-color:var(--accent);color:var(--accent);
-    transform:translateY(-2px);
-  }
   .footer-copy{
-    font-size:.7rem;color:var(--text-dim);
+    text-align:center;padding:16px 20px 28px;
+    font-size:.65rem;color:var(--text-dim);
     letter-spacing:1px;font-weight:300;
   }
   .footer-copy .accent{color:var(--accent)}
 
-  /* ========== FLOATING PARTICLES ========== */
-  .particles{
-    position:fixed;inset:0;pointer-events:none;z-index:0;
-    overflow:hidden;
-  }
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* particles */
+  .particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
   .particle{
-    position:absolute;
-    width:2px;height:2px;
-    background:var(--accent);
-    border-radius:50%;
-    opacity:.15;
+    position:absolute;width:2px;height:2px;
+    background:var(--accent);border-radius:50%;opacity:.12;
     animation:particleDrift linear infinite;
   }
   @keyframes particleDrift{
     0%{transform:translateY(100vh) scale(0);opacity:0}
-    10%{opacity:.15}
-    90%{opacity:.15}
+    10%{opacity:.12}90%{opacity:.12}
     100%{transform:translateY(-20vh) scale(1);opacity:0}
-  }
-
-  /* mobile tweaks */
-  @media(max-width:600px){
-    .hero h1{letter-spacing:4px}
-    section{padding:70px 16px}
-    .world-card{padding:30px 22px}
-    .exp-cards{flex-direction:column}
-    .form-nav{flex-direction:column-reverse}
-    .btn-back{text-align:center}
   }
 </style>
 </head>
 <body>
 
-<!-- Hidden form for Netlify build-time detection (not visible to users) -->
+<!-- Hidden form for Netlify build-time detection -->
 <form name="training-signup" netlify netlify-honeypot="bot-field" hidden>
   <input name="form-name" type="hidden" value="training-signup">
-  <input name="bot-field">
-  <input name="name">
-  <input name="email">
-  <input name="instagram">
-  <input name="goal">
-  <input name="experience">
-  <input name="days">
-  <input name="style">
-  <textarea name="notes"></textarea>
+  <input name="bot-field"><input name="name"><input name="email">
+  <input name="instagram"><input name="goal"><input name="experience">
+  <input name="days"><input name="style"><textarea name="notes"></textarea>
 </form>
 
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
-
-<!-- Floating particles -->
 <div class="particles" id="particles"></div>
 
-<!-- ====== HERO ====== -->
+<!-- ====== HERO (Profile + Name) ====== -->
 <section class="hero">
   <div class="hero-bg">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="hero-grid"></div>
   </div>
-
   <div class="hero-content">
-    <div class="logo-mark">
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="initials">SF</div>
+    <div class="avatar">
+      <div class="avatar-ring"></div>
+      <div class="avatar-ring"></div>
+      <img src="data:image/jpeg;base64,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" alt="SAQFITT">
     </div>
-
-    <h1>
-      <span class="line"><span>SAQ<span class="accent">FITT</span></span></span>
-    </h1>
-
-    <p class="hero-tagline">Fitness · Fashion · Lifestyle</p>
-
-    <div class="hero-cta">
-      <a href="#train" class="btn btn-primary">Start Training</a>
-      <a href="#worlds" class="btn btn-outline">Explore</a>
-    </div>
-  </div>
-
-  <div class="scroll-indicator">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+    <h1>SAQ<span class="accent">FITT</span></h1>
+    <p class="handle">Fitness · Fashion · Lifestyle</p>
   </div>
 </section>
 
-<!-- ====== MARQUEE ====== -->
+<!-- ====== LINKS ====== -->
+<div class="links-section">
+
+  <div class="section-label">Fitness</div>
+  <div class="links">
+    <a href="https://www.instagram.com/saqfitt/" target="_blank" class="link-card">
+      <div class="link-icon ig">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Fitness Instagram</div>
+        <div class="sub">@saqfitt</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.tiktok.com/@trainwithsaq?lang=en" target="_blank" class="link-card">
+      <div class="link-icon tt">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Fitness TikTok</div>
+        <div class="sub">@trainwithsaq</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://hevy.com/user/saqfitt" target="_blank" class="link-card">
+      <div class="link-icon hevy">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M6 12h12"/><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Hevy Workouts</div>
+        <div class="sub">Training logs & programs</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="section-label">Lifestyle</div>
+  <div class="links">
+    <a href="https://www.instagram.com/saqwithit/" target="_blank" class="link-card">
+      <div class="link-icon ig">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Lifestyle Instagram</div>
+        <div class="sub">@saqwithit</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.tiktok.com/@saqwithit?lang=en" target="_blank" class="link-card">
+      <div class="link-icon tt">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Lifestyle TikTok</div>
+        <div class="sub">@saqwithit</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- Train CTA -->
+  <div class="section-label">Level Up</div>
+  <div class="links">
+    <a href="#train" class="link-card train-cta">
+      <div class="link-icon train">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Start Training with Saq</div>
+        <div class="sub">Get a personalized plan</div>
+      </div>
+      <div class="link-arrow">↓</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- ====== TRAINING FORM ====== -->
+<div class="form-wrapper" id="train">
+  <div class="form-section reveal">
+    <div id="formContent">
+      <div class="form-header">
+        <h2>TRAIN WITH <span class="accent">SAQ</span></h2>
+        <p>Fill this out and Saq will reach out with a plan built around your goals.</p>
+      </div>
+
+      <div class="form-steps">
+        <div class="form-step-dot active" data-step="1"></div>
+        <div class="form-step-dot" data-step="2"></div>
+        <div class="form-step-dot" data-step="3"></div>
+      </div>
+
+      <form name="training-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signupForm">
+        <input type="hidden" name="form-name" value="training-signup">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <!-- Panel 1 -->
+        <div class="form-panel active" data-panel="1">
+          <div class="form-row">
+            <label>Your Name</label>
+            <input type="text" name="name" id="fname" placeholder="Full name" required>
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" name="email" id="femail" placeholder="you@email.com" required>
+          </div>
+          <div class="form-row">
+            <label>Instagram (optional)</label>
+            <input type="text" name="instagram" placeholder="@yourhandle">
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-next" id="next1">Continue</button>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="form-panel" data-panel="2">
+          <div class="form-row">
+            <label>What's your goal?</label>
+            <div class="goal-pills" id="goalPills">
+              <button type="button" class="goal-pill" data-value="Build muscle">Build Muscle</button>
+              <button type="button" class="goal-pill" data-value="Lose fat">Lose Fat</button>
+              <button type="button" class="goal-pill" data-value="Strength">Strength</button>
+              <button type="button" class="goal-pill" data-value="General fitness">General Fitness</button>
+              <button type="button" class="goal-pill" data-value="Athletic performance">Athletic Performance</button>
+              <button type="button" class="goal-pill" data-value="Recomp">Recomp</button>
+            </div>
+            <input type="hidden" name="goal" id="goalInput">
+          </div>
+          <div class="form-row" style="margin-top:20px">
+            <label>Experience level</label>
+            <div class="exp-cards" id="expCards">
+              <button type="button" class="exp-card" data-value="Beginner">
+                <span class="exp-emoji">🌱</span>
+                <span class="exp-label">Beginner</span>
+                <span class="exp-sub">&lt; 1 year</span>
+              </button>
+              <button type="button" class="exp-card" data-value="Intermediate">
+                <span class="exp-emoji">🔥</span>
+                <span class="exp-label">Intermediate</span>
+                <span class="exp-sub">1-3 years</span>
+              </button>
+              <button type="button" class="exp-card" data-value="Advanced">
+                <span class="exp-emoji">⚡</span>
+                <span class="exp-label">Advanced</span>
+                <span class="exp-sub">3+ years</span>
+              </button>
+            </div>
+            <input type="hidden" name="experience" id="expInput">
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-back" id="back2">Back</button>
+            <button type="button" class="btn-next" id="next2">Continue</button>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="form-panel" data-panel="3">
+          <div class="form-grid">
+            <div class="form-row">
+              <label>Days/week</label>
+              <select name="days">
+                <option value="" disabled selected>Select</option>
+                <option>3 days</option><option>4 days</option>
+                <option>5 days</option><option>6 days</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Preferred split</label>
+              <select name="style">
+                <option value="" disabled selected>Select</option>
+                <option>PPL</option><option>Upper/Lower</option>
+                <option>Full Body</option><option>Bro Split</option>
+                <option>No preference</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Anything else?</label>
+            <textarea name="notes" placeholder="Injuries, schedule, equipment access, etc."></textarea>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-back" id="back3">Back</button>
+            <button type="submit" class="btn-next" id="submitBtn">Send It 🚀</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="success-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>YOU'RE <span class="accent">IN</span></h3>
+      <p>Saq will be in touch soon. Get ready to put in the work.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== BOTTOM BRANDING ====== -->
+<div class="bottom-brand">
+  <h2>SAQ<span class="accent">FITT</span></h2>
+  <p>Fitness · Fashion · Lifestyle</p>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/saqfitt/" target="_blank" class="footer-social" title="@saqfitt">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.instagram.com/saqwithit/" target="_blank" class="footer-social" title="@saqwithit">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@trainwithsaq?lang=en" target="_blank" class="footer-social" title="TikTok">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
+    </a>
+    <a href="https://hevy.com/user/saqfitt" target="_blank" class="footer-social" title="Hevy">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M6 12h12"/><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ====== MARQUEE (very bottom) ====== -->
 <div class="marquee-section">
   <div class="marquee-track" id="marquee">
     <div class="marquee-item"><span class="num">365</span><span class="label">Days<br>Consistent</span></div>
@@ -763,7 +703,6 @@
     <div class="marquee-sep"></div>
     <div class="marquee-item"><span class="num">100%</span><span class="label">No<br>Shortcuts</span></div>
     <div class="marquee-sep"></div>
-    <!-- duplicate for seamless scroll -->
     <div class="marquee-item"><span class="num">365</span><span class="label">Days<br>Consistent</span></div>
     <div class="marquee-sep"></div>
     <div class="marquee-item"><span class="num">FIT</span><span class="label">Body &<br>Mind</span></div>
@@ -777,397 +716,60 @@
   </div>
 </div>
 
-<!-- ====== WORLDS (Fitness & Lifestyle) ====== -->
-<section id="worlds">
-  <div class="section-inner">
-    <div class="sh reveal">
-      <div class="sh-label">Explore</div>
-      <div class="sh-title">TWO WORLDS.<br>ONE VISION.</div>
-    </div>
-
-    <div class="dual-section">
-      <!-- Fitness Card -->
-      <div class="world-card fitness reveal" style="transition-delay:.1s">
-        <div class="wc-header">
-          <div class="wc-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M6 12h12"/><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/></svg>
-          </div>
-          <h3>Fitness</h3>
-        </div>
-        <p class="wc-desc">Training logs, workout content, and everything iron. Follow the journey and level up your own game.</p>
-        <div class="wc-links">
-          <a href="https://www.instagram.com/saqfitt/" target="_blank" class="wc-link">
-            <div class="wc-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <div class="wc-link-text">
-              <div class="title">Instagram</div>
-              <div class="sub">@saqfitt</div>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-          <a href="https://www.tiktok.com/@trainwithsaq?lang=en" target="_blank" class="wc-link">
-            <div class="wc-link-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
-            </div>
-            <div class="wc-link-text">
-              <div class="title">TikTok</div>
-              <div class="sub">@trainwithsaq</div>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-          <a href="https://hevy.com/user/saqfitt" target="_blank" class="wc-link hevy">
-            <div class="wc-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M6 12h12"/><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/></svg>
-            </div>
-            <div class="wc-link-text">
-              <div class="title">Hevy</div>
-              <div class="sub">Training logs & programs</div>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Lifestyle Card -->
-      <div class="world-card lifestyle reveal" style="transition-delay:.25s">
-        <div class="wc-header">
-          <div class="wc-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3>Lifestyle</h3>
-        </div>
-        <p class="wc-desc">Fashion, fits, and the day-to-day. The other side of the grind — how you show up outside the gym matters too.</p>
-        <div class="wc-links">
-          <a href="https://www.instagram.com/saqwithit/" target="_blank" class="wc-link">
-            <div class="wc-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <div class="wc-link-text">
-              <div class="title">Instagram</div>
-              <div class="sub">@saqwithit</div>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-          <a href="https://www.tiktok.com/@saqwithit?lang=en" target="_blank" class="wc-link">
-            <div class="wc-link-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
-            </div>
-            <div class="wc-link-text">
-              <div class="title">TikTok</div>
-              <div class="sub">@saqwithit</div>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== TRAINING SIGNUP ====== -->
-<section id="train">
-  <div class="section-inner">
-    <div class="sh reveal">
-      <div class="sh-label">Get Started</div>
-      <div class="sh-title">READY TO<br>LEVEL UP?</div>
-    </div>
-
-    <div class="form-section reveal" style="transition-delay:.15s">
-      <div id="formContent">
-        <div class="form-header">
-          <h2>TRAIN WITH <span class="accent">SAQ</span></h2>
-          <p>Fill this out and Saq will reach out with a personalized plan built around your goals.</p>
-        </div>
-
-        <!-- Step indicator -->
-        <div class="form-steps">
-          <div class="form-step-dot active" data-step="1"></div>
-          <div class="form-step-dot" data-step="2"></div>
-          <div class="form-step-dot" data-step="3"></div>
-        </div>
-
-        <form name="training-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signupForm">
-          <input type="hidden" name="form-name" value="training-signup">
-          <p style="display:none"><input name="bot-field"></p>
-
-          <!-- Panel 1: About You -->
-          <div class="form-panel active" data-panel="1">
-            <div class="form-row">
-              <label>Your Name</label>
-              <input type="text" name="name" id="fname" placeholder="Full name" required>
-            </div>
-            <div class="form-row">
-              <label>Email</label>
-              <input type="email" name="email" id="femail" placeholder="you@email.com" required>
-            </div>
-            <div class="form-row">
-              <label>Instagram (optional)</label>
-              <input type="text" name="instagram" placeholder="@yourhandle">
-            </div>
-            <div class="form-nav">
-              <button type="button" class="btn-next" id="next1">Continue</button>
-            </div>
-          </div>
-
-          <!-- Panel 2: Goals -->
-          <div class="form-panel" data-panel="2">
-            <div class="form-row">
-              <label>What's your goal?</label>
-              <div class="goal-pills" id="goalPills">
-                <button type="button" class="goal-pill" data-value="Build muscle">Build Muscle</button>
-                <button type="button" class="goal-pill" data-value="Lose fat">Lose Fat</button>
-                <button type="button" class="goal-pill" data-value="Strength">Strength</button>
-                <button type="button" class="goal-pill" data-value="General fitness">General Fitness</button>
-                <button type="button" class="goal-pill" data-value="Athletic performance">Athletic Performance</button>
-                <button type="button" class="goal-pill" data-value="Recomp">Recomp</button>
-              </div>
-              <input type="hidden" name="goal" id="goalInput">
-            </div>
-            <div class="form-row" style="margin-top:24px">
-              <label>Experience level</label>
-              <div class="exp-cards" id="expCards">
-                <button type="button" class="exp-card" data-value="Beginner">
-                  <span class="exp-emoji">🌱</span>
-                  <span class="exp-label">Beginner</span>
-                  <span class="exp-sub">&lt; 1 year</span>
-                </button>
-                <button type="button" class="exp-card" data-value="Intermediate">
-                  <span class="exp-emoji">🔥</span>
-                  <span class="exp-label">Intermediate</span>
-                  <span class="exp-sub">1-3 years</span>
-                </button>
-                <button type="button" class="exp-card" data-value="Advanced">
-                  <span class="exp-emoji">⚡</span>
-                  <span class="exp-label">Advanced</span>
-                  <span class="exp-sub">3+ years</span>
-                </button>
-              </div>
-              <input type="hidden" name="experience" id="expInput">
-            </div>
-            <div class="form-nav">
-              <button type="button" class="btn-back" id="back2">Back</button>
-              <button type="button" class="btn-next" id="next2">Continue</button>
-            </div>
-          </div>
-
-          <!-- Panel 3: Details -->
-          <div class="form-panel" data-panel="3">
-            <div class="form-grid">
-              <div class="form-row">
-                <label>Days/week you can train</label>
-                <select name="days">
-                  <option value="" disabled selected>Select</option>
-                  <option>3 days</option>
-                  <option>4 days</option>
-                  <option>5 days</option>
-                  <option>6 days</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label>Preferred style</label>
-                <select name="style">
-                  <option value="" disabled selected>Select</option>
-                  <option>PPL</option>
-                  <option>Upper/Lower</option>
-                  <option>Full Body</option>
-                  <option>Bro Split</option>
-                  <option>No preference</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <label>Anything else Saq should know?</label>
-              <textarea name="notes" placeholder="Injuries, schedule, equipment access, etc."></textarea>
-            </div>
-            <div class="form-nav">
-              <button type="button" class="btn-back" id="back3">Back</button>
-              <button type="submit" class="btn-next" id="submitBtn">Send It 🚀</button>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- Success -->
-      <div class="form-success" id="formSuccess">
-        <div class="success-check">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h3>YOU'RE <span class="accent">IN</span></h3>
-        <p>Saq will be in touch soon. Get ready to put in the work.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== FOOTER ====== -->
-<footer>
-  <div class="footer-logo">SAQ<span class="accent">FITT</span></div>
-  <div class="footer-socials">
-    <a href="https://www.instagram.com/saqfitt/" target="_blank" class="footer-social" title="Fitness Instagram">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a href="https://www.instagram.com/saqwithit/" target="_blank" class="footer-social" title="Lifestyle Instagram">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@trainwithsaq?lang=en" target="_blank" class="footer-social" title="Fitness TikTok">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 5.21 6.34 6.34 0 0 0 6.34-6.34V8.71a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/></svg>
-    </a>
-    <a href="https://hevy.com/user/saqfitt" target="_blank" class="footer-social" title="Hevy">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M6 12h12"/><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/></svg>
-    </a>
-  </div>
-  <div class="footer-copy">Built with grit <span class="accent">&</span> discipline</div>
-</footer>
+<div class="footer-copy">Built with grit <span class="accent">&</span> discipline</div>
 
 <script>
-// ===== CUSTOM CURSOR =====
-const cursor = document.getElementById('cursor');
-const cursorDot = document.getElementById('cursorDot');
-let cx = 0, cy = 0, dx = 0, dy = 0;
-
-document.addEventListener('mousemove', e => {
-  dx = e.clientX; dy = e.clientY;
-  cursorDot.style.left = dx + 'px';
-  cursorDot.style.top = dy + 'px';
-});
-
-function animCursor() {
-  cx += (dx - cx) * 0.15;
-  cy += (dy - cy) * 0.15;
-  cursor.style.left = cx + 'px';
-  cursor.style.top = cy + 'px';
-  requestAnimationFrame(animCursor);
-}
+// Cursor
+const cursor=document.getElementById('cursor'),cursorDot=document.getElementById('cursorDot');
+let cx=0,cy=0,dx=0,dy=0;
+document.addEventListener('mousemove',e=>{dx=e.clientX;dy=e.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px'});
+function animCursor(){cx+=(dx-cx)*.15;cy+=(dy-cy)*.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(animCursor)}
 animCursor();
-
-// hover effect on interactive elements
-document.querySelectorAll('a, button, input, select, textarea, .wc-link, .goal-pill, .exp-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+document.querySelectorAll('a,button,input,select,textarea,.goal-pill,.exp-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
 });
 
-// ===== PARTICLES =====
-const particlesEl = document.getElementById('particles');
-for (let i = 0; i < 25; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.style.left = Math.random() * 100 + '%';
-  p.style.animationDuration = (8 + Math.random() * 12) + 's';
-  p.style.animationDelay = Math.random() * 10 + 's';
-  p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
-  particlesEl.appendChild(p);
+// Particles
+const particlesEl=document.getElementById('particles');
+for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';particlesEl.appendChild(p)}
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Multi-step form
+let currentStep=1;
+const panels=document.querySelectorAll('.form-panel'),dots=document.querySelectorAll('.form-step-dot');
+function goToStep(s){
+  panels.forEach(p=>p.classList.remove('active'));
+  document.querySelector(`[data-panel="${s}"]`).classList.add('active');
+  dots.forEach(d=>{const n=+d.dataset.step;d.classList.remove('active','done');if(n===s)d.classList.add('active');else if(n<s)d.classList.add('done')});
+  currentStep=s;
 }
-
-// ===== SCROLL REVEAL =====
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => observer.observe(el));
-
-// ===== MULTI-STEP FORM =====
-let currentStep = 1;
-const totalSteps = 3;
-const panels = document.querySelectorAll('.form-panel');
-const dots = document.querySelectorAll('.form-step-dot');
-
-function goToStep(step) {
-  panels.forEach(p => p.classList.remove('active'));
-  document.querySelector(`[data-panel="${step}"]`).classList.add('active');
-  dots.forEach(d => {
-    const s = parseInt(d.dataset.step);
-    d.classList.remove('active', 'done');
-    if (s === step) d.classList.add('active');
-    else if (s < step) d.classList.add('done');
-  });
-  currentStep = step;
-}
-
-// Step 1 -> 2
-document.getElementById('next1').addEventListener('click', () => {
-  const name = document.getElementById('fname');
-  const email = document.getElementById('femail');
-  if (!name.value.trim()) { name.focus(); return; }
-  if (!email.value.trim() || !email.validity.valid) { email.focus(); return; }
+document.getElementById('next1').addEventListener('click',()=>{
+  const n=document.getElementById('fname'),e=document.getElementById('femail');
+  if(!n.value.trim()){n.focus();return}if(!e.value.trim()||!e.validity.valid){e.focus();return}
   goToStep(2);
 });
-
-// Step 2 -> 3
-document.getElementById('next2').addEventListener('click', () => {
-  if (!document.getElementById('goalInput').value) {
-    // flash the pills
-    document.getElementById('goalPills').style.animation = 'shake .4s ease';
-    setTimeout(() => document.getElementById('goalPills').style.animation = '', 400);
-    return;
-  }
+document.getElementById('next2').addEventListener('click',()=>{
+  if(!document.getElementById('goalInput').value){document.getElementById('goalPills').style.animation='shake .4s ease';setTimeout(()=>document.getElementById('goalPills').style.animation='',400);return}
   goToStep(3);
 });
+document.getElementById('back2').addEventListener('click',()=>goToStep(1));
+document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 
-// Back buttons
-document.getElementById('back2').addEventListener('click', () => goToStep(1));
-document.getElementById('back3').addEventListener('click', () => goToStep(2));
+document.querySelectorAll('.goal-pill').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('.goal-pill').forEach(x=>x.classList.remove('selected'));p.classList.add('selected');document.getElementById('goalInput').value=p.dataset.value})});
+document.querySelectorAll('.exp-card').forEach(c=>{c.addEventListener('click',()=>{document.querySelectorAll('.exp-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');document.getElementById('expInput').value=c.dataset.value})});
 
-// Goal pills
-document.querySelectorAll('.goal-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelectorAll('.goal-pill').forEach(p => p.classList.remove('selected'));
-    pill.classList.add('selected');
-    document.getElementById('goalInput').value = pill.dataset.value;
-  });
+const form=document.getElementById('signupForm');
+form.addEventListener('submit',async function(e){
+  e.preventDefault();const btn=document.getElementById('submitBtn');btn.textContent='Sending...';btn.disabled=true;
+  try{const d=new FormData(form);await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()});document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').classList.add('show')}
+  catch(err){btn.textContent='Send It 🚀';btn.disabled=false;btn.style.animation='shake .4s ease';setTimeout(()=>btn.style.animation='',400)}
 });
 
-// Experience cards
-document.querySelectorAll('.exp-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.exp-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    document.getElementById('expInput').value = card.dataset.value;
-  });
-});
-
-// Submit
-const form = document.getElementById('signupForm');
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  try {
-    const data = new FormData(form);
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
-    });
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-  } catch(err) {
-    btn.textContent = 'Send It 🚀';
-    btn.disabled = false;
-    btn.style.animation = 'shake .4s ease';
-    setTimeout(() => btn.style.animation = '', 400);
-  }
-});
-
-// Shake animation
-const shakeStyle = document.createElement('style');
-shakeStyle.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}`;
-document.head.appendChild(shakeStyle);
-
-// ===== HIDE SCROLL INDICATOR ON SCROLL =====
-const scrollInd = document.querySelector('.scroll-indicator');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100 && scrollInd) {
-    scrollInd.style.opacity = '0';
-    scrollInd.style.transition = 'opacity .4s';
-  }
-}, { passive: true });
+const s=document.createElement('style');s.textContent='@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}';document.head.appendChild(s);
 </script>
-
 </body>
 </html>
