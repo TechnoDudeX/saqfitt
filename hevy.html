@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAQFITT × Hevy Coach — Partnership Proposal</title>
+  <meta name="description" content="A Hevy Coach partnership proposal from @trainwithsaq — active Hevy Ambassador building the Toronto market.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* SAQFITT nav tokens */
+      --saq-bg:       #0a0a0a;
+      --saq-border:   #222222;
+      --saq-text:     #f0f0f0;
+      --saq-muted:    #888888;
+      --saq-accent:   #c8ff00;
+      --saq-dim:      rgba(200,255,0,0.08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --transition:   0.3s cubic-bezier(0.4,0,0.2,1);
+
+      /* Hevy Coach page tokens */
+      --bg:           #ffffff;
+      --bg-alt:       #f4f8fb;
+      --bg-dark:      #0d1117;
+      --hevy:         #006799;
+      --hevy-mid:     #0080bb;
+      --hevy-dim:     rgba(0,103,153,0.08);
+      --hevy-border:  rgba(0,103,153,0.2);
+      --text:         #1a1a2e;
+      --text-muted:   #555;
+      --text-dim:     #999;
+      --border:       #e5e7eb;
+      --shadow:       0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+      --shadow-md:    0 4px 12px rgba(0,0,0,.08), 0 12px 40px rgba(0,0,0,.06);
+      --radius:       6px;
+      --radius-lg:    12px;
+      --radius-xl:    20px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:72px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+    button { font-family:inherit; cursor:pointer; border:none; background:none; }
+
+    /* ─────────────────────────────────────
+       SAQFITT NAV — copied from index.html
+    ───────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--saq-border);
+      transition: var(--transition);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      color: var(--saq-accent);
+    }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-center a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--saq-muted);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-center a:hover { color: var(--saq-text); }
+    .nav-center a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--saq-accent);
+      transition: width var(--transition);
+    }
+    .nav-center a:hover::after { width: 100%; }
+    .nav-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--saq-border);
+      color: var(--saq-muted);
+      transition: all var(--transition);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .nav-social a:hover {
+      border-color: var(--saq-accent);
+      color: var(--saq-accent);
+      background: var(--saq-dim);
+    }
+    .nav-social svg { width:16px; height:16px; fill:currentColor; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--saq-text);
+      transition: var(--transition);
+    }
+    @media(max-width:768px){
+      .nav { padding: 0 20px; }
+      .nav-center { display:none; }
+      .nav-center.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--saq-border);
+      }
+      .nav-toggle { display:flex; }
+      .nav-social { gap:10px; }
+    }
+
+    /* ─────────────────────────────────────
+       REVEAL ANIMATION
+    ───────────────────────────────────── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    .reveal.d1 { transition-delay:.08s; }
+    .reveal.d2 { transition-delay:.16s; }
+    .reveal.d3 { transition-delay:.24s; }
+    .reveal.d4 { transition-delay:.32s; }
+    @media(prefers-reduced-motion:reduce){ .reveal { opacity:1; transform:none; transition:none; } }
+
+    /* ─────────────────────────────────────
+       LAYOUT UTILITIES
+    ───────────────────────────────────── */
+    .container { max-width:1080px; margin:0 auto; padding:0 24px; }
+    .container-narrow { max-width:720px; margin:0 auto; padding:0 24px; }
+    section { padding:88px 0; }
+    @media(max-width:768px){ section { padding:60px 0; } }
+
+    .section-label {
+      font-size:.7rem; font-weight:700; letter-spacing:4px; text-transform:uppercase;
+      color:var(--hevy); margin-bottom:12px;
+    }
+    .section-title {
+      font-size:clamp(1.9rem,4vw,2.75rem);
+      font-weight:800; line-height:1.1;
+      letter-spacing:-.02em; color:var(--text);
+      margin-bottom:16px;
+    }
+    .section-desc {
+      font-size:1.05rem; color:var(--text-muted);
+      line-height:1.7; max-width:560px;
+    }
+    .divider { height:1px; background:var(--border); }
+
+    /* ─────────────────────────────────────
+       AMBASSADOR STRIP
+    ───────────────────────────────────── */
+    .ambassador-strip {
+      background:var(--hevy);
+      padding:12px 24px;
+      text-align:center;
+      margin-top:72px;
+    }
+    .ambassador-strip p {
+      font-size:.8rem; font-weight:600; letter-spacing:.5px;
+      color:#fff; display:flex; align-items:center; justify-content:center; gap:10px;
+      flex-wrap:wrap;
+    }
+    .strip-dot {
+      width:7px; height:7px; border-radius:50%;
+      background:var(--saq-accent); display:inline-block;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
+
+    /* ─────────────────────────────────────
+       HERO
+    ───────────────────────────────────── */
+    .hero {
+      background: var(--bg);
+      padding:80px 24px 72px;
+      text-align:center;
+      border-bottom: 1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,103,153,.06) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.72rem; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--hevy);
+      background:var(--hevy-dim);
+      border:1px solid var(--hevy-border);
+      padding:6px 16px; border-radius:30px;
+      margin-bottom:28px;
+    }
+    .hero-title {
+      font-size:clamp(2.4rem,6vw,4.2rem);
+      font-weight:800; line-height:1.08;
+      letter-spacing:-.03em; color:var(--text);
+      margin-bottom:20px;
+      position:relative; z-index:1;
+    }
+    .hero-title .hevy-blue { color:var(--hevy); }
+    .hero-title .saq-lime { color:var(--saq-accent); }
+    .hero-sub {
+      font-size:1.1rem; font-weight:400; color:var(--text-muted);
+      max-width:580px; margin:0 auto 36px; line-height:1.7;
+      position:relative; z-index:1;
+    }
+    .hero-sub strong { color:var(--text); font-weight:600; }
+    .hero-ctas { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.875rem; font-weight:700; letter-spacing:.3px;
+      color:#fff; background:var(--hevy);
+      padding:13px 28px; border-radius:var(--radius);
+      transition:background .2s, transform .2s, box-shadow .2s;
+      box-shadow:0 2px 8px rgba(0,103,153,.25);
+    }
+    .btn-primary:hover { background:var(--hevy-mid); transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,103,153,.3); }
+    .btn-primary svg { width:14px; height:14px; }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.875rem; font-weight:600;
+      color:var(--text-muted);
+      border:1px solid var(--border);
+      padding:13px 28px; border-radius:var(--radius);
+      transition:all .2s;
+    }
+    .btn-ghost:hover { border-color:var(--hevy); color:var(--hevy); }
+
+    /* ─────────────────────────────────────
+       STATS ROW
+    ───────────────────────────────────── */
+    .stats-row {
+      background:var(--bg-alt);
+      border-bottom:1px solid var(--border);
+      padding:0 24px;
+    }
+    .stats-inner {
+      max-width:1080px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      text-align:center;
+    }
+    .stat-item {
+      padding:32px 16px;
+      border-right:1px solid var(--border);
+    }
+    .stat-item:last-child { border-right:none; }
+    .stat-num {
+      font-size:clamp(1.8rem,4vw,2.6rem);
+      font-weight:800; letter-spacing:-.03em;
+      line-height:1; margin-bottom:6px; color:var(--hevy);
+    }
+    .stat-num.lime { color:var(--saq-accent); }
+    .stat-num.dark { color:var(--text); }
+    .stat-label { font-size:.75rem; font-weight:500; color:var(--text-dim); letter-spacing:.5px; text-transform:uppercase; }
+    @media(max-width:600px){
+      .stats-inner { grid-template-columns:1fr 1fr; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); }
+      .stat-item:nth-child(odd) { border-right:1px solid var(--border); }
+      .stat-item:last-child,.stat-item:nth-last-child(2):nth-child(odd) { border-bottom:none; }
+    }
+
+    /* ─────────────────────────────────────
+       ABOUT — TWO COLUMN
+    ───────────────────────────────────── */
+    .about-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:64px; align-items:center;
+    }
+    .about-card {
+      background:var(--bg-alt);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .about-card-header {
+      background:var(--hevy);
+      padding:16px 24px;
+      font-size:.65rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+      color:rgba(255,255,255,.75);
+    }
+    .about-card-body { padding:8px 0; }
+    .about-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:13px 24px; border-bottom:1px solid var(--border);
+      font-size:.9rem;
+    }
+    .about-row:last-child { border-bottom:none; }
+    .about-key { color:var(--text-muted); font-weight:400; }
+    .about-val { font-weight:600; color:var(--text); }
+    .about-val.blue { color:var(--hevy); }
+    .about-val.lime { color:#4a7c00; }
+    .about-val.red { color:#cc2222; }
+
+    .about-text {}
+    .about-quote {
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      font-weight:700; line-height:1.35;
+      color:var(--text);
+      border-left:3px solid var(--hevy);
+      padding:4px 0 4px 20px;
+      margin:24px 0;
+    }
+    .about-body { font-size:.95rem; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
+    .about-body strong { color:var(--text); font-weight:600; }
+    @media(max-width:768px){ .about-grid { grid-template-columns:1fr; gap:40px; } }
+
+    /* ─────────────────────────────────────
+       STATUS SECTION — DONE vs ASK
+    ───────────────────────────────────── */
+    .status-section { background:var(--bg-alt); }
+    .status-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; }
+    .status-card {
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:36px 32px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .status-card.done { border-top:3px solid #22a55a; }
+    .status-card.ask  { border-top:3px solid var(--hevy); }
+    .status-pill {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      padding:5px 12px; border-radius:20px; margin-bottom:18px;
+    }
+    .status-pill.done { background:#f0fff5; color:#22a55a; border:1px solid rgba(34,165,90,.25); }
+    .status-pill.ask  { background:var(--hevy-dim); color:var(--hevy); border:1px solid var(--hevy-border); }
+    .status-pill-dot { width:6px; height:6px; border-radius:50%; }
+    .status-pill.done .status-pill-dot { background:#22a55a; animation:pulse 2s infinite; }
+    .status-pill.ask  .status-pill-dot { background:var(--hevy); animation:pulse 2s infinite; }
+    .status-title { font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:10px; }
+    .status-desc { font-size:.9rem; color:var(--text-muted); line-height:1.75; }
+    @media(max-width:600px){ .status-grid { grid-template-columns:1fr; } }
+
+    /* ─────────────────────────────────────
+       WHY CARDS — HEVY COACH FEATURE GRID
+    ───────────────────────────────────── */
+    .features-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      margin-top:48px;
+    }
+    .feature-card {
+      background:var(--bg);
+      padding:32px 28px;
+      transition:background .2s;
+    }
+    .feature-card:hover { background:var(--hevy-dim); }
+    .feature-icon {
+      width:42px; height:42px; border-radius:var(--radius);
+      background:var(--hevy-dim);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:18px; color:var(--hevy);
+    }
+    .feature-icon svg { width:20px; height:20px; }
+    .feature-title { font-size:.95rem; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .feature-desc { font-size:.85rem; color:var(--text-muted); line-height:1.65; }
+    @media(max-width:768px){ .features-grid { grid-template-columns:1fr 1fr; } }
+    @media(max-width:480px){ .features-grid { grid-template-columns:1fr; } }
+
+    /* ─────────────────────────────────────
+       PROPOSAL
+    ───────────────────────────────────── */
+    .proposal-section { background:var(--bg-alt); }
+    .proposal-card {
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-md);
+      overflow:hidden;
+      max-width:760px; margin:48px auto 0;
+    }
+    .proposal-card-header {
+      background:var(--hevy);
+      padding:20px 36px;
+      color:#fff;
+    }
+    .proposal-card-header h3 { font-size:1rem; font-weight:700; }
+    .proposal-card-header p { font-size:.85rem; opacity:.8; margin-top:2px; }
+    .proposal-items { list-style:none; }
+    .proposal-item {
+      display:flex; align-items:flex-start; gap:16px;
+      padding:20px 36px;
+      border-bottom:1px solid var(--border);
+    }
+    .proposal-item:last-child { border-bottom:none; }
+    .proposal-check {
+      width:22px; height:22px; flex-shrink:0; margin-top:1px;
+      border-radius:50%; background:var(--hevy);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff;
+    }
+    .proposal-check svg { width:11px; height:11px; }
+    .proposal-item-text strong { color:var(--text); font-weight:600; font-size:.95rem; display:block; margin-bottom:3px; }
+    .proposal-item-text span { font-size:.85rem; color:var(--text-muted); line-height:1.55; }
+    @media(max-width:480px){ .proposal-item { padding:18px 24px; } .proposal-card-header { padding:20px 24px; } }
+
+    /* ─────────────────────────────────────
+       AUDIENCE
+    ───────────────────────────────────── */
+    .audience-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px; }
+    .audience-card {
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+    }
+    .audience-title { font-size:.9rem; font-weight:700; color:var(--text); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .audience-list { list-style:none; }
+    .audience-list li {
+      display:flex; align-items:center; gap:10px;
+      font-size:.875rem; color:var(--text-muted);
+      padding:9px 0; border-bottom:1px solid var(--border);
+    }
+    .audience-list li:last-child { border-bottom:none; }
+    .aud-dot { width:6px; height:6px; border-radius:50%; background:var(--hevy); flex-shrink:0; }
+    @media(max-width:600px){ .audience-grid { grid-template-columns:1fr; } }
+
+    /* ─────────────────────────────────────
+       CTA SECTION
+    ───────────────────────────────────── */
+    .cta-section {
+      background:var(--bg-dark);
+      padding:100px 24px;
+      text-align:center;
+      position:relative; overflow:hidden;
+    }
+    .cta-section::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,103,153,.18) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .cta-content { position:relative; z-index:1; max-width:560px; margin:0 auto; }
+    .cta-label { font-size:.7rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--hevy); margin-bottom:16px; }
+    .cta-title {
+      font-size:clamp(2rem,5vw,3.5rem);
+      font-weight:800; letter-spacing:-.03em; line-height:1.05;
+      color:#fff; margin-bottom:20px;
+    }
+    .cta-title span { color:var(--hevy); }
+    .cta-desc { font-size:1rem; color:rgba(255,255,255,.55); line-height:1.7; margin-bottom:36px; }
+    .cta-email {
+      display:inline-block; font-size:.875rem; font-weight:500;
+      color:rgba(255,255,255,.45);
+      margin-top:18px;
+    }
+    .cta-note { font-size:.8rem; color:rgba(255,255,255,.3); margin-top:10px; }
+
+    /* ─────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────── */
+    footer {
+      background:var(--bg-dark);
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:28px 24px; text-align:center;
+    }
+    .footer-inner { display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+    .footer-logo { font-family:var(--font-display); font-size:1rem; letter-spacing:2px; color:rgba(255,255,255,.35); }
+    .footer-sep { color:rgba(255,255,255,.15); }
+    .footer-copy { font-size:.75rem; color:rgba(255,255,255,.25); }
+  </style>
+</head>
+<body>
+
+<!-- ── SAQFITT NAV ── -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">SAQFITT</a>
+
+  <div class="nav-center" id="navCenter">
+    <a href="#about">Context</a>
+    <a href="#why">Why This</a>
+    <a href="#proposal">Proposal</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="nav-social">
+    <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" title="TikTok · @trainwithsaq">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+    </a>
+    <a href="https://hevy.com/user/saqfitt" target="_blank" rel="noopener" title="Hevy Profile">
+      <span style="font-size:.65rem;font-weight:700;letter-spacing:.5px;">H</span>
+    </a>
+  </div>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── AMBASSADOR STRIP ── -->
+<div class="ambassador-strip">
+  <p>
+    <span class="strip-dot"></span>
+    Active Hevy Ambassador &nbsp;·&nbsp; Building the Toronto market at <strong style="color:#fff;">@trainwithsaq</strong> &nbsp;·&nbsp; This proposal is about the next step: Hevy Coach
+    <span class="strip-dot"></span>
+  </p>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-eyebrow">Coach Partnership Proposal</div>
+  <h1 class="hero-title reveal">
+    Already your ambassador.<br>
+    Now let's talk <span class="hevy-blue">Hevy Coach.</span>
+  </h1>
+  <p class="hero-sub reveal d1">
+    <strong>@trainwithsaq</strong> is live, posting, and growing the Toronto gym audience. The next move is launching a coaching business — and running every client through <strong>Hevy Coach</strong>.
+  </p>
+  <div class="hero-ctas reveal d2">
+    <a href="#proposal" class="btn-primary">
+      See the Proposal
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#about" class="btn-ghost">The Context</a>
+  </div>
+</section>
+
+<!-- ── STATS ROW ── -->
+<div class="stats-row">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">Active</div>
+      <div class="stat-label">Ambassador Status</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-num lime">Toronto</div>
+      <div class="stat-label">North American Market</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-num dark">12M+</div>
+      <div class="stat-label">Hevy Users to Grow</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-num">Ready</div>
+      <div class="stat-label">To Launch Coaching</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-card reveal">
+        <div class="about-card-header">Ambassador + Coach Profile</div>
+        <div class="about-card-body">
+          <div class="about-row">
+            <span class="about-key">Hevy TikTok</span>
+            <span class="about-val blue">@trainwithsaq</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Main Instagram</span>
+            <span class="about-val">@saqfitt</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Ambassador Status</span>
+            <span class="about-val lime">Active</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Market</span>
+            <span class="about-val">Toronto · North America</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Training Phase</span>
+            <span class="about-val lime">Active Cut — 37 lbs Down</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Coaching Status</span>
+            <span class="about-val blue">Ready to Launch</span>
+          </div>
+          <div class="about-row">
+            <span class="about-key">Preferred Platform</span>
+            <span class="about-val blue">Hevy Coach</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text reveal d1">
+        <div class="section-label">The Context</div>
+        <h2 class="section-title">Already in the programme.<br>Now building the coaching side.</h2>
+        <div class="about-quote">"I'm already posting for Hevy. My next move is coaching — and I want to do it entirely on Hevy Coach."</div>
+        <p class="about-body">I'm Saqlain (Saq). I joined the Hevy Ambassador Programme and launched <strong>@trainwithsaq</strong> to build the Toronto market — creating TikTok content that shows off the app's best features to serious gym-goers in North America.</p>
+        <p class="about-body">Now I'm ready to launch coaching. I want to run every client through <strong>Hevy Coach</strong> — assigning programs, tracking workouts, monitoring progress, all in one place. Every client I onboard becomes a retained Hevy user, and every coaching post I make becomes organic Hevy Coach content.</p>
+        <p class="about-body">The ask: a partnership or subsidised plan on Hevy Coach so I can build my business on your platform from day one.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── STATUS: DONE vs ASK ── -->
+<section class="status-section">
+  <div class="container">
+    <div class="reveal" style="max-width:560px;">
+      <div class="section-label">Where We Stand</div>
+      <h2 class="section-title">What's already done.<br>What I'm asking for.</h2>
+      <p class="section-desc">The ambassador side is live and in motion. This is a proposal to extend the relationship into coaching.</p>
+    </div>
+    <div class="status-grid">
+      <div class="status-card done reveal d1">
+        <div class="status-pill done"><span class="status-pill-dot"></span>Already Happening</div>
+        <div class="status-title">Hevy Ambassador · @trainwithsaq</div>
+        <div class="status-desc">Creating TikTok content for the North American market — showing the compare feature, workout logging, social feed, and progress tracking to Toronto gym-goers. Posting consistently per the programme format, tracked via Growi, paid per 25 posts.</div>
+      </div>
+      <div class="status-card ask reveal d2">
+        <div class="status-pill ask"><span class="status-pill-dot"></span>The Ask</div>
+        <div class="status-title">Hevy Coach Partnership</div>
+        <div class="status-desc">Launching a coaching business and want to run it entirely on Hevy Coach — assigning programs, tracking client progress, managing check-ins from one dashboard. Looking for a subsidised or partnered plan so I can onboard clients and create content that shows the coaching side of the Hevy ecosystem.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── WHY THIS WORKS ── -->
+<section id="why">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto;">
+      <div class="section-label">The Value</div>
+      <h2 class="section-title">What Hevy gets from this partnership</h2>
+      <p class="section-desc" style="margin:0 auto;">A coaching partnership isn't just for Saq — it compounds value for Hevy in a market you're actively building.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal d1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feature-title">Every client = a new Hevy user</div>
+        <div class="feature-desc">When I onboard a coaching client they sign up for Hevy to receive programs and log workouts. Each client is a direct, retained user acquisition — not just a download.</div>
+      </div>
+      <div class="feature-card reveal d2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="feature-title">Coaching content = Hevy Coach awareness</div>
+        <div class="feature-desc">Posts about assigning programs, checking progress, and running check-ins reach coaches and trainers in North America who've never heard of Hevy Coach — a second, high-value audience.</div>
+      </div>
+      <div class="feature-card reveal d3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="feature-title">Downloads + retention in one deal</div>
+        <div class="feature-desc">Ambassador posts drive downloads. Hevy Coach keeps clients on the app through structured programming. I activate both ends of that funnel simultaneously.</div>
+      </div>
+      <div class="feature-card reveal d1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feature-title">Toronto is wide open</div>
+        <div class="feature-desc">The ambassador network covers Spain, France, Germany, Brazil, and pockets of the US. Canada — and Toronto specifically — is underserved. I'm already here, already posting.</div>
+      </div>
+      <div class="feature-card reveal d2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-title">Real credibility, not a sponsored feel</div>
+        <div class="feature-desc">I'm a lifter mid-prep — 37 lbs down, body comp tracked with DEXA scans. My audience follows because they trust the numbers. That trust transfers to everything I recommend.</div>
+      </div>
+      <div class="feature-card reveal d3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feature-title">Built for Hevy's exact target user</div>
+        <div class="feature-desc">Hevy is for gym-goers who already have routines and want a better tool. That's my audience. The integration is native — not a sponsored plug from someone who doesn't train.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROPOSAL ── -->
+<section class="proposal-section" id="proposal">
+  <div class="container">
+    <div class="reveal" style="max-width:560px;margin:0 auto;text-align:center;">
+      <div class="section-label">The Proposal</div>
+      <h2 class="section-title">What I'm offering in return</h2>
+      <p class="section-desc" style="margin:0 auto;">In exchange for a subsidised or partnered Hevy Coach plan, here's what Hevy gets from this relationship.</p>
+    </div>
+    <div class="proposal-card reveal d1">
+      <div class="proposal-card-header">
+        <h3>Partnership deliverables</h3>
+        <p>Ongoing — not a one-off content deal</p>
+      </div>
+      <ul class="proposal-items">
+        <li class="proposal-item">
+          <span class="proposal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="proposal-item-text">
+            <strong>Continued ambassador content at @trainwithsaq</strong>
+            <span>Ongoing TikTok posts for the North American market — 25 posts per cycle, tracked via Growi, covering the app's best features organically</span>
+          </span>
+        </li>
+        <li class="proposal-item">
+          <span class="proposal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="proposal-item-text">
+            <strong>Every coaching client onboarded to Hevy</strong>
+            <span>Each client signs up for Hevy to receive their program and log workouts — direct, retained user acquisitions for every person I coach</span>
+          </span>
+        </li>
+        <li class="proposal-item">
+          <span class="proposal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="proposal-item-text">
+            <strong>Hevy Coach content — showing the coaching workflow</strong>
+            <span>Posts about building programs, tracking clients, and running a coaching business on Hevy Coach — organic awareness reaching other trainers in North America</span>
+          </span>
+        </li>
+        <li class="proposal-item">
+          <span class="proposal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="proposal-item-text">
+            <strong>Genuine testimonial from a daily active user</strong>
+            <span>I'll be using Hevy Coach every day — the feedback and word-of-mouth that comes from that is real, not a paid review from someone who opened the app twice</span>
+          </span>
+        </li>
+        <li class="proposal-item">
+          <span class="proposal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="proposal-item-text">
+            <strong>Cross-platform reach on @saqfitt</strong>
+            <span>Instagram Reels and YouTube Shorts amplifying both the ambassador and coaching content beyond TikTok to an existing engaged audience</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── AUDIENCE ── -->
+<section>
+  <div class="container">
+    <div class="reveal" style="max-width:520px;">
+      <div class="section-label">The Audience</div>
+      <h2 class="section-title">Toronto gym-goers are Hevy's market</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal d1">
+        <div class="audience-title">Who follows @trainwithsaq</div>
+        <ul class="audience-list">
+          <li><span class="aud-dot"></span>Toronto-based gym-goers, 2–5x per week</li>
+          <li><span class="aud-dot"></span>Strength training, lifting, bodybuilding</li>
+          <li><span class="aud-dot"></span>Want to get stronger and actually track it</li>
+          <li><span class="aud-dot"></span>Currently using Notes, paper, or memory</li>
+          <li><span class="aud-dot"></span>North American market — underserved by Hevy</li>
+        </ul>
+      </div>
+      <div class="audience-card reveal d2">
+        <div class="audience-title">Who becomes a coaching client</div>
+        <ul class="audience-list">
+          <li><span class="aud-dot"></span>Lifters who want structured programming</li>
+          <li><span class="aud-dot"></span>Followers who trust Saq's results and approach</li>
+          <li><span class="aud-dot"></span>Serious about progress, willing to invest</li>
+          <li><span class="aud-dot"></span>Each one becomes a retained Hevy user</li>
+          <li><span class="aud-dot"></span>High session frequency — logging every workout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <div class="cta-content">
+    <div class="cta-label reveal">Ready to move forward?</div>
+    <h2 class="cta-title reveal d1">
+      The ambassador is ready<br>to <span>coach.</span>
+    </h2>
+    <p class="cta-desc reveal d2">Already in the programme, already posting. The next step is Hevy Coach — let's talk about what a partnership looks like.</p>
+    <div class="reveal d3">
+      <a href="mailto:saqlainfit@gmail.com?subject=SAQFITT × Hevy Coach Partnership&body=Hi,%0A%0AFollowing up on my Hevy Ambassador work at @trainwithsaq. I've put together a full proposal at saqfitt.com/hevy — I'd love to discuss a Hevy Coach partnership.%0A%0ALooking forward to it.%0A%0ASaqlain (@trainwithsaq / @saqfitt)%0Asaqlainfit@gmail.com" class="btn-primary" style="font-size:.9rem;padding:15px 32px;">
+        Get in Touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="cta-email">saqlainfit@gmail.com</div>
+      <p class="cta-note">Active Hevy Ambassador · @trainwithsaq · Toronto, Canada</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">SAQFITT</span>
+    <span class="footer-sep">×</span>
+    <span class="footer-logo" style="color:rgba(0,103,153,.5);">HEVY COACH</span>
+    <span class="footer-sep">·</span>
+    <span class="footer-copy">Created for the Hevy partnership team · © 2025 SAQFITT</span>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navCenter').classList.toggle('open');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
