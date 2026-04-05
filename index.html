@@ -31,27 +31,7 @@ body{
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
-  cursor:none;
 }
-
-/* ═══ CURSOR ═══ */
-.cursor{
-  position:fixed;width:28px;height:28px;
-  border:1.5px solid var(--accent);border-radius:50%;
-  pointer-events:none;z-index:10000;
-  transition:transform .12s,width .25s,height .25s,background .25s;
-  transform:translate(-50%,-50%);
-  mix-blend-mode:difference;
-}
-.cursor-dot{
-  position:fixed;width:4px;height:4px;
-  background:var(--accent);border-radius:50%;
-  pointer-events:none;z-index:10001;
-  transform:translate(-50%,-50%);
-  transition:transform .06s;
-}
-.cursor.hover{width:60px;height:60px;background:rgba(230,57,70,.08)}
-@media(max-width:768px){.cursor,.cursor-dot{display:none}body{cursor:auto}}
 
 /* ═══ GRAIN ═══ */
 body::before{
@@ -192,7 +172,7 @@ body::before{
   text-decoration:none;color:var(--text);
   transition:all .3s cubic-bezier(.16,1,.3,1);
   position:relative;overflow:hidden;
-  cursor:none;
+  
   opacity:0;transform:translateY(20px);
 }
 .link-card.visible{opacity:1;transform:translateY(0)}
@@ -220,6 +200,8 @@ body::before{
 .link-card:hover .link-icon.tt{background:rgba(255,255,255,.1)}
 .link-icon.hevy{background:rgba(255,255,255,.05)}
 .link-card:hover .link-icon.hevy{background:rgba(255,255,255,.1)}
+.link-icon.yt{background:rgba(255,0,0,.08)}
+.link-card:hover .link-icon.yt{background:rgba(255,0,0,.15)}
 .link-icon.train{background:rgba(230,57,70,.1)}
 .link-card:hover .link-icon.train{background:rgba(230,57,70,.18)}
 
@@ -302,7 +284,7 @@ body::before{
   background:var(--bg);border:1px solid var(--border);
   border-radius:8px;color:var(--text);
   font-family:'Sora',sans-serif;font-size:.85rem;font-weight:300;
-  transition:border-color .3s,box-shadow .3s;outline:none;cursor:none;
+  transition:border-color .3s,box-shadow .3s;outline:none;
 }
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{
   border-color:rgba(230,57,70,.4);
@@ -311,7 +293,7 @@ body::before{
 .form-row input::placeholder,.form-row textarea::placeholder{color:#555;font-weight:300}
 .form-row textarea{resize:vertical;min-height:80px}
 .form-row select{
-  cursor:none;-webkit-appearance:none;appearance:none;
+  -webkit-appearance:none;appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
 }
@@ -324,7 +306,7 @@ body::before{
   padding:10px 18px;border-radius:60px;
   border:1px solid var(--border);background:transparent;
   color:var(--text);font-family:'Sora',sans-serif;
-  font-size:.75rem;font-weight:400;cursor:none;
+  font-size:.75rem;font-weight:400;
   transition:all .25s;outline:none;
 }
 .goal-pill:hover{border-color:rgba(230,57,70,.35)}
@@ -336,7 +318,7 @@ body::before{
   border:1px solid var(--border);border-radius:10px;
   background:transparent;color:var(--text);
   font-family:'Sora',sans-serif;text-align:center;
-  cursor:none;transition:all .25s;outline:none;
+  transition:all .25s;outline:none;
 }
 .exp-card:hover{border-color:rgba(230,57,70,.3)}
 .exp-card.selected{border-color:var(--accent);background:rgba(230,57,70,.06)}
@@ -345,12 +327,24 @@ body::before{
 .exp-card .exp-sub{font-size:.6rem;color:var(--text-dim);margin-top:3px;font-weight:300}
 .exp-card.selected .exp-label{color:var(--accent)}
 
+.yn-cards{display:flex;gap:10px}
+.yn-card{
+  flex:1;padding:16px 12px;
+  border:1px solid var(--border);border-radius:10px;
+  background:transparent;color:var(--text);
+  font-family:'Sora',sans-serif;text-align:center;
+  cursor:pointer;transition:all .25s;outline:none;
+  font-size:.78rem;font-weight:500;
+}
+.yn-card:hover{border-color:rgba(230,57,70,.3)}
+.yn-card.selected{border-color:var(--accent);background:rgba(230,57,70,.06);color:var(--accent)}
+
 .form-nav{display:flex;gap:12px;margin-top:24px}
 .btn-back{
   padding:14px 24px;background:transparent;
   border:1px solid var(--border);border-radius:60px;
   color:var(--text-dim);font-family:'Sora',sans-serif;
-  font-size:.8rem;cursor:none;transition:all .25s;
+  font-size:.8rem;transition:all .25s;
 }
 .btn-back:hover{border-color:var(--text-dim);color:var(--text)}
 .btn-next{
@@ -358,7 +352,7 @@ body::before{
   background:var(--accent);color:#fff;
   border:none;border-radius:60px;
   font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;
-  letter-spacing:1px;cursor:none;
+  letter-spacing:1px;
   transition:all .3s cubic-bezier(.16,1,.3,1);
 }
 .btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,57,70,.25)}
@@ -380,6 +374,7 @@ body::before{
 
 @media(max-width:600px){
   .exp-cards{flex-direction:column}
+  .yn-cards{flex-direction:column}
   .form-nav{flex-direction:column-reverse}
   .btn-back{text-align:center}
 }
@@ -408,7 +403,7 @@ body::before{
   border:1px solid var(--border);border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   color:var(--text-dim);text-decoration:none;
-  transition:all .3s;cursor:none;
+  transition:all .3s;
 }
 .footer-social:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
 
@@ -475,11 +470,10 @@ body::before{
   <input name="form-name" type="hidden" value="training-signup">
   <input name="bot-field"><input name="name"><input name="email">
   <input name="instagram"><input name="goal"><input name="experience">
+  <input name="commit"><input name="track-food">
   <input name="days"><input name="style"><textarea name="notes"></textarea>
 </form>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
 <div class="particles" id="particles"></div>
 
 <!-- ═══ HERO ═══ -->
@@ -506,9 +500,9 @@ body::before{
   </div>
 </section>
 
-<!-- ═══ LINKS ═══ -->
+<!-- ═══ FITNESS ═══ -->
 <div class="links-section">
-  <div class="section-tag">Connect</div>
+  <div class="section-tag">Fitness</div>
   <div class="links">
 
     <a href="https://www.instagram.com/saqfitt/" target="_blank" class="link-card">
@@ -533,6 +527,17 @@ body::before{
       <div class="link-arrow">&rarr;</div>
     </a>
 
+    <a href="https://www.youtube.com/@Saqfitt/" target="_blank" class="link-card">
+      <div class="link-icon yt">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.87.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">YouTube</div>
+        <div class="sub">Long Form Content & Prep</div>
+      </div>
+      <div class="link-arrow">&rarr;</div>
+    </a>
+
     <a href="https://hevy.com/user/saqfitt" target="_blank" class="link-card">
       <div class="link-icon hevy">
         <img src="/hevy-icon.svg" alt="Hevy" width="22" height="22" style="border-radius:4px">
@@ -543,6 +548,25 @@ body::before{
       </div>
       <div class="link-arrow">&rarr;</div>
     </a>
+
+    <a href="#train" class="link-card train-cta">
+      <div class="link-icon train">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="title">Start Training with Saq</div>
+        <div class="sub">1-on-1 coaching &middot; $250/mo USD</div>
+      </div>
+      <div class="link-arrow">&darr;</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ═══ LIFESTYLE ═══ -->
+<div class="links-section" style="padding-top:0">
+  <div class="section-tag">Lifestyle</div>
+  <div class="links">
 
     <a href="https://www.instagram.com/saqwithit/" target="_blank" class="link-card">
       <div class="link-icon ig">
@@ -566,17 +590,6 @@ body::before{
       <div class="link-arrow">&rarr;</div>
     </a>
 
-    <a href="#train" class="link-card train-cta">
-      <div class="link-icon train">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div class="link-text">
-        <div class="title">Start Training with Saq</div>
-        <div class="sub">Get a personalized plan</div>
-      </div>
-      <div class="link-arrow">&darr;</div>
-    </a>
-
   </div>
 </div>
 
@@ -588,13 +601,20 @@ body::before{
     <div id="formContent">
       <div class="form-header">
         <h2>TRAIN WITH <span class="accent">SAQ</span></h2>
-        <p>Fill this out and Saq will reach out with a plan built around your goals.</p>
+        <p>1-on-1 online coaching for busy professionals. Get a personalized training and nutrition plan built around your schedule, your goals, and your life.</p>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:-4px 0 24px;position:relative;z-index:1">
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:60px;border:1px solid var(--border);background:rgba(230,57,70,.04);font-size:.65rem;font-weight:500;color:var(--text-dim);letter-spacing:.5px"><span style="color:var(--accent)">&#9679;</span> $250/mo USD</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:60px;border:1px solid var(--border);background:rgba(230,57,70,.04);font-size:.65rem;font-weight:500;color:var(--text-dim);letter-spacing:.5px"><span style="color:var(--accent)">&#9679;</span> 4 Month Minimum</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:60px;border:1px solid var(--border);background:rgba(230,57,70,.04);font-size:.65rem;font-weight:500;color:var(--text-dim);letter-spacing:.5px"><span style="color:var(--accent)">&#9679;</span> Weekly Check-ins</span>
       </div>
 
       <div class="form-steps">
         <div class="form-step-dot active" data-step="1"></div>
         <div class="form-step-dot" data-step="2"></div>
         <div class="form-step-dot" data-step="3"></div>
+        <div class="form-step-dot" data-step="4"></div>
       </div>
 
       <form name="training-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signupForm">
@@ -661,8 +681,32 @@ body::before{
           </div>
         </div>
 
-        <!-- Panel 3 -->
+        <!-- Panel 3: Qualifying -->
         <div class="form-panel" data-panel="3">
+          <div class="form-row">
+            <label>Can you commit to 4 months of coaching?</label>
+            <div class="yn-cards" id="commitCards">
+              <button type="button" class="yn-card" data-value="Yes">Yes, I'm all in</button>
+              <button type="button" class="yn-card" data-value="No">Not sure yet</button>
+            </div>
+            <input type="hidden" name="commit" id="commitInput">
+          </div>
+          <div class="form-row" style="margin-top:20px">
+            <label>Are you willing to weigh your food & track every meal?</label>
+            <div class="yn-cards" id="trackCards">
+              <button type="button" class="yn-card" data-value="Yes">Yes, let's go</button>
+              <button type="button" class="yn-card" data-value="No">Not yet</button>
+            </div>
+            <input type="hidden" name="track-food" id="trackInput">
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-back" id="back3">Back</button>
+            <button type="button" class="btn-next" id="next3">Continue</button>
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="form-panel" data-panel="4">
           <div class="form-grid">
             <div class="form-row">
               <label>Days/week</label>
@@ -687,7 +731,7 @@ body::before{
             <textarea name="notes" placeholder="Injuries, schedule, equipment access, etc."></textarea>
           </div>
           <div class="form-nav">
-            <button type="button" class="btn-back" id="back3">Back</button>
+            <button type="button" class="btn-back" id="back4">Back</button>
             <button type="submit" class="btn-next" id="submitBtn">Send It 🚀</button>
           </div>
         </div>
@@ -721,6 +765,9 @@ body::before{
     <a href="https://hevy.com/user/saqfitt" target="_blank" class="footer-social" title="Hevy">
       <img src="/hevy-icon.svg" alt="Hevy" width="18" height="18" style="border-radius:3px">
     </a>
+    <a href="https://www.youtube.com/@Saqfitt/" target="_blank" class="footer-social" title="YouTube">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.87.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+    </a>
   </div>
 </div>
 
@@ -753,16 +800,6 @@ body::before{
 <div class="footer-copy">Built with grit <span class="accent">&</span> discipline</div>
 
 <script>
-// Cursor
-const cursor=document.getElementById('cursor'),cursorDot=document.getElementById('cursorDot');
-let cx=0,cy=0,dx=0,dy=0;
-document.addEventListener('mousemove',e=>{dx=e.clientX;dy=e.clientY;cursorDot.style.left=dx+'px';cursorDot.style.top=dy+'px'});
-function animCursor(){cx+=(dx-cx)*.12;cy+=(dy-cy)*.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(animCursor)}
-animCursor();
-document.querySelectorAll('a,button,input,select,textarea,.goal-pill,.exp-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-});
 
 // Particles
 const particlesEl=document.getElementById('particles');
@@ -772,7 +809,7 @@ for(let i=0;i<15;i++){const p=document.createElement('div');p.className='particl
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
-// Scroll reveal (link cards - staggered)
+// Scroll reveal (link cards - staggered) - observe ALL .links containers
 const cardObs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -784,10 +821,9 @@ const cardObs=new IntersectionObserver((entries)=>{
     }
   });
 },{threshold:.1});
-const linksContainer=document.querySelector('.links');
-if(linksContainer)cardObs.observe(linksContainer);
+document.querySelectorAll('.links').forEach(el=>cardObs.observe(el));
 
-// Multi-step form
+// Multi-step form (4 steps)
 let currentStep=1;
 const panels=document.querySelectorAll('.form-panel'),dots=document.querySelectorAll('.form-step-dot');
 function goToStep(s){
@@ -805,11 +841,17 @@ document.getElementById('next2').addEventListener('click',()=>{
   if(!document.getElementById('goalInput').value){document.getElementById('goalPills').style.animation='shake .4s ease';setTimeout(()=>document.getElementById('goalPills').style.animation='',400);return}
   goToStep(3);
 });
+document.getElementById('next3').addEventListener('click',()=>goToStep(4));
 document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
+document.getElementById('back4').addEventListener('click',()=>goToStep(3));
 
 document.querySelectorAll('.goal-pill').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('.goal-pill').forEach(x=>x.classList.remove('selected'));p.classList.add('selected');document.getElementById('goalInput').value=p.dataset.value})});
 document.querySelectorAll('.exp-card').forEach(c=>{c.addEventListener('click',()=>{document.querySelectorAll('.exp-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');document.getElementById('expInput').value=c.dataset.value})});
+
+// Yes/No cards
+document.querySelectorAll('#commitCards .yn-card').forEach(c=>{c.addEventListener('click',()=>{document.querySelectorAll('#commitCards .yn-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');document.getElementById('commitInput').value=c.dataset.value})});
+document.querySelectorAll('#trackCards .yn-card').forEach(c=>{c.addEventListener('click',()=>{document.querySelectorAll('#trackCards .yn-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');document.getElementById('trackInput').value=c.dataset.value})});
 
 const form=document.getElementById('signupForm');
 form.addEventListener('submit',async function(e){
