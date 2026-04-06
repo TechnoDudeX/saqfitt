@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --bg-card: #161616;
-      --border: #222222;
-      --text: #f0f0f0;
-      --text-muted: #888888;
-      --text-dim: #555555;
-      --accent: #c8ff00;
-      --accent-dim: rgba(200, 255, 0, 0.08);
+      --bg: #f7f5f1;
+      --bg-card: #ffffff;
+      --border: #dedad3;
+      --text: #111111;
+      --text-muted: #555555;
+      --text-dim: #aaaaaa;
+      --accent: #c28800;
+      --accent-dim: rgba(194, 136, 0, 0.09);
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --radius: 12px;
@@ -57,16 +57,17 @@
       width: 96px;
       height: 96px;
       border-radius: 50%;
-      background: var(--bg-card);
       border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0 auto 16px;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--accent);
-      letter-spacing: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .profile h1 {
@@ -184,7 +185,11 @@
 
     .link-highlight {
       border-color: var(--accent);
-      background: rgba(200, 255, 0, 0.03);
+      background: rgba(194, 136, 0, 0.06);
+    }
+
+    .link-item, .social-icon {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
 
     .footer-link {
@@ -199,7 +204,7 @@
 <body>
 
   <div class="profile">
-    <div class="profile-avatar">SF</div>
+    <div class="profile-avatar"><img src="profile pic.png" alt="Saq"></div>
     <h1>SAQFITT</h1>
     <p>Fitness coaching for busy professionals. 9-to-5 by day, gains by night. Toronto.</p>
 
@@ -290,15 +295,6 @@
       </div>
     </a>
 
-    <a href="index.html#modeling" class="link-item">
-      <div class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      </div>
-      <div class="link-text">
-        <h3>Fitness Modeling Portfolio</h3>
-        <p>Campaign photos · measurements · bookings</p>
-      </div>
-    </a>
 
   </div>
 
