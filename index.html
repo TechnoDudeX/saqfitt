@@ -505,6 +505,117 @@
       z-index: 2;
     }
 
+    /* ── BEFORE / AFTER SLIDER ── */
+    .slider-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .ba-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .ba-img {
+      position: absolute;
+      inset: 0;
+    }
+
+    .ba-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .ba-img-after {
+      clip-path: inset(0 50% 0 0);
+      transition: clip-path 0.02s linear;
+    }
+
+    /* Labels */
+    .ba-label {
+      position: absolute;
+      top: 16px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #fff;
+      background: rgba(0,0,0,0.38);
+      padding: 4px 12px;
+      border-radius: 4px;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 4;
+    }
+
+    .ba-label-before { left: 14px; }
+    .ba-label-after  { right: 14px; }
+
+    /* Divider line */
+    .ba-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #fff;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 5;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    }
+
+    /* Handle */
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      pointer-events: none;
+      z-index: 6;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .ba-handle svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Range input — invisible overlay */
+    .ba-range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: col-resize;
+      z-index: 10;
+      margin: 0;
+      padding: 0;
+      -webkit-appearance: none;
+    }
+
     .transform-card-body {
       padding: 24px;
     }
@@ -1269,30 +1380,53 @@
       <div class="section-title">The Transformation</div>
       <p class="section-desc">I know what it feels like to have excess body fat — the hip fat, the back fat, the chest fat. You could be going to the gym every day but people won't even be able to tell what's under it. I've gone from skinny to fit, fit to fat, fat to fit — more than once. I know what works and what doesn't. I've done it all and had every type of body possible.</p>
 
-      <div class="transform-cards" style="grid-template-columns:1fr;max-width:600px;margin-left:auto;margin-right:auto;">
-        <div class="transform-card fade-in">
-          <div class="transform-card-img">
-            <div class="before-after">
-              <div class="ba-side" style="background:none;padding:0;">
-                <picture>
-                  <source srcset="saq-fat.webp" type="image/webp">
-                  <img src="saq fat.png" alt="Before" style="width:100%;height:100%;object-fit:cover;">
-                </picture>
-              </div>
-              <div class="ba-side" style="background:none;padding:0;">
-                <picture>
-                  <source srcset="saq-fit.webp" type="image/webp">
-                  <img src="saq fit.png" alt="After" style="width:100%;height:100%;object-fit:cover;">
-                </picture>
-              </div>
-            </div>
-            <div class="ba-divider"></div>
+      <div class="slider-card fade-in" style="max-width:560px;margin:60px auto 0;">
+
+        <!-- ── BEFORE / AFTER SLIDER ── -->
+        <div class="ba-slider" id="baSlider">
+
+          <!-- BEFORE image (bottom layer) -->
+          <div class="ba-img ba-img-before">
+            <picture>
+              <source srcset="saq-fat.webp" type="image/webp">
+              <img src="saq fat.png" alt="Before">
+            </picture>
           </div>
-          <div class="transform-card-body">
-            <span class="transform-tag">−34 lbs</span>
-            <h4>The Cut</h4>
-            <p>From overweight to competitive physique. Working a 9-to-5 the entire time, no shortcuts, no magic pills.</p>
+
+          <!-- AFTER image (top layer, clipped) -->
+          <div class="ba-img ba-img-after" id="baAfter">
+            <picture>
+              <source srcset="saq-fit.webp" type="image/webp">
+              <img src="saq fit.png" alt="After">
+            </picture>
           </div>
+
+          <!-- Labels -->
+          <span class="ba-label ba-label-before" id="baLabelBefore">Before</span>
+          <span class="ba-label ba-label-after"  id="baLabelAfter">After</span>
+
+          <!-- Divider line -->
+          <div class="ba-line" id="baLine"></div>
+
+          <!-- Handle -->
+          <div class="ba-handle" id="baHandle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+
+          <!-- Range input (invisible, full overlay for interaction) -->
+          <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50">
+        </div>
+
+        <!-- Card footer -->
+        <div class="transform-card-body">
+          <span class="transform-tag">−34 lbs</span>
+          <h4>The Cut</h4>
+          <p>From overweight to competitive physique. Working a 9-to-5 the entire time, no shortcuts, no magic pills.</p>
         </div>
       </div>
     </div>
@@ -1586,6 +1720,29 @@
   </footer>
 
   <script>
+    // ── Before / After Slider ──
+    (function() {
+      const range       = document.getElementById('baRange');
+      const after       = document.getElementById('baAfter');
+      const line        = document.getElementById('baLine');
+      const handle      = document.getElementById('baHandle');
+      const lblBefore   = document.getElementById('baLabelBefore');
+      const lblAfter    = document.getElementById('baLabelAfter');
+
+      function update(val) {
+        const pct = val + '%';
+        after.style.clipPath      = `inset(0 ${100 - val}% 0 0)`;
+        line.style.left           = pct;
+        handle.style.left         = pct;
+        // Fade labels as handle approaches them
+        lblBefore.style.opacity   = Math.min(1, (val - 10) / 15);
+        lblAfter.style.opacity    = Math.min(1, (90 - val) / 15);
+      }
+
+      range.addEventListener('input', () => update(+range.value));
+      update(50);
+    })();
+
     // ── Mobile Nav ──
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navCenter').classList.toggle('open');
