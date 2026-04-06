@@ -4,491 +4,525 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAQFITT — Links</title>
-  <meta name="description" content="All links to SAQFITT content, coaching, and socials.">
+  <meta name="description" content="All links to SAQFITT coaching, content, and socials.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent:      #c28800;
-      --accent-dim:  rgba(194,136,0,0.12);
-      --text:        #111111;
-      --text-muted:  #555555;
-      --text-dim:    #888888;
-      --card-bg:     rgba(255,255,255,0.82);
-      --card-border: rgba(255,255,255,0.6);
-      --font-display:'Bebas Neue', sans-serif;
-      --font-body:   'DM Sans', sans-serif;
-      --tr: 0.25s cubic-bezier(0.4,0,0.2,1);
+
+    /* ─────────────────────────────── RESET ── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; max-width:100%; }
+
+    /* ─────────────────────────────── PAGE ── */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #000;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    /* dark blurred bg from hero photo */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('profile-pic.webp') center 15% / cover no-repeat;
+      filter: blur(40px) brightness(0.25) saturate(0.6);
+      transform: scale(1.1);
+      z-index: 0;
+    }
 
-    html, body { height: 100%; }
-
-    body {
-      font-family: var(--font-body);
+    /* ─────────────────────────────── CARD ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─────────────────────────────── HERO ── */
+    .hero {
       position: relative;
-      overflow-x: hidden;
-      color: var(--text);
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    /* ── BLURRED PHOTO BACKGROUND ── */
-    .bg-blur {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: url('profile-pic.webp') center 20% / cover no-repeat;
-      filter: blur(28px) brightness(0.55) saturate(1.2);
-      transform: scale(1.08); /* hides blur edges */
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
     }
 
-    /* warm tint overlay */
-    .bg-overlay {
-      position: fixed;
+    /* placeholder hero (until real photo added) */
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #2a2a2a 0%, #1a1a1a 50%, #3a2a00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.15);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      letter-spacing: 8px;
+    }
+
+    /* gradient over bottom of hero so name is readable */
+    .hero::after {
+      content: '';
+      position: absolute;
       inset: 0;
-      z-index: 1;
       background: linear-gradient(
-        180deg,
-        rgba(247,245,241,0.30) 0%,
-        rgba(247,245,241,0.70) 55%,
-        rgba(247,245,241,0.92) 100%
+        to bottom,
+        transparent 35%,
+        rgba(0,0,0,0.15) 60%,
+        rgba(0,0,0,0.65) 85%,
+        rgba(0,0,0,0.78) 100%
       );
     }
 
-    /* ── CONTENT ── */
-    .page {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 480px;
-      padding: 52px 20px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── PROFILE HERO ── */
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .hero-info {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
       text-align: center;
-      margin-bottom: 28px;
-      width: 100%;
+      z-index: 2;
+      padding: 0 20px;
     }
 
-    .avatar-ring {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, var(--accent) 0%, #e8b840 100%);
-      margin-bottom: 18px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    }
-
-    .avatar-ring img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      border: 3px solid #fff;
-    }
-
-    .profile-name {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
       letter-spacing: 5px;
       color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
 
-    .profile-handle {
+    .hero-handle {
       font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
       color: rgba(255,255,255,0.72);
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────── PROFILE INFO ── */
+    .profile-info {
+      padding: 16px 20px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* coloured platform icon badges */
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex-shrink: 0;
+    }
+    .badge:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+    .badge svg { width: 18px; height: 18px; fill: #fff; }
+    .badge .ltr { font-size: 0.75rem; font-weight: 800; color: #fff; }
+
+    /* platform-specific colours */
+    .badge-ig    { background: radial-gradient(circle at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .badge-tt    { background: #000; }
+    .badge-yt    { background: #ff0000; }
+    .badge-hevy  { background: #1a1a1a; }
+    .badge-sf    { background: #c28800; }
+
+    .bio {
+      font-size: 0.88rem;
+      color: #444;
+      text-align: center;
+      line-height: 1.5;
+      max-width: 300px;
+    }
+
+    /* ─────────────────────────────── CONNECT FORM ── */
+    .connect-form {
+      margin: 14px 16px 0;
+      display: flex;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 50px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    .connect-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: #111;
+      outline: none;
+    }
+
+    .connect-form input::placeholder { color: #aaa; }
+
+    .connect-btn {
+      padding: 10px 18px;
+      background: #111;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 3px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .connect-btn:hover { background: #333; }
+
+    .connect-btn-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+    .connect-btn-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─────────────────────────────── SECTIONS ── */
+    .section {
+      padding: 14px 14px 0;
+    }
+
+    .section-heading {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111;
+      text-align: center;
       margin-bottom: 10px;
     }
 
-    .profile-bio {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.5;
-      max-width: 300px;
-      font-weight: 400;
+    /* ─────────────────────────────── LINK CARDS (image tiles) ── */
+    .link-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
     }
 
-    /* ── SOCIAL ICONS ── */
-    .social-row {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 18px;
-    }
+    .link-grid.full { grid-template-columns: 1fr; }
+    .link-grid.wide .tile:first-child { grid-column: 1 / -1; }
 
-    .social-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.35);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--tr);
-    }
-
-    .social-btn:hover {
-      background: rgba(255,255,255,0.32);
-      border-color: rgba(255,255,255,0.7);
-      transform: translateY(-2px);
-    }
-
-    .social-btn svg {
-      width: 17px;
-      height: 17px;
-      fill: #fff;
-    }
-
-    .social-btn .hevy-letter {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 0;
-    }
-
-    /* ── LINKS ── */
-    .links {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    /* Featured CTA */
-    .link-featured {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 18px 24px;
-      background: var(--accent);
-      border-radius: 18px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(194,136,0,0.45);
-      transition: all var(--tr);
-    }
-
-    .link-featured:hover {
-      background: #a87500;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(194,136,0,0.5);
-    }
-
-    .link-featured svg {
-      width: 18px;
-      height: 18px;
-      stroke: #fff;
-      fill: none;
-      flex-shrink: 0;
-    }
-
-    .link-featured .feat-sub {
-      font-size: 0.72rem;
-      font-weight: 400;
-      opacity: 0.85;
-      margin-top: 1px;
-    }
-
-    .link-featured-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    /* Standard link cards */
-    .link-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      width: 100%;
-      padding: 15px 18px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-      transition: all var(--tr);
+    .tile {
       position: relative;
+      border-radius: 14px;
       overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: block;
     }
 
-    .link-card:hover {
-      background: rgba(255,255,255,0.95);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+    .tile:hover { transform: scale(1.02); box-shadow: 0 6px 24px rgba(0,0,0,0.18); }
+
+    .tile-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
     }
 
-    .link-card-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--accent-dim);
+    /* placeholder tile backgrounds */
+    .tile-ph {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+    .tile-ph-coaching  { background: linear-gradient(135deg, #1a1208 0%, #3d2c00 50%, #c28800 100%); }
+    .tile-ph-website   { background: linear-gradient(135deg, #111 0%, #2a2a2a 100%); }
+    .tile-ph-ig        { background: radial-gradient(circle at 30% 107%, #fdf497, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .tile-ph-tiktok    { background: linear-gradient(135deg, #010101 0%, #1a1a2e 100%); }
+    .tile-ph-tiktok2   { background: linear-gradient(135deg, #0f0f0f 0%, #1e1e1e 100%); }
+    .tile-ph-youtube   { background: linear-gradient(135deg, #900 0%, #ff0000 100%); }
+    .tile-ph-hevy      { background: linear-gradient(135deg, #111 0%, #2e2e2e 100%); }
+    .tile-ph-media     { background: linear-gradient(135deg, #c28800 0%, #e8b840 100%); }
+
+    /* tall tiles (Instagram featured) */
+    .tile-tall .tile-ph,
+    .tile-tall .tile-img { aspect-ratio: 3 / 2; }
+
+    /* platform icon badge on top-left of tile */
+    .tile-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      z-index: 2;
+    }
+    .tile-badge svg  { width: 15px; height: 15px; fill: #fff; }
+    .tile-badge .ltr { font-size: 0.65rem; font-weight: 800; color: #fff; }
+
+    /* label at bottom of tile */
+    .tile-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 12px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
+      z-index: 2;
     }
 
-    .link-card-icon svg  { width: 18px; height: 18px; fill: var(--accent); }
-    .link-card-icon .ltr { font-size: 0.8rem; font-weight: 800; color: var(--accent); }
-
-    .link-card-text {
-      flex: 1;
-      min-width: 0;
+    .tile-label-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
 
-    .link-card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .link-card-sub {
-      font-size: 0.72rem;
-      color: var(--text-dim);
+    .tile-label-sub {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.75);
       margin-top: 1px;
     }
 
-    .link-card-arrow {
-      font-size: 1rem;
-      color: var(--text-dim);
-      transition: all var(--tr);
-      flex-shrink: 0;
-    }
-
-    .link-card:hover .link-card-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    /* section divider label */
-    .section-label {
-      width: 100%;
-      font-size: 0.62rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      padding: 8px 2px 4px;
-      font-weight: 600;
-    }
-
-    /* ── FOOTER ── */
-    .footer {
-      margin-top: 32px;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
+    /* ─────────────────────────────── FOOTER ── */
+    .page-footer {
+      margin-top: auto;
+      padding: 20px 16px 28px;
       text-align: center;
+      font-size: 0.72rem;
+      color: #bbb;
     }
 
-    .footer a {
-      color: rgba(255,255,255,0.6);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .page-footer a { color: #c28800; }
+
+    /* ─────────────────────────────── RESPONSIVE ── */
+    @media (min-width: 421px) {
+      .card { margin: 0 auto; box-shadow: 0 0 80px rgba(0,0,0,0.8); }
+      body { align-items: flex-start; padding: 20px 0; }
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 420px) {
-      .profile-name { font-size: 2.2rem; }
-      .avatar-ring  { width: 108px; height: 108px; }
+    @media (max-width: 360px) {
+      .hero { height: 360px; }
+      .hero-name { font-size: 2rem; }
     }
+
   </style>
 </head>
 <body>
 
-  <!-- blurred background -->
-  <div class="bg-blur"></div>
-  <div class="bg-overlay"></div>
+  <div class="card">
 
-  <div class="page">
-
-    <!-- ── PROFILE ── -->
-    <div class="profile">
-      <div class="avatar-ring">
-        <picture>
-          <source srcset="profile-pic.webp" type="image/webp">
-          <img src="profile pic.png" alt="Saq">
-        </picture>
-      </div>
-
-      <div class="profile-name">SAQFITT</div>
-      <div class="profile-handle">@saqfitt</div>
-      <div class="profile-bio">Fitness coaching for busy professionals.<br>9-to-5 by day · gains by design · Toronto.</div>
-
-      <!-- social icons -->
-      <div class="social-row">
-        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="social-btn" title="Instagram @saqfitt">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/saqwithit/" target="_blank" rel="noopener" class="social-btn" title="Instagram @saqwithit">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener" class="social-btn" title="TikTok @saqfitt">
-          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" class="social-btn" title="TikTok @trainwithsaq">
-          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener" class="social-btn" title="YouTube">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://hevy.com/user/saqfitt" target="_blank" rel="noopener" class="social-btn" title="Hevy">
-          <span class="hevy-letter">H</span>
-        </a>
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <picture>
+        <source srcset="profile-pic.webp" type="image/webp">
+        <img src="profile pic.png" alt="Saq" class="hero-img">
+      </picture>
+      <div class="hero-info">
+        <div class="hero-name">SAQFITT</div>
+        <div class="hero-handle">@saqfitt</div>
       </div>
     </div>
 
-    <!-- ── LINKS ── -->
-    <div class="links">
+    <!-- ── PROFILE INFO ── -->
+    <div class="profile-info">
 
-      <!-- Featured CTA -->
-      <a href="index.html#apply" class="link-featured">
-        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-        <div class="link-featured-inner">
-          <span>Apply for 1-on-1 Coaching</span>
-          <span class="feat-sub">$250/mo · 4-month minimum · limited spots</span>
-        </div>
-      </a>
-
-      <!-- Coaching -->
-      <div class="section-label">Coaching</div>
-
-      <a href="index.html" class="link-card">
-        <div class="link-card-icon">
-          <span class="ltr">SF</span>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">SAQFITT Website</div>
-          <div class="link-card-sub">The full coaching program</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <!-- Content -->
-      <div class="section-label">Content</div>
-
-      <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+      <!-- platform badges -->
+      <div class="badges">
+        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="badge badge-ig" title="Instagram @saqfitt">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">Instagram — @saqfitt</div>
-          <div class="link-card-sub">Training · transformations · tips</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <a href="https://www.instagram.com/saqwithit/" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+        </a>
+        <a href="https://www.instagram.com/saqwithit/" target="_blank" rel="noopener" class="badge badge-ig" title="Instagram @saqwithit">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">Instagram — @saqwithit</div>
-          <div class="link-card-sub">Lifestyle · fashion · everyday</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+        </a>
+        <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener" class="badge badge-tt" title="TikTok @saqfitt">
           <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">TikTok — @saqfitt</div>
-          <div class="link-card-sub">Short-form fitness · lifestyle</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+        </a>
+        <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" class="badge badge-tt" title="TikTok @trainwithsaq">
           <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">TikTok — @trainwithsaq</div>
-          <div class="link-card-sub">Training · workouts · progress</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+        </a>
+        <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener" class="badge badge-yt" title="YouTube">
           <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">YouTube — @saqfitt</div>
-          <div class="link-card-sub">Long-form vlogs · transformation · prep</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
-      <!-- Partnerships -->
-      <div class="section-label">Partnerships</div>
-
-      <a href="https://hevy.com/user/saqfitt" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-icon">
+        </a>
+        <a href="https://hevy.com/user/saqfitt" target="_blank" rel="noopener" class="badge badge-hevy" title="Hevy">
           <span class="ltr">H</span>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">Hevy — Training Logs</div>
-          <div class="link-card-sub">Follow my workouts live</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
+        </a>
+      </div>
 
-      <a href="media.html" class="link-card">
-        <div class="link-card-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="link-card-text">
-          <div class="link-card-title">Media Kit</div>
-          <div class="link-card-sub">Brand partnership info & rates</div>
-        </div>
-        <span class="link-card-arrow">→</span>
-      </a>
-
+      <div class="bio">Fitness Coach · Toronto<br>9-to-5 by day, gains by design.</div>
     </div>
 
-    <div class="footer">
+    <!-- ── CONNECT FORM ── -->
+    <div style="padding: 12px 14px 0;">
+      <form class="connect-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com">
+        <button class="connect-btn" type="submit">
+          Connect with
+          <div class="connect-btn-avatar">
+            <picture>
+              <source srcset="profile-pic.webp" type="image/webp">
+              <img src="profile pic.png" alt="">
+            </picture>
+          </div>
+        </button>
+      </form>
+    </div>
+
+    <!-- ── FEATURED LINKS ── -->
+    <div class="section" style="margin-top:14px;">
+      <div class="link-grid">
+
+        <a href="index.html#apply" class="tile">
+          <div class="tile-ph tile-ph-coaching"></div>
+          <div class="tile-badge badge-sf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">Apply for Coaching</div>
+            <div class="tile-label-sub">$250/mo · limited spots</div>
+          </div>
+        </a>
+
+        <a href="index.html" class="tile">
+          <div class="tile-ph tile-ph-website"></div>
+          <div class="tile-badge badge-sf">
+            <span class="ltr">SF</span>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">SAQFITT Website</div>
+            <div class="tile-label-sub">Full coaching program</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── SOCIALS ── -->
+    <div class="section" style="margin-top:14px;">
+      <div class="section-heading">Socials</div>
+
+      <div class="link-grid" style="grid-template-columns:1fr;">
+
+        <!-- Instagram — full width tall -->
+        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="tile tile-tall">
+          <div class="tile-ph tile-ph-ig" style="aspect-ratio:16/9;"></div>
+          <div class="tile-badge badge-ig">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">Instagram</div>
+            <div class="tile-label-sub">@saqfitt · @saqwithit</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- TikTok + YouTube 2-col -->
+      <div class="link-grid" style="margin-top:8px;">
+
+        <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener" class="tile">
+          <div class="tile-ph tile-ph-tiktok"></div>
+          <div class="tile-badge badge-tt">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">TikTok</div>
+            <div class="tile-label-sub">@saqfitt</div>
+          </div>
+        </a>
+
+        <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" class="tile">
+          <div class="tile-ph tile-ph-tiktok2"></div>
+          <div class="tile-badge badge-tt">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">TikTok</div>
+            <div class="tile-label-sub">@trainwithsaq</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- YouTube + Hevy 2-col -->
+      <div class="link-grid" style="margin-top:8px; margin-bottom:8px;">
+
+        <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener" class="tile">
+          <div class="tile-ph tile-ph-youtube"></div>
+          <div class="tile-badge badge-yt">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">YouTube</div>
+            <div class="tile-label-sub">@saqfitt</div>
+          </div>
+        </a>
+
+        <a href="media.html" class="tile">
+          <div class="tile-ph tile-ph-media"></div>
+          <div class="tile-badge badge-sf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">Media Kit</div>
+            <div class="tile-label-sub">Brand partnerships</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <div class="page-footer">
       <a href="index.html">saqfitt.com</a>
     </div>
 
-  </div>
+  </div><!-- .card -->
 
 </body>
 </html>
