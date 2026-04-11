@@ -166,9 +166,32 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 28px;
+      overflow: hidden;
       display: flex;
-      gap: 20px;
+      flex-direction: column;
+    }
+
+    .platform-photo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--bg-elevated);
+    }
+
+    .platform-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.7s ease;
+    }
+    .platform-photo.fading { opacity: 0; }
+
+    .platform-body {
+      padding: 20px 24px 24px;
+      display: flex;
+      gap: 16px;
       align-items: flex-start;
     }
 
@@ -417,29 +440,6 @@
     <p>Authentic fitness content from a real professional who works a 9-to-5, trains around life, and resonates with everyday people trying to get fit.</p>
   </header>
 
-  <!-- STATS -->
-  <div class="mk-section">
-    <div class="mk-section-title">At A Glance</div>
-    <div class="stats-row" style="grid-template-columns:repeat(4,1fr);">
-      <div class="stat-box">
-        <div class="value">—</div>
-        <div class="label">Total Followers</div>
-      </div>
-      <div class="stat-box">
-        <div class="value">—</div>
-        <div class="label">Total Views</div>
-      </div>
-      <div class="stat-box">
-        <div class="value">5</div>
-        <div class="label">Active Channels</div>
-      </div>
-      <div class="stat-box">
-        <div class="value">Toronto</div>
-        <div class="label">Location</div>
-      </div>
-    </div>
-  </div>
-
   <!-- PLATFORMS -->
   <div class="mk-section">
     <div class="mk-section-title">Platforms</div>
@@ -447,61 +447,86 @@
 
       <!-- Instagram @saqfitt -->
       <div class="platform-card">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+        <div class="platform-photo-wrap">
+          <img class="platform-photo" src="links/web/01.jpg" alt="Instagram @saqfitt">
         </div>
-        <div class="platform-info">
-          <h4>Instagram — @saqfitt</h4>
-          <p>Fitness coaching content. Training clips, client transformations, tips, and brand integrations.</p>
-          <span class="metric">— followers</span>
+        <div class="platform-body">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+          </div>
+          <div class="platform-info">
+            <h4>Instagram — @saqfitt</h4>
+            <p>Fitness coaching content. Training clips, client transformations, tips, and brand integrations.</p>
+            <span class="metric">— followers</span>
+          </div>
         </div>
       </div>
 
       <!-- Instagram @saqwithit -->
       <div class="platform-card">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+        <div class="platform-photo-wrap">
+          <img class="platform-photo" src="links/web/02.jpg" alt="Instagram @saqwithit">
         </div>
-        <div class="platform-info">
-          <h4>Instagram — @saqwithit</h4>
-          <p>Lifestyle and fashion content. Broader lifestyle audience overlapping with the fitness community.</p>
-          <span class="metric">— followers</span>
+        <div class="platform-body">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+          </div>
+          <div class="platform-info">
+            <h4>Instagram — @saqwithit</h4>
+            <p>Lifestyle and fashion content. Broader lifestyle audience overlapping with the fitness community.</p>
+            <span class="metric">— followers</span>
+          </div>
         </div>
       </div>
 
       <!-- TikTok @saqfitt -->
       <div class="platform-card">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+        <div class="platform-photo-wrap">
+          <img class="platform-photo" src="links/web/03.jpg" alt="TikTok @saqfitt">
         </div>
-        <div class="platform-info">
-          <h4>TikTok — @saqfitt</h4>
-          <p>Short-form fitness content. High save rate, shareable transformation and training clips.</p>
-          <span class="metric">— followers · — views</span>
+        <div class="platform-body">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+          </div>
+          <div class="platform-info">
+            <h4>TikTok — @saqfitt</h4>
+            <p>Short-form fitness content. High save rate, shareable transformation and training clips.</p>
+            <span class="metric">— followers · — views</span>
+          </div>
         </div>
       </div>
 
       <!-- TikTok @trainwithsaq -->
       <div class="platform-card">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+        <div class="platform-photo-wrap">
+          <img class="platform-photo" src="links/web/04.jpg" alt="TikTok @trainwithsaq">
         </div>
-        <div class="platform-info">
-          <h4>TikTok — @trainwithsaq</h4>
-          <p>Training-focused TikTok channel. Workout demos, progress updates, and coaching content.</p>
-          <span class="metric">— followers · — views</span>
+        <div class="platform-body">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+          </div>
+          <div class="platform-info">
+            <h4>TikTok — @trainwithsaq</h4>
+            <p>Training-focused TikTok channel. Workout demos, progress updates, and coaching content.</p>
+            <span class="metric">— followers · — views</span>
+          </div>
         </div>
       </div>
 
       <!-- YouTube -->
       <div class="platform-card" style="grid-column:1/-1;max-width:calc(50% - 10px);">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+        <div class="platform-photo-wrap">
+          <img class="platform-photo" src="links/web/05.jpg" alt="YouTube @saqfitt">
         </div>
-        <div class="platform-info">
-          <h4>YouTube — @saqfitt</h4>
-          <p>Long-form transformation series, show prep documentation, and in-depth fitness education.</p>
-          <span class="metric">— subscribers · — views</span>
+        <div class="platform-body">
+          <div class="platform-icon">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+          </div>
+          <div class="platform-info">
+            <h4>YouTube — @saqfitt</h4>
+            <p>Long-form transformation series, show prep documentation, and in-depth fitness education.</p>
+            <span class="metric">— subscribers · — views</span>
+          </div>
         </div>
       </div>
 
@@ -595,6 +620,51 @@
   <footer class="mk-footer">
     <p><a href="index.html">SAQFITT</a> · <a href="links.html">Links</a> · © 2025</p>
   </footer>
+
+<script>
+(function () {
+  const imgs = Array.from({length: 19}, (_, i) =>
+    'links/web/' + String(i + 1).padStart(2, '0') + '.jpg'
+  );
+
+  imgs.forEach(src => { const p = new Image(); p.src = src; });
+
+  const tiles  = Array.from(document.querySelectorAll('.platform-photo'));
+  const inUse  = new Set();
+
+  function pickUnused() {
+    const available = imgs.filter(s => !inUse.has(s));
+    return available[Math.floor(Math.random() * available.length)];
+  }
+
+  tiles.forEach(function (img) {
+    const src = pickUnused();
+    inUse.add(src);
+    img.src = src;
+    img.dataset.current = src;
+  });
+
+  tiles.forEach(function (img, i) {
+    const interval = 5000 + Math.floor(Math.random() * 1500);
+    const offset   = i * 900 + Math.floor(Math.random() * 400);
+
+    setTimeout(function () {
+      setInterval(function () {
+        const next = pickUnused();
+        if (!next) return;
+        img.classList.add('fading');
+        setTimeout(function () {
+          inUse.delete(img.dataset.current);
+          inUse.add(next);
+          img.dataset.current = next;
+          img.src = next;
+          img.classList.remove('fading');
+        }, 700);
+      }, interval);
+    }, offset);
+  });
+})();
+</script>
 
 </body>
 </html>
