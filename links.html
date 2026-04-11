@@ -215,7 +215,7 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.7s ease;
     }
     .tile-img.fading { opacity: 0; }
 
@@ -429,43 +429,47 @@
 
 <script>
 (function () {
-  const total = 19;
-  const imgs = Array.from({length: total}, (_, i) =>
+  const imgs = Array.from({length: 19}, (_, i) =>
     'links/web/' + String(i + 1).padStart(2, '0') + '.jpg'
   );
-
-  function shuffle(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
 
   // Preload all images
   imgs.forEach(src => { const p = new Image(); p.src = src; });
 
-  document.querySelectorAll('.tile-img').forEach(function (img) {
-    const order = shuffle(imgs);
-    let idx = 0;
+  const tiles  = Array.from(document.querySelectorAll('.tile-img'));
+  const inUse  = new Set();
 
-    // Start each tile at a random position
-    idx = Math.floor(Math.random() * order.length);
-    img.src = order[idx];
+  function pickUnused() {
+    const available = imgs.filter(s => !inUse.has(s));
+    return available[Math.floor(Math.random() * available.length)];
+  }
 
-    // Stagger start times so tiles don't all flip together
-    const interval = 3000 + Math.floor(Math.random() * 1000);
-    const offset   = Math.floor(Math.random() * interval);
+  // Assign a unique starting image to each tile
+  tiles.forEach(function (img) {
+    const src = pickUnused();
+    inUse.add(src);
+    img.src = src;
+    img.dataset.current = src;
+  });
+
+  // Start each tile on a staggered interval so they don't flip together
+  tiles.forEach(function (img, i) {
+    const interval = 5000 + Math.floor(Math.random() * 1500);
+    const offset   = i * 900 + Math.floor(Math.random() * 400);
 
     setTimeout(function () {
       setInterval(function () {
+        const next = pickUnused();
+        if (!next) return;
+
         img.classList.add('fading');
         setTimeout(function () {
-          idx = (idx + 1) % order.length;
-          img.src = order[idx];
+          inUse.delete(img.dataset.current);
+          inUse.add(next);
+          img.dataset.current = next;
+          img.src = next;
           img.classList.remove('fading');
-        }, 500);
+        }, 700);
       }, interval);
     }, offset);
   });
