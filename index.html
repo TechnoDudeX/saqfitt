@@ -525,10 +525,18 @@
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
 
+    .slider-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
     .ba-slider {
       position: relative;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 2 / 3;
       overflow: hidden;
       cursor: col-resize;
       user-select: none;
@@ -1276,6 +1284,7 @@
       .results-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .transform-cards { grid-template-columns: 1fr; }
+      .slider-cards-grid { grid-template-columns: 1fr; max-width: 400px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: repeat(3, 1fr); }
       .form-options { grid-template-columns: repeat(2, 1fr); }
@@ -1388,48 +1397,58 @@
       <div class="section-title">The Transformation</div>
       <p class="section-desc">I know what it feels like to have excess body fat — the hip fat, the back fat, the chest fat. You could be going to the gym every day but people won't even be able to tell what's under it. I've gone from skinny to fit, fit to fat, fat to fit — more than once. I know what works and what doesn't. I've done it all and had every type of body possible.</p>
 
-      <div class="slider-card fade-in" style="max-width:560px;margin:60px auto 0;">
+      <div class="slider-cards-grid fade-in">
 
-        <!-- ── BEFORE / AFTER SLIDER ── -->
-        <div class="ba-slider" id="baSlider">
-
-          <!-- BEFORE image (bottom layer) -->
-          <div class="ba-img ba-img-before">
-            <img src="saq-fat.webp" alt="Before" width="560" height="560">
+        <!-- ── SET 1 ── -->
+        <div class="slider-card">
+          <div class="ba-slider" data-ba-slider>
+            <div class="ba-img ba-img-before">
+              <img src="saq-fat-1.webp" alt="Before — Set 1" width="560" height="840" loading="lazy">
+            </div>
+            <div class="ba-img ba-img-after" data-ba-after>
+              <img src="saq-fit-1.webp" alt="After — Set 1" width="560" height="840" loading="lazy">
+            </div>
+            <span class="ba-label ba-label-before" data-ba-lbl-before>Before</span>
+            <span class="ba-label ba-label-after" data-ba-lbl-after>After</span>
+            <div class="ba-line" data-ba-line></div>
+            <div class="ba-handle" data-ba-handle>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50">
           </div>
-
-          <!-- AFTER image (top layer, clipped) -->
-          <div class="ba-img ba-img-after" id="baAfter">
-            <img src="saq-fit.webp" alt="After" width="560" height="560">
+          <div class="transform-card-body">
+            <span class="transform-tag">−34 lbs</span>
+            <h4>The Cut</h4>
+            <p>From overweight to competitive physique. Working a 9-to-5 the entire time, no shortcuts, no magic pills.</p>
           </div>
-
-          <!-- Labels -->
-          <span class="ba-label ba-label-before" id="baLabelBefore">Before</span>
-          <span class="ba-label ba-label-after"  id="baLabelAfter">After</span>
-
-          <!-- Divider line -->
-          <div class="ba-line" id="baLine"></div>
-
-          <!-- Handle -->
-          <div class="ba-handle" id="baHandle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-
-          <!-- Range input (invisible, full overlay for interaction) -->
-          <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50">
         </div>
 
-        <!-- Card footer -->
-        <div class="transform-card-body">
-          <span class="transform-tag">−34 lbs</span>
-          <h4>The Cut</h4>
-          <p>From overweight to competitive physique. Working a 9-to-5 the entire time, no shortcuts, no magic pills.</p>
+        <!-- ── SET 2 ── -->
+        <div class="slider-card">
+          <div class="ba-slider" data-ba-slider>
+            <div class="ba-img ba-img-before">
+              <img src="saq-fat-2.webp" alt="Before — Set 2" width="560" height="840" loading="lazy">
+            </div>
+            <div class="ba-img ba-img-after" data-ba-after>
+              <img src="saq-fit-2.webp" alt="After — Set 2" width="560" height="840" loading="lazy">
+            </div>
+            <span class="ba-label ba-label-before" data-ba-lbl-before>Before</span>
+            <span class="ba-label ba-label-after" data-ba-lbl-after>After</span>
+            <div class="ba-line" data-ba-line></div>
+            <div class="ba-handle" data-ba-handle>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50">
+          </div>
+          <div class="transform-card-body">
+            <span class="transform-tag">Transformation</span>
+            <h4>The Comeback</h4>
+            <p>Proof it wasn't a one-time thing. Lost it, gained it back, and did it all over again.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1712,28 +1731,27 @@
   </footer>
 
   <script>
-    // ── Before / After Slider ──
-    (function() {
-      const range       = document.getElementById('baRange');
-      const after       = document.getElementById('baAfter');
-      const line        = document.getElementById('baLine');
-      const handle      = document.getElementById('baHandle');
-      const lblBefore   = document.getElementById('baLabelBefore');
-      const lblAfter    = document.getElementById('baLabelAfter');
+    // ── Before / After Sliders ──
+    document.querySelectorAll('[data-ba-slider]').forEach(slider => {
+      const range     = slider.querySelector('[data-ba-range]');
+      const after     = slider.querySelector('[data-ba-after]');
+      const line      = slider.querySelector('[data-ba-line]');
+      const handle    = slider.querySelector('[data-ba-handle]');
+      const lblBefore = slider.querySelector('[data-ba-lbl-before]');
+      const lblAfter  = slider.querySelector('[data-ba-lbl-after]');
 
       function update(val) {
         const pct = val + '%';
-        after.style.clipPath      = `inset(0 ${100 - val}% 0 0)`;
-        line.style.left           = pct;
-        handle.style.left         = pct;
-        // Fade labels as handle approaches them
-        lblBefore.style.opacity   = Math.min(1, (val - 10) / 15);
-        lblAfter.style.opacity    = Math.min(1, (90 - val) / 15);
+        after.style.clipPath    = `inset(0 ${100 - val}% 0 0)`;
+        line.style.left         = pct;
+        handle.style.left       = pct;
+        lblBefore.style.opacity = Math.min(1, (val - 10) / 15);
+        lblAfter.style.opacity  = Math.min(1, (90 - val) / 15);
       }
 
       range.addEventListener('input', () => update(+range.value));
       update(50);
-    })();
+    });
 
     // ── Mobile Nav ──
     document.getElementById('navToggle').addEventListener('click', () => {
