@@ -267,68 +267,22 @@
 
     /* ── CONTENT / REELS ── */
     .reels-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:48px; }
-    .reel-card {
+    .reel-embed {
       background:var(--bg-card);
       border:1px solid var(--border);
       border-radius:var(--radius-lg);
       overflow:hidden;
       transition:border-color .2s, transform .2s;
-      cursor:pointer;
     }
-    .reel-card:hover { border-color:var(--border-hume); transform:translateY(-4px); }
-    .reel-thumb {
-      aspect-ratio:9/16;
-      background:var(--bg-elevated);
-      display:flex; align-items:center; justify-content:center;
-      position:relative; overflow:hidden;
-      max-height:320px;
+    .reel-embed:hover { border-color:var(--border-hume); transform:translateY(-4px); }
+    .reel-embed iframe {
+      width:100%; border:none; display:block;
+      min-height:480px;
     }
-    .reel-bg {
-      position:absolute; inset:0;
-      background:linear-gradient(135deg, #0f0f1a 0%, #131320 50%, #0a0a12 100%);
-    }
-    .reel-pattern {
-      position:absolute; inset:0; opacity:.15;
-      background-image:repeating-linear-gradient(0deg, transparent, transparent 20px, var(--border) 20px, var(--border) 21px),
-                       repeating-linear-gradient(90deg, transparent, transparent 20px, var(--border) 20px, var(--border) 21px);
-    }
-    .reel-play {
-      position:relative; z-index:1;
-      width:56px; height:56px; border-radius:50%;
-      background:rgba(56,129,255,.2);
-      border:2px solid var(--hume);
-      display:flex; align-items:center; justify-content:center;
-      color:var(--hume);
-      transition:background .2s, transform .2s;
-    }
-    .reel-card:hover .reel-play { background:var(--hume); color:var(--bg); transform:scale(1.1); }
-    .reel-play svg { width:22px; height:22px; margin-left:3px; }
-    .reel-label {
-      position:absolute; bottom:12px; left:12px; right:12px; z-index:1;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .reel-tag {
-      font-size:.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
-      color:var(--bg); background:var(--hume);
-      padding:4px 10px; border-radius:4px;
-    }
-    .reel-ig {
-      display:flex; align-items:center; gap:4px;
-      font-size:.65rem; color:rgba(255,255,255,.5);
-    }
-    .reel-ig svg { width:12px; height:12px; }
-    .reel-info { padding:20px 20px 24px; }
-    .reel-title { font-weight:600; font-size:.95rem; margin-bottom:6px; }
-    .reel-desc { font-size:.82rem; color:var(--text-muted); line-height:1.5; }
-    .reel-link {
-      display:inline-flex; align-items:center; gap:6px;
-      font-size:.75rem; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-      color:var(--hume); margin-top:14px;
-      transition:gap .2s;
-    }
-    .reel-card:hover .reel-link { gap:10px; }
-    .reel-link svg { width:12px; height:12px; }
-    @media(max-width:600px){ .reels-grid { grid-template-columns:1fr; } }
+    .reel-embed-info { padding:16px 20px 20px; }
+    .reel-embed-title { font-weight:600; font-size:.95rem; margin-bottom:4px; }
+    .reel-embed-desc { font-size:.82rem; color:var(--text-muted); line-height:1.5; }
+    @media(max-width:600px){ .reels-grid { grid-template-columns:1fr; } .reel-embed iframe { min-height:600px; } }
 
     /* ── PROPOSAL ── */
     .proposal { background:var(--bg-elevated); }
@@ -613,93 +567,37 @@
 
     <div class="reels-grid">
 
-      <a href="https://www.instagram.com/reel/DOrreWCEXDt/?igsh=c2ZmMWxrcWI4OG1w" target="_blank" rel="noopener" class="reel-card reveal d1">
-        <div class="reel-thumb">
-          <div class="reel-bg"></div>
-          <div class="reel-pattern"></div>
-          <div class="reel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="reel-label">
-            <span class="reel-tag">DEXA Progress</span>
-            <span class="reel-ig">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-              @saqfitt
-            </span>
-          </div>
+      <div class="reel-embed reveal d1">
+        <iframe src="https://www.instagram.com/reel/DOrreWCEXDt/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" loading="lazy"></iframe>
+        <div class="reel-embed-info">
+          <div class="reel-embed-title">DEXA Scan Progress Reel</div>
+          <div class="reel-embed-desc">Real body composition breakdown — lean mass, fat mass, and honest data shared with the audience.</div>
         </div>
-        <div class="reel-info">
-          <div class="reel-title">DEXA Scan Progress Reel</div>
-          <div class="reel-desc">Real body composition breakdown — lean mass, fat mass, and honest data shared with the audience. The exact format a Hume integration would complement.</div>
-          <div class="reel-link">Watch Reel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </a>
+      </div>
 
-      <a href="https://www.instagram.com/reel/DPT1dbBkdjJ/?igsh=MTRqcWJiYmcyYm03bA%3D%3D" target="_blank" rel="noopener" class="reel-card reveal d2">
-        <div class="reel-thumb">
-          <div class="reel-bg"></div>
-          <div class="reel-pattern"></div>
-          <div class="reel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="reel-label">
-            <span class="reel-tag">Bulk Complete</span>
-            <span class="reel-ig">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-              @saqfitt
-            </span>
-          </div>
+      <div class="reel-embed reveal d2">
+        <iframe src="https://www.instagram.com/reel/DPT1dbBkdjJ/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" loading="lazy"></iframe>
+        <div class="reel-embed-info">
+          <div class="reel-embed-title">Bulk Complete — Body Comp Breakdown</div>
+          <div class="reel-embed-desc">Full cycle recap: 154.5 → 170 lbs (+15.5 lbs), lean mass gains and fat mass tracked against DEXA data.</div>
         </div>
-        <div class="reel-info">
-          <div class="reel-title">Bulk Complete — Body Comp Breakdown</div>
-          <div class="reel-desc">Full cycle recap: 154.5 → 170 lbs (+15.5 lbs), lean mass gains and fat mass tracked against DEXA data across the bulk period.</div>
-          <div class="reel-link">Watch Reel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </a>
+      </div>
 
-      <a href="https://www.instagram.com/reel/DU1AdGqEc3a/?igsh=MWY1cjJ0dWppcjMxNw%3D%3D" target="_blank" rel="noopener" class="reel-card reveal d1">
-        <div class="reel-thumb">
-          <div class="reel-bg"></div>
-          <div class="reel-pattern"></div>
-          <div class="reel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="reel-label">
-            <span class="reel-tag">Cut Progress</span>
-            <span class="reel-ig">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.27.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-              @saqfitt
-            </span>
-          </div>
+      <div class="reel-embed reveal d1">
+        <iframe src="https://www.instagram.com/reel/DU1AdGqEc3a/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" loading="lazy"></iframe>
+        <div class="reel-embed-info">
+          <div class="reel-embed-title">Prep Series — Progress Update</div>
+          <div class="reel-embed-desc">Ongoing cut tracking with real-time weight and body composition updates.</div>
         </div>
-        <div class="reel-info">
-          <div class="reel-title">Prep Series — Progress Update</div>
-          <div class="reel-desc">Ongoing cut tracking with real-time weight and body composition updates. The kind of sustained series where a Hume scale becomes part of the daily routine narrative.</div>
-          <div class="reel-link">Watch Reel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </a>
+      </div>
 
-      <a href="https://www.instagram.com/reel/DU_XzX7EfRm/?igsh=ZmY0cGhldWVmeDdx" target="_blank" rel="noopener" class="reel-card reveal d2">
-        <div class="reel-thumb">
-          <div class="reel-bg"></div>
-          <div class="reel-pattern"></div>
-          <div class="reel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="reel-label">
-            <span class="reel-tag">Tracking Content</span>
-            <span class="reel-ig">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-              @saqfitt
-            </span>
-          </div>
+      <div class="reel-embed reveal d2">
+        <iframe src="https://www.instagram.com/reel/DU_XzX7EfRm/embed/" allowtransparency="true" allowfullscreen="true" scrolling="no" loading="lazy"></iframe>
+        <div class="reel-embed-info">
+          <div class="reel-embed-title">Data-Driven Fitness Content</div>
+          <div class="reel-embed-desc">Evidence-based fitness content that shows the audience real numbers.</div>
         </div>
-        <div class="reel-info">
-          <div class="reel-title">Data-Driven Fitness Content</div>
-          <div class="reel-desc">Evidence-based fitness content that shows the audience real numbers. This is the style and engagement that would carry a Hume Health integration authentically.</div>
-          <div class="reel-link">Watch Reel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </a>
+      </div>
 
     </div>
   </div>
@@ -820,6 +718,7 @@
   <p class="footer-copy">This page was created exclusively for the Hume Health partnership team. &copy; 2024 SAQFITT.</p>
 </footer>
 
+<script async src="https://www.instagram.com/embed.js"></script>
 <script>
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
