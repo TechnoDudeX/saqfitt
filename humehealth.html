@@ -277,12 +277,12 @@
     .reel-embed:hover { border-color:var(--border-hume); transform:translateY(-4px); }
     .reel-embed iframe {
       width:100%; border:none; display:block;
-      min-height:480px;
+      height:620px;
     }
     .reel-embed-info { padding:16px 20px 20px; }
     .reel-embed-title { font-weight:600; font-size:.95rem; margin-bottom:4px; }
     .reel-embed-desc { font-size:.82rem; color:var(--text-muted); line-height:1.5; }
-    @media(max-width:600px){ .reels-grid { grid-template-columns:1fr; } .reel-embed iframe { min-height:600px; } }
+    @media(max-width:768px){ .reels-grid { grid-template-columns:1fr; } .reel-embed iframe { height:700px; } }
 
     /* ── PROPOSAL ── */
     .proposal { background:var(--bg-elevated); }
