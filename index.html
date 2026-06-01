@@ -10,11 +10,11 @@
   <meta property="og:title" content="SAQFITT — Coaching for the Working Professional">
   <meta property="og:description" content="Online fitness coaching built for busy professionals. Custom meal plans, workout programs, and accountability from someone who works a 9-to-5 too.">
   <meta property="og:url" content="https://saqfitt.com/">
-  <meta property="og:image" content="https://saqfitt.com/profile-pic.webp">
+  <meta property="og:image" content="https://saqfitt.com/profile-pic-links.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SAQFITT — Coaching for the Working Professional">
   <meta name="twitter:description" content="Online fitness coaching built for busy professionals.">
-  <meta name="twitter:image" content="https://saqfitt.com/profile-pic.webp">
+  <meta name="twitter:image" content="https://saqfitt.com/profile-pic-links.jpg">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1192,6 +1192,17 @@
 
     .honeypot { position: absolute; left: -9999px; }
 
+    .form-input.input-error, .form-select.input-error { border-color: var(--danger); }
+    .form-options.input-error { outline: 1px solid var(--danger); outline-offset: 4px; border-radius: var(--radius); }
+    .form-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .form-error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      margin-top: 16px;
+      display: none;
+    }
+    .form-error.visible { display: block; }
+
     /* ── FOOTER ── */
     .footer {
       border-top: 1px solid var(--border);
@@ -1331,7 +1342,7 @@
       </a>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navCenter">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -1556,27 +1567,27 @@
 
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-question">What equipment do I need? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">What equipment do I need? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">It depends on your goals and setup. I can design programs for a full gym, a home gym with basic equipment, or even minimal equipment. We'll figure out the best approach during onboarding.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">How often do I need to work out? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">How often do I need to work out? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Most clients train 3–6 days per week depending on their schedule and goals. Your plan is built around your availability — not the other way around.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">Can I still train while traveling? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">Can I still train while traveling? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Absolutely. I'll adjust your program for hotel gyms, limited equipment, or even bodyweight-only sessions. Travel shouldn't derail your progress.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">Do I need to track my food? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">Do I need to track my food? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Tracking food is highly recommended for best results, but we'll discuss your comfort level and find an approach that works. Some clients track macros, others follow structured meal plans without counting.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">What if I work long or unpredictable hours? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">What if I work long or unpredictable hours? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">That's exactly who this is for. I work a 9-to-5 myself and train around it. Your plan will be designed to fit real life — not an ideal scenario that only works on paper.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">How is this different from other coaches? <span class="faq-icon">+</span></button>
+        <button class="faq-question" aria-expanded="false">How is this different from other coaches? <span class="faq-icon">+</span></button>
         <div class="faq-answer"><div class="faq-answer-inner">Most coaches are full-time influencers. I'm not. I have a career, a family, and I still make it work. My clients are busy professionals — not aspiring fitness models. I understand your constraints because I live them.</div></div>
       </div>
     </div>
@@ -1589,7 +1600,7 @@
       <div class="section-title" style="text-align:center;">Train With Saq</div>
       <p class="section-desc" style="text-align:center;margin:0 auto 40px;">Limited spots available. Serious inquiries only.</p>
 
-      <form id="applicationForm" name="coaching-application" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form id="applicationForm" name="coaching-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="coaching-application">
         <div class="honeypot"><label>Don't fill this out: <input name="bot-field"></label></div>
 
@@ -1675,7 +1686,7 @@
         <div class="form-step" data-step="4">
           <div class="form-group">
             <label class="form-label">Days Per Week</label>
-            <select name="days_per_week" class="form-select form-input">
+            <select name="days_per_week" class="form-select form-input" required>
               <option value="" disabled selected>Select</option>
               <option value="3 days">3 days</option>
               <option value="4 days">4 days</option>
@@ -1685,7 +1696,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Preferred Training Style</label>
-            <select name="training_style" class="form-select form-input">
+            <select name="training_style" class="form-select form-input" required>
               <option value="" disabled selected>Select</option>
               <option value="PPL">PPL (Push/Pull/Legs)</option>
               <option value="Upper/Lower">Upper / Lower</option>
@@ -1754,8 +1765,10 @@
     });
 
     // ── Mobile Nav ──
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navCenter').classList.toggle('open');
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', () => {
+      const open = document.getElementById('navCenter').classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
     });
 
     // ── FAQ Toggle ──
@@ -1763,22 +1776,39 @@
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
         const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
       });
     });
 
-    // ── Form Option Selection ──
+    // ── Form Option Selection (mouse + keyboard) ──
     function setupOptions(containerId, inputId) {
       const container = document.getElementById(containerId);
       if (!container) return;
-      container.querySelectorAll('.form-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-          container.querySelectorAll('.form-option').forEach(o => o.classList.remove('selected'));
+      const opts = container.querySelectorAll('.form-option');
+      opts.forEach(opt => {
+        opt.setAttribute('role', 'radio');
+        opt.setAttribute('tabindex', '0');
+        opt.setAttribute('aria-checked', 'false');
+        function select() {
+          opts.forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-checked', 'false'); });
           opt.classList.add('selected');
+          opt.setAttribute('aria-checked', 'true');
           document.getElementById(inputId).value = opt.dataset.value;
+          container.classList.remove('input-error');
+        }
+        opt.addEventListener('click', select);
+        opt.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); }
         });
       });
+      container.setAttribute('role', 'radiogroup');
     }
     setupOptions('goalOptions', 'goalInput');
     setupOptions('expOptions', 'expInput');
@@ -1786,6 +1816,8 @@
     setupOptions('trackOptions', 'trackInput');
 
     // ── Form Steps ──
+    const appForm = document.getElementById('applicationForm');
+
     function showStep(n) {
       document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
       const target = document.querySelector(`.form-step[data-step="${n}"]`);
@@ -1795,16 +1827,76 @@
       });
     }
 
-    // ── Form Step Navigation (replaces inline onclick) ──
+    // ── Validation ──
+    const stepFields = {
+      1: { controls: ['name', 'email'] },
+      2: { groups: [['goalOptions', 'goalInput'], ['expOptions', 'expInput']] },
+      3: { groups: [['commitOptions', 'commitInput'], ['trackOptions', 'trackInput']] },
+      4: { controls: ['days_per_week', 'training_style'] }
+    };
+
+    function clearStepErrors(n) {
+      const step = document.querySelector(`.form-step[data-step="${n}"]`);
+      if (!step) return;
+      step.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+      const msg = step.querySelector('.form-error');
+      if (msg) msg.classList.remove('visible');
+    }
+
+    function showStepError(n) {
+      const step = document.querySelector(`.form-step[data-step="${n}"]`);
+      let msg = step.querySelector('.form-error');
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.className = 'form-error';
+        msg.textContent = 'Please complete the highlighted fields before continuing.';
+        step.querySelector('.form-nav').before(msg);
+      }
+      msg.classList.add('visible');
+    }
+
+    function validateStep(n) {
+      clearStepErrors(n);
+      const cfg = stepFields[n];
+      if (!cfg) return true;
+      let valid = true;
+
+      (cfg.controls || []).forEach(name => {
+        const ctrl = appForm.querySelector(`[name="${name}"]`);
+        if (!ctrl.value || !ctrl.checkValidity()) {
+          ctrl.classList.add('input-error');
+          valid = false;
+        }
+      });
+
+      (cfg.groups || []).forEach(([containerId, inputId]) => {
+        if (!document.getElementById(inputId).value) {
+          document.getElementById(containerId).classList.add('input-error');
+          valid = false;
+        }
+      });
+
+      if (!valid) showStepError(n);
+      return valid;
+    }
+
+    // ── Form Step Navigation ──
     document.querySelectorAll('[data-goto]').forEach(function(btn) {
       btn.addEventListener('click', function() {
-        showStep(parseInt(this.dataset.goto));
+        const target = parseInt(this.dataset.goto);
+        const current = parseInt(this.closest('.form-step').dataset.step);
+        if (target > current && !validateStep(current)) return;
+        showStep(target);
       });
     });
 
     // ── Form Submit ──
-    document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    appForm.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      for (let n = 1; n <= 4; n++) {
+        if (!validateStep(n)) { showStep(n); return; }
+      }
 
       const formData = new FormData(this);
 

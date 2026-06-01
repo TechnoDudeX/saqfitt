@@ -1,0 +1,5 @@
+.DS_Store
+*/.DS_Store
+
+# Source render exports (webp versions are what the site uses)
+*v1.1.png
