@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /hevy
-Disallow: /humehealth
 
 Sitemap: https://saqfitt.com/sitemap.xml

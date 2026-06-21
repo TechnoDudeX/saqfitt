@@ -15,6 +15,28 @@
   <meta name="twitter:title" content="SAQFITT — Coaching for the Working Professional">
   <meta name="twitter:description" content="Online fitness coaching built for busy professionals.">
   <meta name="twitter:image" content="https://saqfitt.com/profile-pic-links.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saqlain",
+    "alternateName": "Saq",
+    "jobTitle": "Fitness Coach",
+    "description": "Online fitness coaching built for busy professionals.",
+    "url": "https://saqfitt.com/",
+    "image": "https://saqfitt.com/profile-pic-links.jpg",
+    "email": "saqlainfit@gmail.com",
+    "areaServed": "Toronto, Canada",
+    "worksFor": { "@type": "Organization", "name": "SAQFITT" },
+    "sameAs": [
+      "https://www.instagram.com/saqfitt/",
+      "https://www.tiktok.com/@saqfitt",
+      "https://www.tiktok.com/@trainwithsaq",
+      "https://www.youtube.com/@saqfitt",
+      "https://hevy.com/user/saqfitt"
+    ]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +49,9 @@
       --border: #dedad3;
       --text: #111111;
       --text-muted: #555555;
-      --text-dim: #aaaaaa;
+      --text-dim: #767066;
       --accent: #c28800;
+      --accent-text: #8a6000;
       --accent-dim: rgba(194, 136, 0, 0.09);
       --accent-mid: rgba(194, 136, 0, 0.16);
       --white: #ffffff;
@@ -42,6 +65,15 @@
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 
     /* light-mode card lift */
     .stat-card, .transform-card, .result-card, .testimonial-card,
@@ -203,7 +235,7 @@
       font-size: 0.75rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-text);
       font-weight: 500;
       margin-bottom: 24px;
     }
@@ -330,7 +362,7 @@
       font-size: 0.7rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-text);
       font-weight: 500;
       margin-bottom: 16px;
     }
@@ -1315,12 +1347,11 @@
 
   <!-- ── NAVIGATION ── -->
   <nav class="nav">
-    <a href="#" class="nav-logo">SAQFITT</a>
+    <a href="/" class="nav-logo">SAQFITT</a>
 
     <div class="nav-center" id="navCenter">
       <a href="#about">About</a>
       <a href="#transformation">Journey</a>
-      <a href="#results">Results</a>
       <a href="#testimonials">Proof</a>
       <a href="#process">Process</a>
 <a href="#faq">FAQ</a>
@@ -1369,7 +1400,7 @@
   <!-- ── ABOUT ── -->
   <section id="about">
     <div class="section-label">About</div>
-    <div class="section-title">Hi, I'm Saq.</div>
+    <h2 class="section-title">Hi, I'm Saq.</h2>
 
     <div class="about-grid">
       <div class="about-text">
@@ -1405,7 +1436,7 @@
   <section class="section-full transformation" id="transformation">
     <div class="transformation-inner">
       <div class="section-label">My Journey</div>
-      <div class="section-title">The Transformation</div>
+      <h2 class="section-title">The Transformation</h2>
       <p class="section-desc">I know what it feels like to have excess body fat — the hip fat, the back fat, the chest fat. You could be going to the gym every day but people won't even be able to tell what's under it. I've gone from skinny to fit, fit to fat, fat to fit — more than once. I know what works and what doesn't. I've done it all and had every type of body possible.</p>
 
       <div class="slider-cards-grid fade-in">
@@ -1467,7 +1498,7 @@
   <!-- ── TESTIMONIALS ── -->
   <section id="testimonials">
     <div class="section-label">Testimonials</div>
-    <div class="section-title">What My Clients Say</div>
+    <h2 class="section-title">What My Clients Say</h2>
     <p class="section-desc">Real words from real people who committed to the process.</p>
 
     <div class="testimonials-grid">
@@ -1511,7 +1542,7 @@
   <!-- ── PROCESS ── -->
   <section id="process">
     <div class="section-label">Process</div>
-    <div class="section-title">How It Works</div>
+    <h2 class="section-title">How It Works</h2>
     <p class="section-desc">Four simple steps from application to transformation. No guesswork, no wasted time.</p>
 
     <div class="process-steps">
@@ -1541,7 +1572,7 @@
     <div class="pricing-wrapper" style="margin-top:80px;">
       <div class="pricing-card fade-in">
         <div class="pricing-eyebrow">Limited Availability</div>
-        <div class="section-title" style="margin-bottom:8px;">The Program</div>
+        <h2 class="section-title" style="margin-bottom:8px;">The Program</h2>
         <div class="pricing-amount">$250 USD</div>
         <div class="pricing-period">per month · 4-month minimum commitment</div>
 
@@ -1562,33 +1593,33 @@
   <!-- ── FAQ ── -->
   <section id="faq">
     <div class="section-label">FAQ</div>
-    <div class="section-title">Common Questions</div>
+    <h2 class="section-title">Common Questions</h2>
     <p class="section-desc">Everything you need to know before applying.</p>
 
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">What equipment do I need? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">It depends on your goals and setup. I can design programs for a full gym, a home gym with basic equipment, or even minimal equipment. We'll figure out the best approach during onboarding.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">What equipment do I need? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a1"><div class="faq-answer-inner">It depends on your goals and setup. I can design programs for a full gym, a home gym with basic equipment, or even minimal equipment. We'll figure out the best approach during onboarding.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">How often do I need to work out? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Most clients train 3–6 days per week depending on their schedule and goals. Your plan is built around your availability — not the other way around.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">How often do I need to work out? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a2"><div class="faq-answer-inner">Most clients train 3–6 days per week depending on their schedule and goals. Your plan is built around your availability — not the other way around.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Can I still train while traveling? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. I'll adjust your program for hotel gyms, limited equipment, or even bodyweight-only sessions. Travel shouldn't derail your progress.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">Can I still train while traveling? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a3"><div class="faq-answer-inner">Absolutely. I'll adjust your program for hotel gyms, limited equipment, or even bodyweight-only sessions. Travel shouldn't derail your progress.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">Do I need to track my food? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Tracking food is highly recommended for best results, but we'll discuss your comfort level and find an approach that works. Some clients track macros, others follow structured meal plans without counting.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">Do I need to track my food? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a4"><div class="faq-answer-inner">Tracking food is highly recommended for best results, but we'll discuss your comfort level and find an approach that works. Some clients track macros, others follow structured meal plans without counting.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">What if I work long or unpredictable hours? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">That's exactly who this is for. I work a 9-to-5 myself and train around it. Your plan will be designed to fit real life — not an ideal scenario that only works on paper.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">What if I work long or unpredictable hours? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a5"><div class="faq-answer-inner">That's exactly who this is for. I work a 9-to-5 myself and train around it. Your plan will be designed to fit real life — not an ideal scenario that only works on paper.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">How is this different from other coaches? <span class="faq-icon">+</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Most coaches are full-time influencers. I'm not. I have a career, a family, and I still make it work. My clients are busy professionals — not aspiring fitness models. I understand your constraints because I live them.</div></div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">How is this different from other coaches? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a6"><div class="faq-answer-inner">Most coaches are full-time influencers. I'm not. I have a career, a family, and I still make it work. My clients are busy professionals — not aspiring fitness models. I understand your constraints because I live them.</div></div>
       </div>
     </div>
   </section>
@@ -1597,7 +1628,7 @@
   <section class="section-full apply-section" id="apply">
     <div class="apply-inner">
       <div class="section-label" style="text-align:center;">Apply</div>
-      <div class="section-title" style="text-align:center;">Train With Saq</div>
+      <h2 class="section-title" style="text-align:center;">Train With Saq</h2>
       <p class="section-desc" style="text-align:center;margin:0 auto 40px;">Limited spots available. Serious inquiries only.</p>
 
       <form id="applicationForm" name="coaching-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -1633,7 +1664,7 @@
         <!-- Step 2: Goals -->
         <div class="form-step" data-step="2">
           <div class="form-group">
-            <label class="form-label">What's Your Goal?</label>
+            <label class="form-label" id="goalLabel">What's Your Goal?</label>
             <div class="form-options" id="goalOptions">
               <div class="form-option" data-value="Build Muscle">Build Muscle</div>
               <div class="form-option" data-value="Lose Fat">Lose Fat</div>
@@ -1644,7 +1675,7 @@
             <input type="hidden" name="goal" id="goalInput">
           </div>
           <div class="form-group">
-            <label class="form-label">Experience Level</label>
+            <label class="form-label" id="expLabel">Experience Level</label>
             <div class="form-options form-option-2col" id="expOptions">
               <div class="form-option" data-value="Beginner (&lt;1 year)">Beginner<br><small style="color:var(--text-dim);">< 1 year</small></div>
               <div class="form-option" data-value="Intermediate (1-3 years)">Intermediate<br><small style="color:var(--text-dim);">1–3 years</small></div>
@@ -1661,7 +1692,7 @@
         <!-- Step 3: Commitment -->
         <div class="form-step" data-step="3">
           <div class="form-group">
-            <label class="form-label">Can you commit to 4 months?</label>
+            <label class="form-label" id="commitLabel">Can you commit to 4 months?</label>
             <div class="form-options form-option-2col" id="commitOptions">
               <div class="form-option" data-value="Yes, I'm all in">Yes, I'm all in</div>
               <div class="form-option" data-value="Not sure yet">Not sure yet</div>
@@ -1669,7 +1700,7 @@
             <input type="hidden" name="commitment" id="commitInput">
           </div>
           <div class="form-group">
-            <label class="form-label">Willing to weigh your food and count every meal?</label>
+            <label class="form-label" id="trackLabel">Willing to weigh your food and count every meal?</label>
             <div class="form-options form-option-2col" id="trackOptions">
               <div class="form-option" data-value="Yes, let's go">Yes, let's go</div>
               <div class="form-option" data-value="Not yet">Not yet</div>
@@ -1733,9 +1764,9 @@
       <div class="footer-links">
         <a href="links.html">Links</a>
         <a href="media.html">Media Kit</a>
-        <a href="https://www.instagram.com/saqfitt/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@saqfitt" target="_blank">TikTok</a>
-        <a href="https://www.youtube.com/@saqfitt" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener">YouTube</a>
       </div>
       <div class="footer-copy">© 2025 SAQFITT. All rights reserved.</div>
     </div>
@@ -1788,7 +1819,7 @@
     });
 
     // ── Form Option Selection (mouse + keyboard) ──
-    function setupOptions(containerId, inputId) {
+    function setupOptions(containerId, inputId, labelId) {
       const container = document.getElementById(containerId);
       if (!container) return;
       const opts = container.querySelectorAll('.form-option');
@@ -1809,11 +1840,12 @@
         });
       });
       container.setAttribute('role', 'radiogroup');
+      if (labelId) container.setAttribute('aria-labelledby', labelId);
     }
-    setupOptions('goalOptions', 'goalInput');
-    setupOptions('expOptions', 'expInput');
-    setupOptions('commitOptions', 'commitInput');
-    setupOptions('trackOptions', 'trackInput');
+    setupOptions('goalOptions', 'goalInput', 'goalLabel');
+    setupOptions('expOptions', 'expInput', 'expLabel');
+    setupOptions('commitOptions', 'commitInput', 'commitLabel');
+    setupOptions('trackOptions', 'trackInput', 'trackLabel');
 
     // ── Form Steps ──
     const appForm = document.getElementById('applicationForm');
@@ -1905,13 +1937,14 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) throw new Error('Submission failed: ' + response.status);
         document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
         document.getElementById('formSuccess').classList.add('active');
         document.querySelectorAll('.form-progress-bar').forEach(bar => bar.classList.add('active'));
       })
       .catch(() => {
-        alert('Submission failed. Please try again or email saqfitt@gmail.com directly.');
+        alert('Submission failed. Please try again or email saqlainfit@gmail.com directly.');
       });
     });
 

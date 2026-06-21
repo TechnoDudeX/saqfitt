@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://saqfitt.com/profile-pic-links.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SAQFITT — Media Kit">
+  <meta name="twitter:description" content="SAQFITT media kit for brand partnerships, sponsorships, and collaborations.">
   <meta name="twitter:image" content="https://saqfitt.com/profile-pic-links.jpg">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +27,7 @@
       --border: #dedad3;
       --text: #111111;
       --text-muted: #555555;
-      --text-dim: #aaaaaa;
+      --text-dim: #767066;
       --accent: #c28800;
       --accent-dim: rgba(194, 136, 0, 0.09);
       --font-display: 'Bebas Neue', sans-serif;
@@ -98,7 +99,7 @@
       font-size: 0.7rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #8a6000;
       font-weight: 500;
       margin-bottom: 16px;
     }
@@ -217,7 +218,7 @@
     }
 
     .platform-icon svg { width: 20px; height: 20px; fill: var(--accent); }
-    .platform-icon span { font-weight: 700; font-size: 0.8rem; color: var(--accent); }
+    .platform-icon span { font-weight: 700; font-size: 0.8rem; color: #8a6000; }
 
     .platform-info h4 {
       font-size: 0.95rem;
@@ -239,7 +240,7 @@
       border-radius: 20px;
       font-size: 0.7rem;
       font-weight: 600;
-      color: var(--accent);
+      color: #8a6000;
       letter-spacing: 0.5px;
     }
 
@@ -435,6 +436,18 @@
       .mk-section { padding: 60px 20px; }
       .media-header { padding: 120px 20px 60px; }
     }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .platform-photo { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -452,13 +465,13 @@
 
   <!-- PLATFORMS -->
   <div class="mk-section">
-    <div class="mk-section-title">Platforms</div>
+    <h2 class="mk-section-title">Platforms</h2>
     <div class="platforms">
 
       <!-- Instagram @saqfitt -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/01.jpg" alt="Instagram @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/01.webp" alt="Instagram @saqfitt" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
           <div class="platform-icon" aria-label="Instagram">
@@ -474,7 +487,7 @@
       <!-- Instagram @saqwithit -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/02.jpg" alt="Instagram @saqwithit" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/02.webp" alt="Instagram @saqwithit" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
           <div class="platform-icon" aria-label="Instagram">
@@ -490,7 +503,7 @@
       <!-- TikTok @saqfitt -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/03.jpg" alt="TikTok @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/03.webp" alt="TikTok @saqfitt" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
           <div class="platform-icon" aria-label="TikTok">
@@ -506,7 +519,7 @@
       <!-- TikTok @trainwithsaq -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/04.jpg" alt="TikTok @trainwithsaq" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/04.webp" alt="TikTok @trainwithsaq" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
           <div class="platform-icon" aria-label="TikTok">
@@ -522,7 +535,7 @@
       <!-- YouTube -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/05.jpg" alt="YouTube @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/05.webp" alt="YouTube @saqfitt" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
           <div class="platform-icon" aria-label="YouTube">
@@ -540,7 +553,7 @@
 
   <!-- AUDIENCE -->
   <div class="mk-section">
-    <div class="mk-section-title">Audience</div>
+    <h2 class="mk-section-title">Audience</h2>
     <div class="audience-grid">
       <div class="audience-card">
         <h4>Core Demo</h4>
@@ -562,7 +575,7 @@
 
   <!-- PACKAGES -->
   <div class="mk-section">
-    <div class="mk-section-title">Partnership Packages</div>
+    <h2 class="mk-section-title">Partnership Packages</h2>
     <div class="packages">
       <div class="package-card">
         <div class="package-name">Starter</div>
@@ -602,7 +615,7 @@
 
   <!-- BRANDS -->
   <div class="mk-section">
-    <div class="mk-section-title">Brands I've Worked With</div>
+    <h2 class="mk-section-title">Brands I've Worked With</h2>
     <div class="brands-row">
       <span class="brand-tag">Hevy</span>
       <span class="brand-tag">Men's Physique Shorts</span>
@@ -617,26 +630,40 @@
     <div class="contact-box">
       <h3>LET'S WORK TOGETHER</h3>
       <p>Interested in a partnership? Reach out and I'll send you my full rate card and content calendar.</p>
-      <a href="mailto:saqfitt@gmail.com" class="contact-email">saqfitt@gmail.com</a>
+      <a href="mailto:saqlainfit@gmail.com" class="contact-email">saqlainfit@gmail.com</a>
       <p style="margin-top:16px;font-size:0.75rem;color:var(--text-dim);">Response within 48 hours.</p>
     </div>
   </div>
 
   <footer class="mk-footer">
-    <p><a href="index.html">SAQFITT</a> · <a href="links.html">Links</a> · © 2025</p>
+    <p><a href="index.html">SAQFITT</a> · <a href="links.html">Links</a> · © 2026</p>
   </footer>
 
 <script>
 (function () {
   var imgs = Array.from({length: 19}, function (_, i) {
-    return 'links/web/' + String(i + 1).padStart(2, '0') + '.jpg';
+    return 'links/web/' + String(i + 1).padStart(2, '0') + '.webp';
   });
 
-  imgs.forEach(function (src) { var p = new Image(); p.src = src; });
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var tiles  = Array.from(document.querySelectorAll('.platform-photo'));
   var inUse  = new Set();
   var intervalIds = [];
+
+  // Preload only what rotates; defer the rest to idle time so we don't
+  // eagerly fetch ~2.2MB of gallery images on load.
+  function preloadAll() {
+    imgs.forEach(function (src) { var p = new Image(); p.src = src; });
+  }
+  if (!reduceMotion) {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(preloadAll);
+    } else {
+      setTimeout(preloadAll, 2000);
+    }
+  }
 
   function pickUnused() {
     var available = imgs.filter(function (s) { return !inUse.has(s); });
@@ -679,12 +706,14 @@
     intervalIds = [];
   }
 
-  startRotation();
+  if (!reduceMotion) {
+    startRotation();
 
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { stopRotation(); }
-    else { startRotation(); }
-  });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stopRotation(); }
+      else { startRotation(); }
+    });
+  }
 })();
 </script>
 

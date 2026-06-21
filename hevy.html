@@ -543,7 +543,7 @@
     </a>
   </div>
 
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navCenter">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -831,7 +831,7 @@
     </h2>
     <p class="cta-desc reveal d2">Already in the programme, already posting. The next step is Hevy Coach — let's talk about what a partnership looks like.</p>
     <div class="reveal d3">
-      <a href="mailto:saqlainfit@gmail.com?subject=SAQFITT × Hevy Coach Partnership&body=Hi,%0A%0AFollowing up on my Hevy Ambassador work at @trainwithsaq. I've put together a full proposal at saqfitt.com/hevy — I'd love to discuss a Hevy Coach partnership.%0A%0ALooking forward to it.%0A%0ASaqlain (@trainwithsaq / @saqfitt)%0Asaqlainfit@gmail.com" class="btn-primary" style="font-size:.9rem;padding:15px 32px;">
+      <a href="mailto:saqlainfit@gmail.com?subject=SAQFITT%20%C3%97%20Hevy%20Coach%20Partnership&body=Hi,%0A%0AFollowing%20up%20on%20my%20Hevy%20Ambassador%20work%20at%20@trainwithsaq.%20I've%20put%20together%20a%20full%20proposal%20at%20saqfitt.com/hevy%20%E2%80%94%20I'd%20love%20to%20discuss%20a%20Hevy%20Coach%20partnership.%0A%0ALooking%20forward%20to%20it.%0A%0ASaqlain%20(@trainwithsaq%20/%20@saqfitt)%0Asaqlainfit@gmail.com" class="btn-primary" style="font-size:.9rem;padding:15px 32px;">
         Get in Touch
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -847,14 +847,16 @@
     <span class="footer-sep">×</span>
     <span class="footer-logo" style="color:rgba(0,103,153,.5);">HEVY COACH</span>
     <span class="footer-sep">·</span>
-    <span class="footer-copy">Created for the Hevy partnership team · © 2025 SAQFITT</span>
+    <span class="footer-copy">Created for the Hevy partnership team · © 2026 SAQFITT</span>
   </div>
 </footer>
 
 <script>
   // Mobile nav
-  document.getElementById('navToggle').addEventListener('click', () => {
-    document.getElementById('navCenter').classList.toggle('open');
+  const navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', () => {
+    const isOpen = document.getElementById('navCenter').classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   // Scroll reveal
