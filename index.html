@@ -40,7 +40,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f7f5f1;
@@ -76,8 +76,8 @@
     }
 
     /* light-mode card lift */
-    .stat-card, .transform-card, .result-card, .testimonial-card,
-    .pricing-card, .about-image-placeholder, .step-card {
+    .stat-card, .testimonial-card,
+    .pricing-card, .about-image-placeholder {
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
 
@@ -263,7 +263,7 @@
       gap: 10px;
       padding: 16px 40px;
       background: var(--accent);
-      color: #ffffff;
+      color: var(--text);
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 2px;
@@ -275,7 +275,7 @@
 
     .btn-primary:hover {
       background: transparent;
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     .btn-outline {
@@ -296,7 +296,7 @@
 
     .btn-outline:hover {
       border-color: var(--accent);
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     .hero-monogram {
@@ -467,12 +467,6 @@
       background: linear-gradient(135deg, var(--accent-dim), transparent 60%);
     }
 
-    .about-image-placeholder svg {
-      width: 48px;
-      height: 48px;
-      opacity: 0.3;
-    }
-
     /* ── TRANSFORMATION ── */
     .transformation {
       background: var(--bg-elevated);
@@ -484,68 +478,6 @@
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 40px;
-    }
-
-    .transform-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 60px;
-    }
-
-    .transform-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition);
-    }
-
-    .transform-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .transform-card-img {
-      aspect-ratio: 1;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dim);
-      font-size: 0.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .transform-card-img .before-after {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .ba-side {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 3px;
-      color: var(--text-dim);
-    }
-
-    .ba-side:first-child { background: rgba(0,0,0,0.04); }
-    .ba-side:last-child { background: var(--accent-dim); }
-
-    .ba-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: var(--accent);
-      z-index: 2;
     }
 
     /* ── BEFORE / AFTER SLIDER ── */
@@ -667,11 +599,16 @@
       -webkit-appearance: none;
     }
 
+    .ba-slider:focus-within .ba-handle {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .transform-card-body {
       padding: 24px;
     }
 
-    .transform-card-body h4 {
+    .transform-card-body h3 {
       font-family: var(--font-display);
       font-size: 1.3rem;
       letter-spacing: 1px;
@@ -688,7 +625,7 @@
       display: inline-block;
       padding: 4px 12px;
       background: var(--accent-dim);
-      color: var(--accent);
+      color: var(--accent-text);
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 1px;
@@ -697,79 +634,10 @@
       margin-bottom: 12px;
     }
 
-    /* ── RESULTS ── */
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
-
-    .result-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px 24px;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .result-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .result-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-
-    .result-card:hover::before { transform: scaleX(1); }
-
-    .result-weight {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .result-name {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .result-role {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .result-badge {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.65rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
     /* ── TESTIMONIALS ── */
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
       margin-top: 60px;
     }
@@ -874,7 +742,6 @@
     .pricing-wrapper {
       display: flex;
       justify-content: center;
-      margin-top: 60px;
     }
 
     .pricing-card {
@@ -950,80 +817,6 @@
       margin-top: 16px;
     }
 
-    /* ── MODELING ── */
-    .modeling-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 60px;
-      align-items: start;
-      margin-top: 60px;
-    }
-
-    .modeling-stats {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-    }
-
-    .modeling-stats h4 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-      color: var(--accent);
-    }
-
-    .modeling-stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.85rem;
-    }
-
-    .modeling-stat-row .label { color: var(--text-muted); }
-    .modeling-stat-row .value { font-weight: 600; }
-
-    .modeling-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .modeling-photo {
-      aspect-ratio: 3/4;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dim);
-      font-size: 0.75rem;
-      transition: all var(--transition);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .modeling-photo:hover {
-      border-color: var(--accent);
-      transform: scale(1.02);
-    }
-
-    .modeling-photo .photo-label {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      font-size: 0.65rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      background: rgba(247, 245, 241, 0.85);
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
     /* ── FAQ ── */
     .faq-list {
       max-width: 700px;
@@ -1047,7 +840,7 @@
       transition: color var(--transition);
     }
 
-    .faq-question:hover { color: var(--accent); }
+    .faq-question:hover { color: var(--accent-text); }
 
     .faq-icon {
       width: 24px;
@@ -1158,7 +951,7 @@
     .form-option.selected {
       border-color: var(--accent);
       background: var(--accent-dim);
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     .form-option-2col { grid-template-columns: 1fr 1fr; }
@@ -1268,7 +1061,7 @@
       transition: color var(--transition);
     }
 
-    .footer-links a:hover { color: var(--accent); }
+    .footer-links a:hover { color: var(--accent-text); }
 
     .footer-copy {
       font-size: 0.75rem;
@@ -1290,11 +1083,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .results-grid { grid-template-columns: repeat(2, 1fr); }
       .process-steps { grid-template-columns: repeat(2, 1fr); }
-      .transform-cards { grid-template-columns: repeat(2, 1fr); }
-      .modeling-grid { grid-template-columns: 1fr; }
-      .modeling-gallery { grid-template-columns: repeat(3, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -1324,14 +1114,10 @@
       .hero-monogram { display: none; }
       .hero-meta { display: none; }
 
-      .results-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
-      .transform-cards { grid-template-columns: 1fr; }
       .slider-cards-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: repeat(3, 1fr); }
       .form-options { grid-template-columns: repeat(2, 1fr); }
-      .modeling-gallery { grid-template-columns: repeat(2, 1fr); }
 
       .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -1354,7 +1140,8 @@
       <a href="#transformation">Journey</a>
       <a href="#testimonials">Proof</a>
       <a href="#process">Process</a>
-<a href="#faq">FAQ</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="#apply">Apply</a>
     </div>
 
@@ -1378,6 +1165,7 @@
     </button>
   </nav>
 
+  <main>
   <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-tag">Online Coaching</div>
@@ -1388,12 +1176,12 @@
       <a href="#transformation" class="btn-outline">See My Journey</a>
     </div>
 
-    <div class="hero-scroll">
+    <div class="hero-scroll" aria-hidden="true">
       <span>Scroll</span>
       <div class="hero-scroll-line"></div>
     </div>
 
-    <div class="hero-monogram">SF</div>
+    <div class="hero-monogram" aria-hidden="true">SF</div>
     <div class="hero-meta">Est. 2024 · Toronto</div>
   </section>
 
@@ -1426,7 +1214,7 @@
 
       <div class="about-image-area">
         <div class="about-image-placeholder">
-          <img src="profile-pic.webp" alt="Saq" width="480" height="480" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="profile-pic.webp" alt="Saq" width="600" height="801" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
     </div>
@@ -1437,7 +1225,7 @@
     <div class="transformation-inner">
       <div class="section-label">My Journey</div>
       <h2 class="section-title">The Transformation</h2>
-      <p class="section-desc">I know what it feels like to have excess body fat — the hip fat, the back fat, the chest fat. You could be going to the gym every day but people won't even be able to tell what's under it. I've gone from skinny to fit, fit to fat, fat to fit — more than once. I know what works and what doesn't. I've done it all and had every type of body possible.</p>
+      <p class="section-desc">I know what it's like to train every day and still have the muscle hidden under fat. I've gone skinny to fit, fit to fat, and fat to fit — more than once. I know what works because I've lived every version of it.</p>
 
       <div class="slider-cards-grid fade-in">
 
@@ -1445,10 +1233,10 @@
         <div class="slider-card">
           <div class="ba-slider" data-ba-slider>
             <div class="ba-img ba-img-before">
-              <img src="saq-fat-1.webp" alt="Before — Set 1" width="560" height="840" loading="lazy">
+              <img src="saq-fat-1.webp" alt="Saq before The Cut" width="560" height="840" loading="lazy">
             </div>
             <div class="ba-img ba-img-after" data-ba-after>
-              <img src="saq-fit-1.webp" alt="After — Set 1" width="560" height="840" loading="lazy">
+              <img src="saq-fit-1.webp" alt="Saq after The Cut" width="560" height="840" loading="lazy">
             </div>
             <span class="ba-label ba-label-before" data-ba-lbl-before>Before</span>
             <span class="ba-label ba-label-after" data-ba-lbl-after>After</span>
@@ -1457,11 +1245,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
-            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50">
+            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50" aria-label="Before and after comparison: The Cut">
           </div>
           <div class="transform-card-body">
             <span class="transform-tag">−34 lbs</span>
-            <h4>The Cut</h4>
+            <h3>The Cut</h3>
             <p>From overweight to competitive physique. Working a 9-to-5 the entire time, no shortcuts, no magic pills.</p>
           </div>
         </div>
@@ -1470,10 +1258,10 @@
         <div class="slider-card">
           <div class="ba-slider" data-ba-slider>
             <div class="ba-img ba-img-before">
-              <img src="saq-fat-2.webp" alt="Before — Set 2" width="560" height="840" loading="lazy">
+              <img src="saq-fat-2.webp" alt="Saq before The Comeback" width="560" height="840" loading="lazy">
             </div>
             <div class="ba-img ba-img-after" data-ba-after>
-              <img src="saq-fit-2.webp" alt="After — Set 2" width="560" height="840" loading="lazy">
+              <img src="saq-fit-2.webp" alt="Saq after The Comeback" width="560" height="840" loading="lazy">
             </div>
             <span class="ba-label ba-label-before" data-ba-lbl-before>Before</span>
             <span class="ba-label ba-label-after" data-ba-lbl-after>After</span>
@@ -1482,11 +1270,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
-            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50">
+            <input type="range" class="ba-range" data-ba-range min="0" max="100" value="50" aria-label="Before and after comparison: The Comeback">
           </div>
           <div class="transform-card-body">
             <span class="transform-tag">Transformation</span>
-            <h4>The Comeback</h4>
+            <h3>The Comeback</h3>
             <p>Proof it wasn't a one-time thing. Lost it, gained it back, and did it all over again.</p>
           </div>
         </div>
@@ -1503,7 +1291,7 @@
 
     <div class="testimonials-grid">
       <div class="testimonial-card fade-in">
-        <div class="testimonial-quote">"</div>
+        <div class="testimonial-quote" aria-hidden="true">"</div>
         <p class="testimonial-text">Saq understands the struggle of balancing a career and fitness because he lives it. My plan worked around my schedule, not the other way around. Down 30 lbs and I didn't have to quit my life to get there.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">M</div>
@@ -1515,6 +1303,7 @@
       </div>
 
       <div class="testimonial-card fade-in">
+        <div class="testimonial-quote" aria-hidden="true">"</div>
         <p class="testimonial-text">I was working two jobs and thought I had no time for fitness. Saq showed me it's about systems, not hours. The meal plan fit my crazy schedule and the weekly check-ins kept me accountable.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">R</div>
@@ -1526,6 +1315,7 @@
       </div>
 
       <div class="testimonial-card fade-in">
+        <div class="testimonial-quote" aria-hidden="true">"</div>
         <p class="testimonial-text">What makes Saq different is that he's not just selling a plan — he's living it. He has the same 24 hours, the same job stress, the same family priorities. When he gives advice, it comes from experience.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">N</div>
@@ -1568,8 +1358,11 @@
       </div>
     </div>
 
-    <!-- PRICING -->
-    <div class="pricing-wrapper" style="margin-top:80px;">
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section id="pricing" style="padding-top:0;">
+    <div class="pricing-wrapper">
       <div class="pricing-card fade-in">
         <div class="pricing-eyebrow">Limited Availability</div>
         <h2 class="section-title" style="margin-bottom:8px;">The Program</h2>
@@ -1585,7 +1378,7 @@
         </ul>
 
         <a href="#apply" class="btn-primary" style="width:100%;justify-content:center;">Apply Now</a>
-        <div class="pricing-note">Only accepting 10–20 clients at a time to ensure quality.</div>
+        <div class="pricing-note">Capped at 20 clients at a time to keep quality high.</div>
       </div>
     </div>
   </section>
@@ -1621,6 +1414,18 @@
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">How is this different from other coaches? <span class="faq-icon">+</span></button>
         <div class="faq-answer" id="faq-a6"><div class="faq-answer-inner">Most coaches are full-time influencers. I'm not. I have a career, a family, and I still make it work. My clients are busy professionals — not aspiring fitness models. I understand your constraints because I live them.</div></div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">What happens after I apply? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a7"><div class="faq-answer-inner">I read every application myself and reply within 48 hours. If we're a good fit, I'll walk you through next steps and build your custom plan around your schedule, goals, and equipment.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">Can I cancel or pause? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a8"><div class="faq-answer-inner">The program has a 4-month minimum — that's how long real change takes. If something serious comes up, message me and we'll figure out the best way forward together.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a9">What happens after the 4 months? <span class="faq-icon">+</span></button>
+        <div class="faq-answer" id="faq-a9"><div class="faq-answer-inner">You can keep going month to month, or take the habits and knowledge you've built and run with them on your own. Either way, the goal is that you don't need me forever.</div></div>
+      </div>
     </div>
   </section>
 
@@ -1633,7 +1438,7 @@
 
       <form id="applicationForm" name="coaching-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="coaching-application">
-        <div class="honeypot"><label>Don't fill this out: <input name="bot-field"></label></div>
+        <div class="honeypot" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></div>
 
         <div class="form-progress">
           <div class="form-progress-bar active" data-step="1"></div>
@@ -1645,16 +1450,16 @@
         <!-- Step 1: Contact -->
         <div class="form-step active" data-step="1">
           <div class="form-group">
-            <label class="form-label">Full Name</label>
-            <input type="text" name="name" class="form-input" placeholder="Your full name" required>
+            <label class="form-label" for="appName">Full Name</label>
+            <input type="text" id="appName" name="name" autocomplete="name" class="form-input" placeholder="Your full name" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+            <label class="form-label" for="appEmail">Email</label>
+            <input type="email" id="appEmail" name="email" autocomplete="email" class="form-input" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Instagram Handle</label>
-            <input type="text" name="instagram" class="form-input" placeholder="@yourhandle">
+            <label class="form-label" for="appInstagram">Instagram Handle</label>
+            <input type="text" id="appInstagram" name="instagram" class="form-input" placeholder="@yourhandle">
           </div>
           <div class="form-nav">
             <button type="button" class="btn-primary" data-goto="2">Continue</button>
@@ -1700,7 +1505,7 @@
             <input type="hidden" name="commitment" id="commitInput">
           </div>
           <div class="form-group">
-            <label class="form-label" id="trackLabel">Willing to weigh your food and count every meal?</label>
+            <label class="form-label" id="trackLabel">Open to tracking your food?</label>
             <div class="form-options form-option-2col" id="trackOptions">
               <div class="form-option" data-value="Yes, let's go">Yes, let's go</div>
               <div class="form-option" data-value="Not yet">Not yet</div>
@@ -1716,8 +1521,8 @@
         <!-- Step 4: Details -->
         <div class="form-step" data-step="4">
           <div class="form-group">
-            <label class="form-label">Days Per Week</label>
-            <select name="days_per_week" class="form-select form-input" required>
+            <label class="form-label" for="appDays">Days Per Week</label>
+            <select id="appDays" name="days_per_week" class="form-select form-input" required>
               <option value="" disabled selected>Select</option>
               <option value="3 days">3 days</option>
               <option value="4 days">4 days</option>
@@ -1726,8 +1531,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Preferred Training Style</label>
-            <select name="training_style" class="form-select form-input" required>
+            <label class="form-label" for="appStyle">Preferred Training Style</label>
+            <select id="appStyle" name="training_style" class="form-select form-input" required>
               <option value="" disabled selected>Select</option>
               <option value="PPL">PPL (Push/Pull/Legs)</option>
               <option value="Upper/Lower">Upper / Lower</option>
@@ -1737,8 +1542,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Anything else? (injuries, schedule, equipment)</label>
-            <textarea name="notes" class="form-input" placeholder="Tell me anything relevant..."></textarea>
+            <label class="form-label" for="appNotes">Anything else? (injuries, schedule, equipment)</label>
+            <textarea id="appNotes" name="notes" class="form-input" placeholder="Tell me anything relevant..."></textarea>
           </div>
           <div class="form-nav">
             <button type="button" class="btn-outline" data-goto="3">Back</button>
@@ -1748,14 +1553,15 @@
 
         <!-- Success -->
         <div class="form-step" data-step="success" id="formSuccess">
-          <div class="form-success">
-            <h3>Application Received</h3>
-            <p>Thanks for applying. I'll review your info and get back to you within 48 hours with your custom plan.</p>
+          <div class="form-success" role="status">
+            <h3 id="formSuccessHeading" tabindex="-1">Application Received</h3>
+            <p>Thanks for applying. I'll review your application and reply within 48 hours.</p>
           </div>
         </div>
       </form>
     </div>
   </section>
+  </main>
 
   <!-- ── FOOTER ── -->
   <footer class="footer">
@@ -1767,8 +1573,9 @@
         <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:saqlainfit@gmail.com">Email</a>
       </div>
-      <div class="footer-copy">© 2025 SAQFITT. All rights reserved.</div>
+      <div class="footer-copy">© 2026 SAQFITT. All rights reserved.</div>
     </div>
   </footer>
 
@@ -1881,6 +1688,7 @@
       if (!msg) {
         msg = document.createElement('p');
         msg.className = 'form-error';
+        msg.setAttribute('role', 'alert');
         msg.textContent = 'Please complete the highlighted fields before continuing.';
         step.querySelector('.form-nav').before(msg);
       }
@@ -1942,6 +1750,7 @@
         document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
         document.getElementById('formSuccess').classList.add('active');
         document.querySelectorAll('.form-progress-bar').forEach(bar => bar.classList.add('active'));
+        document.getElementById('formSuccessHeading').focus();
       })
       .catch(() => {
         alert('Submission failed. Please try again or email saqlainfit@gmail.com directly.');

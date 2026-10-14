@@ -16,22 +16,24 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
+# Assets keep the same filename when replaced, so no `immutable` / 1-year cache:
+# a swapped image would stay stale for returning visitors. One day is the cap.
 [[headers]]
   for = "/*.webp"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/*.jpg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/*.svg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/links/web/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"

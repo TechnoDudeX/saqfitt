@@ -25,7 +25,7 @@ Professional coaching and brand partnership site for **SAQFITT** — online fitn
 
 - Single-file static HTML/CSS/JS (no build step)
 - Deployed on [Netlify](https://www.netlify.com/) — auto-deploys on push to `main`
-- Training signup form handled by Netlify Forms (honeypot spam protection included)
+- Coaching application form (`coaching-application`) handled by Netlify Forms (honeypot spam protection included)
 
 ## Local development
 
@@ -33,4 +33,4 @@ Open any `.html` file directly in a browser. No install or build step required.
 
 ## Deployment
 
-Push to `main` — Netlify auto-deploys. Form submissions appear in the Netlify Forms dashboard under `training-signup`.
+Push to `main` — Netlify auto-deploys. Form submissions appear in the Netlify Forms dashboard under `coaching-application`.

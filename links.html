@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
 
     /* ─────────────────────────────── RESET ── */
@@ -40,14 +40,13 @@
       position: relative;
     }
 
-    /* dark blurred bg from hero photo */
+    /* dark blurred bg from hero photo — a pre-blurred, pre-darkened 96px
+       image, so the browser doesn't run a full-screen blur filter */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: url('profile-pic-links.jpg') center 15% / cover no-repeat;
-      filter: blur(40px) brightness(0.25) saturate(0.6);
-      transform: scale(1.1);
+      background: #111 url('profile-pic-links-bg.webp') center 15% / cover no-repeat;
       z-index: 0;
     }
 
@@ -326,12 +325,13 @@
 
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;">SAQFITT — Saq, Fitness Coach</h1>
 
-  <div class="card">
+  <main class="card">
 
     <!-- ── HERO ── -->
     <div class="hero">
       <picture>
-        <img src="profile-pic-links.jpg" alt="Saq" class="hero-img" width="420" height="315">
+        <source srcset="profile-pic-links.webp" type="image/webp">
+        <img src="profile-pic-links.jpg" alt="Saq" class="hero-img" width="900" height="537" fetchpriority="high">
       </picture>
       <div class="hero-info">
         <div class="hero-handle">@saqfitt</div>
@@ -362,9 +362,9 @@
 
     <!-- ── FEATURED LINKS ── -->
     <div class="section" style="margin-top:14px;">
-      <div class="link-grid">
+      <div class="link-grid wide">
 
-        <a href="index.html#apply" class="tile">
+        <a href="index.html#apply" class="tile tile-tall">
           <img class="tile-img" src="links/web/01.webp" alt="Apply for Coaching" width="420" height="315" loading="lazy">
           <div class="tile-badge badge-sf">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
@@ -386,6 +386,17 @@
           </div>
         </a>
 
+        <a href="media.html" class="tile">
+          <img class="tile-img" src="links/web/06.webp" alt="Media Kit" width="420" height="315" loading="lazy">
+          <div class="tile-badge badge-sf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">Media Kit</div>
+            <div class="tile-label-sub">Brand partnerships</div>
+          </div>
+        </a>
+
       </div>
     </div>
 
@@ -393,9 +404,9 @@
     <div class="section" style="margin-top:14px;">
       <h2 class="section-heading">Socials</h2>
 
-      <div class="link-grid" style="margin-bottom:8px;">
+      <div class="link-grid wide" style="margin-bottom:8px;">
 
-        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="tile">
+        <a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener" class="tile tile-tall">
           <img class="tile-img" src="links/web/03.webp" alt="Instagram" width="420" height="315" loading="lazy">
           <div class="tile-badge badge-ig">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -428,14 +439,25 @@
           </div>
         </a>
 
-        <a href="media.html" class="tile">
-          <img class="tile-img" src="links/web/06.webp" alt="Media Kit" width="420" height="315" loading="lazy">
-          <div class="tile-badge badge-sf">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener" class="tile">
+          <img class="tile-img" src="links/web/07.webp" alt="TikTok @trainwithsaq" width="420" height="315" loading="lazy">
+          <div class="tile-badge badge-tt">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
           </div>
           <div class="tile-label">
-            <div class="tile-label-text">Media Kit</div>
-            <div class="tile-label-sub">Brand partnerships</div>
+            <div class="tile-label-text">TikTok</div>
+            <div class="tile-label-sub">@trainwithsaq</div>
+          </div>
+        </a>
+
+        <a href="https://hevy.com/user/saqfitt" target="_blank" rel="noopener" class="tile">
+          <img class="tile-img" src="links/web/08.webp" alt="Hevy" width="420" height="315" loading="lazy">
+          <div class="tile-badge badge-hevy">
+            <span class="ltr">H</span>
+          </div>
+          <div class="tile-label">
+            <div class="tile-label-text">Hevy</div>
+            <div class="tile-label-sub">My training log</div>
           </div>
         </a>
 
@@ -447,14 +469,14 @@
       <a href="index.html">saqfitt.com</a>
     </div>
 
-  </div><!-- .card -->
+  </main><!-- .card -->
 
 <script>
 (function () {
   var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var imgs = Array.from({length: 19}, function (_, i) {
+  var imgs = Array.from({length: 18}, function (_, i) {
     return 'links/web/' + String(i + 1).padStart(2, '0') + '.webp';
   });
 
@@ -482,14 +504,6 @@
     img.alt = '';
     img.dataset.current = src;
   });
-
-  // Defer the bulk preload so it never competes with first paint.
-  var bulkPreload = function () { imgs.forEach(preload); };
-  if (window.requestIdleCallback) {
-    requestIdleCallback(bulkPreload);
-  } else {
-    setTimeout(bulkPreload, 2000);
-  }
 
   function startRotation() {
     tiles.forEach(function (img, i) {

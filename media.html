@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f7f5f1;
@@ -40,7 +40,7 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .stat-box, .platform-card, .audience-card, .package-card, .contact-box {
+    .platform-card, .audience-card, .package-card, .contact-box {
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
     html { scroll-behavior: smooth; }
@@ -135,37 +135,6 @@
       color: var(--accent);
     }
 
-    /* ── STATS ROW ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .stat-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .stat-box .value {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
-
-    .stat-box .label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 6px;
-    }
-
     /* ── PLATFORMS ── */
     .platforms {
       display: grid;
@@ -220,28 +189,19 @@
     .platform-icon svg { width: 20px; height: 20px; fill: var(--accent); }
     .platform-icon span { font-weight: 700; font-size: 0.8rem; color: #8a6000; }
 
-    .platform-info h4 {
+    .platform-info h3 {
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
+    .platform-info h3 a { border-bottom: 1px solid var(--border); transition: color var(--transition), border-color var(--transition); }
+    .platform-info h3 a:hover { color: #8a6000; border-color: var(--accent); }
+
     .platform-info p {
       font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.5;
-    }
-
-    .platform-info .metric {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 3px 10px;
-      background: var(--accent-dim);
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #8a6000;
-      letter-spacing: 0.5px;
     }
 
     /* ── AUDIENCE ── */
@@ -258,7 +218,7 @@
       padding: 28px;
     }
 
-    .audience-card h4 {
+    .audience-card h3 {
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 1px;
@@ -301,14 +261,14 @@
     }
 
     .package-card.featured::before {
-      content: 'MOST POPULAR';
+      content: 'RECOMMENDED';
       position: absolute;
       top: -10px;
       left: 24px;
       font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 2px;
-      color: #ffffff;
+      color: var(--text);
       background: var(--accent);
       padding: 2px 10px;
       border-radius: 4px;
@@ -398,7 +358,7 @@
       gap: 10px;
       padding: 14px 32px;
       background: var(--accent);
-      color: var(--bg);
+      color: var(--text);
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 1px;
@@ -409,7 +369,7 @@
 
     .contact-email:hover {
       background: transparent;
-      color: var(--accent);
+      color: #8a6000;
     }
 
     /* ── FOOTER ── */
@@ -424,11 +384,10 @@
       color: var(--text-dim);
     }
 
-    .mk-footer a { color: var(--accent); }
+    .mk-footer a { color: #8a6000; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
       .platforms { grid-template-columns: 1fr; }
       .audience-grid { grid-template-columns: 1fr; }
       .packages { grid-template-columns: 1fr; }
@@ -457,6 +416,7 @@
     <a href="index.html" class="topbar-back">← Back to site</a>
   </div>
 
+  <main>
   <header class="media-header">
     <div class="tag">Media Kit</div>
     <h1>BRAND PARTNERSHIPS</h1>
@@ -471,14 +431,14 @@
       <!-- Instagram @saqfitt -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/01.webp" alt="Instagram @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/01.webp" alt="" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
-          <div class="platform-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+          <div class="platform-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
           <div class="platform-info">
-            <h4>Instagram — @saqfitt</h4>
+            <h3><a href="https://www.instagram.com/saqfitt/" target="_blank" rel="noopener">Instagram — @saqfitt</a></h3>
             <p>Fitness coaching content. Training clips, client transformations, tips, and brand integrations.</p>
           </div>
         </div>
@@ -487,14 +447,14 @@
       <!-- Instagram @saqwithit -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/02.webp" alt="Instagram @saqwithit" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/02.webp" alt="" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
-          <div class="platform-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+          <div class="platform-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
           <div class="platform-info">
-            <h4>Instagram — @saqwithit</h4>
+            <h3><a href="https://www.instagram.com/saqwithit/" target="_blank" rel="noopener">Instagram — @saqwithit</a></h3>
             <p>Lifestyle and fashion content. Broader lifestyle audience overlapping with the fitness community.</p>
           </div>
         </div>
@@ -503,15 +463,15 @@
       <!-- TikTok @saqfitt -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/03.webp" alt="TikTok @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/03.webp" alt="" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
-          <div class="platform-icon" aria-label="TikTok">
+          <div class="platform-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
           </div>
           <div class="platform-info">
-            <h4>TikTok — @saqfitt</h4>
-            <p>Short-form fitness content. High save rate, shareable transformation and training clips.</p>
+            <h3><a href="https://www.tiktok.com/@saqfitt" target="_blank" rel="noopener">TikTok — @saqfitt</a></h3>
+            <p>Short-form fitness content — shareable transformation and training clips.</p>
           </div>
         </div>
       </div>
@@ -519,14 +479,14 @@
       <!-- TikTok @trainwithsaq -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/04.webp" alt="TikTok @trainwithsaq" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/04.webp" alt="" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
-          <div class="platform-icon" aria-label="TikTok">
+          <div class="platform-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
           </div>
           <div class="platform-info">
-            <h4>TikTok — @trainwithsaq</h4>
+            <h3><a href="https://www.tiktok.com/@trainwithsaq" target="_blank" rel="noopener">TikTok — @trainwithsaq</a></h3>
             <p>Training-focused TikTok channel. Workout demos, progress updates, and coaching content.</p>
           </div>
         </div>
@@ -535,14 +495,14 @@
       <!-- YouTube -->
       <div class="platform-card">
         <div class="platform-photo-wrap">
-          <img class="platform-photo" src="links/web/05.webp" alt="YouTube @saqfitt" width="480" height="270" loading="lazy">
+          <img class="platform-photo" src="links/web/05.webp" alt="" width="480" height="270" loading="lazy">
         </div>
         <div class="platform-body">
-          <div class="platform-icon" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+          <div class="platform-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </div>
           <div class="platform-info">
-            <h4>YouTube — @saqfitt</h4>
+            <h3><a href="https://www.youtube.com/@saqfitt" target="_blank" rel="noopener">YouTube — @saqfitt</a></h3>
             <p>Long-form transformation series, show prep documentation, and in-depth fitness education.</p>
           </div>
         </div>
@@ -556,17 +516,17 @@
     <h2 class="mk-section-title">Audience</h2>
     <div class="audience-grid">
       <div class="audience-card">
-        <h4>Core Demo</h4>
+        <h3>Core Demo</h3>
         <p>Working professionals, 25–40</p>
         <p class="sub">People with 9-to-5 jobs who are into fitness but don't have unlimited time or money.</p>
       </div>
       <div class="audience-card">
-        <h4>Content Themes</h4>
+        <h3>Content Themes</h3>
         <p>Fat loss, body recomp, meal prep</p>
         <p class="sub">Relatable transformation content from someone who was actually overweight — not already lean.</p>
       </div>
       <div class="audience-card">
-        <h4>Geography</h4>
+        <h3>Geography</h3>
         <p>Canada & United States</p>
         <p class="sub">Primarily Toronto GTA and North American working professionals.</p>
       </div>
@@ -615,11 +575,10 @@
 
   <!-- BRANDS -->
   <div class="mk-section">
-    <h2 class="mk-section-title">Brands I've Worked With</h2>
+    <h2 class="mk-section-title">Brands &amp; Features</h2>
     <div class="brands-row">
       <span class="brand-tag">Hevy</span>
       <span class="brand-tag">Men's Physique Shorts</span>
-      <span class="brand-tag">Hume Health (in talks)</span>
       <span class="brand-tag">Specialized Canada (reposted)</span>
     </div>
     <p style="margin-top:20px;font-size:0.85rem;color:var(--text-muted);">Open to partnerships in: fitness apparel, supplements, health tech, cycling gear, food & meal prep, and lifestyle brands.</p>
@@ -634,6 +593,7 @@
       <p style="margin-top:16px;font-size:0.75rem;color:var(--text-dim);">Response within 48 hours.</p>
     </div>
   </div>
+  </main>
 
   <footer class="mk-footer">
     <p><a href="index.html">SAQFITT</a> · <a href="links.html">Links</a> · © 2026</p>
@@ -641,7 +601,7 @@
 
 <script>
 (function () {
-  var imgs = Array.from({length: 19}, function (_, i) {
+  var imgs = Array.from({length: 18}, function (_, i) {
     return 'links/web/' + String(i + 1).padStart(2, '0') + '.webp';
   });
 
@@ -652,18 +612,8 @@
   var inUse  = new Set();
   var intervalIds = [];
 
-  // Preload only what rotates; defer the rest to idle time so we don't
-  // eagerly fetch ~2.2MB of gallery images on load.
-  function preloadAll() {
-    imgs.forEach(function (src) { var p = new Image(); p.src = src; });
-  }
-  if (!reduceMotion) {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(preloadAll);
-    } else {
-      setTimeout(preloadAll, 2000);
-    }
-  }
+  // Warm only the image about to rotate in (no bulk gallery preload).
+  function preload(src) { var p = new Image(); p.src = src; }
 
   function pickUnused() {
     var available = imgs.filter(function (s) { return !inUse.has(s); });
@@ -686,6 +636,7 @@
         var id = setInterval(function () {
           var next = pickUnused();
           if (!next) return;
+          preload(next);
           img.classList.add('fading');
           setTimeout(function () {
             inUse.delete(img.dataset.current);
